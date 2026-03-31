@@ -1,0 +1,10 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "MIMO Power Save Mode",
+    "RegistryKeyword":  "MIMOPowerSaveMode",
+    "RollbackDisplayValue":  "Auto SMPS",
+    "RollbackRegistryValue":  "0",
+    "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+}

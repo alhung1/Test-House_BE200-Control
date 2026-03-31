@@ -1,0 +1,41 @@
+{
+  "id": "remoting-20260325-134027-920628",
+  "job_type": "remoting",
+  "title": "Run remoting test",
+  "status": "success",
+  "started_at": "2026-03-25T13:40:27",
+  "finished_at": "2026-03-25T13:40:34",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\test-remoting.ps1",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-134027-920574.csv"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\test-remoting.ps1\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-test-remoting-summary-20260325-134027-920574.csv\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nTesting remote PowerShell access\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\n\nReadable summary:\n\nTargetIP       Reachable ComputerName    CurrentUser           WinRMServiceStatus BE200AdapterFound ErrorMessage\n--------       --------- ------------    -----------           ------------------ ----------------- ------------\n192.168.22.221      True ADMIN           admin\\admin           Running                         True             \n192.168.22.222      True DESKTOP-9LSD789 DESKTOP-9LSD789\\admin Running                         True             \n192.168.22.223      True DESKTOP-AMUELNP DESKTOP-AMUELNP\\admin Running                         True             \n192.168.22.224      True ADMIN           admin\\admin           Running                         True             \n192.168.22.225      True ADMIN           admin\\admin           Running                         True             \n192.168.22.226      True ADMIN           admin\\admin           Running                         True             \n192.168.22.227      True ADMIN           admin\\admin           Running                         True             \n192.168.22.228      True ADMIN           admin\\admin           Running                         True             \n\n\n\nCSV summary exported to: C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-134027-920574.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-134027-920574.csv"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ]
+  }
+}

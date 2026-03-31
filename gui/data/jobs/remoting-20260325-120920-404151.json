@@ -1,0 +1,36 @@
+{
+  "id": "remoting-20260325-120920-404151",
+  "job_type": "remoting",
+  "title": "Run remoting test",
+  "status": "success",
+  "started_at": "2026-03-25T12:09:20",
+  "finished_at": "2026-03-25T12:09:21",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\test-remoting.ps1",
+    "-TargetIP",
+    "192.168.22.225",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-120920-404103.csv"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\test-remoting.ps1\", \"-TargetIP\", \"192.168.22.225\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-test-remoting-summary-20260325-120920-404103.csv\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nTesting remote PowerShell access\n========================================================================\nTargets: 192.168.22.225\n\nReadable summary:\n\nTargetIP       Reachable ComputerName CurrentUser WinRMServiceStatus BE200AdapterFound ErrorMessage\n--------       --------- ------------ ----------- ------------------ ----------------- ------------\n192.168.22.225      True ADMIN        admin\\admin Running                        False             \n\n\n\nCSV summary exported to: C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-120920-404103.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-120920-404103.csv"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.225"
+    ]
+  }
+}

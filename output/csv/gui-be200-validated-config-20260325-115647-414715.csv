@@ -1,0 +1,2 @@
+﻿"InputRowNumber","Scope","InputTargetIP","EffectiveTargetIP","ComputerName","AdapterMatch","PropertyDisplayName","RegistryKeyword","CurrentValue","CurrentRegistryValue","TargetValue","Apply","TargetValueType","PossibleDisplayValues","PossibleRegistryValues","Notes"
+"1","TARGET","192.168.22.221","192.168.22.221","ADMIN","Intel(R) Wi-Fi 7 BE200 320MHz","802.11n/ac/ax/be Wireless Mode","IEEE11nMode","5. 802.11be","4","5. 802.11be","TRUE","DisplayValue","1. Disabled; 2. 802.11n; 3. 802.11ac; 4. 802.11ax; 5. 802.11be","0; 1; 2; 3; 4",""

@@ -1,0 +1,2 @@
+﻿"ComputerName","TargetIP","AdapterName","PropertyDisplayName","RegistryKeyword","OriginalValue","OriginalRegistryValue","TargetValue","FinalValue","FinalRegistryValue","ApplyAttempted","ApplySucceeded","VerificationSucceeded","ExecutionMode","TargetValueType","RestartAttempted","RestartSucceeded","Notes","PSComputerName","RunspaceId","PSShowComputerName"
+"ADMIN","192.168.22.221","Wi-Fi","RSCv4","*RscIPv4","Enabled","1","Disabled","Disabled","0","True","True","True","WriteOnly","DisplayValue","False",,"","192.168.22.221","4eb16e73-11a8-46b6-a21f-210c017c17a9","True"

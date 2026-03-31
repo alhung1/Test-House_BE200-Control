@@ -1,0 +1,42 @@
+{
+  "id": "action-20260325-145455-569636",
+  "job_type": "action",
+  "title": "Run BE200 action (Status)",
+  "status": "success",
+  "started_at": "2026-03-25T14:54:55",
+  "finished_at": "2026-03-25T14:54:57",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Status",
+    "-TargetIP",
+    "192.168.22.222",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260325-145455-569430.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260325-145455-569598.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Status\", \"-TargetIP\", \"192.168.22.222\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-status-20260325-145455-569430.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-status-20260325-145455-569598.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Status\n========================================================================\nTargets: 192.168.22.222\n\nAction summary:\n\nTargetIP       ComputerName    AdapterName InterfaceDescription             AdapterMacAddress AdapterIfIndex AdapterInt\n                                                                                                             erfaceGuid\n--------       ------------    ----------- --------------------             ----------------- -------------- ----------\n192.168.22.222 DESKTOP-9LSD789 Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-45-92-D2             25           \n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260325-145455-569430.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260325-145455-569598.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260325-145455-569430.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260325-145455-569598.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.222"
+    ],
+    "action": "Status"
+  }
+}

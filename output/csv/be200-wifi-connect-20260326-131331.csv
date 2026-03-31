@@ -1,0 +1,2 @@
+﻿"AdapterName","Action","Success","State","SSID","RequestedSSID","RadioType","Signal","Authentication","Channel","Message","PSComputerName","RunspaceId","PSShowComputerName","TargetIP"
+"Wi-Fi 6","Connect","True","connected","WBE700v2-2G","WBE700v2-2G","802.11be","95%","Open","10","Connected to 'WBE700v2-2G'. Connection request was completed successfully.","192.168.22.222","21186a1b-739b-4023-8e6c-2d417829e422","True","192.168.22.222"

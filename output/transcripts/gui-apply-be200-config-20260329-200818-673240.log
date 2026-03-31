@@ -1,0 +1,55 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260329200819
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\apply-be200-config.ps1 -ValidatedConfigPath C:\Test House BE200 control\output\csv\gui-be200-validated-config-20260326-134926-969694.csv -Mode WriteOnly -Username admin -Password SmokeApplyIntentionallyWrong -ResultCsvPath C:\Test House BE200 control\output\csv\gui-be200-apply-results-20260329-200818-672837.csv -ResultJsonPath C:\Test House BE200 control\output\json\gui-be200-apply-results-20260329-200818-672965.json -RollbackCsvPath C:\Test House BE200 control\output\csv\gui-be200-rollback-data-20260329-200818-673058.csv -RollbackJsonPath C:\Test House BE200 control\output\json\gui-be200-rollback-data-20260329-200818-673147.json -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-apply-be200-config-20260329-200818-673240.log
+Process ID: 6300
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Applying BE200 advanced-property config (WriteOnly)
+========================================================================
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.221] Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.222] Connecting to remote server 192.168.22.222 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.223] Connecting to remote server 192.168.22.223 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.224] Connecting to remote server 192.168.22.224 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.225] Connecting to remote server 192.168.22.225 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.226] Connecting to remote server 192.168.22.226 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.227] Connecting to remote server 192.168.22.227 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+>> TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.228] Connecting to remote server 192.168.22.228 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+
+Apply summary:
+
+TargetIP       AdapterName                      PropertyDisplayName    RegistryKeyword     ApplyAttempted ApplySucceede
+                                                                                                                      d
+--------       -----------                      -------------------    ---------------     -------------- -------------
+192.168.22.221 Intel(R) Wi-Fi 7 BE200 320MHz    Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.222 Intel(R) Wi-Fi 7 BE200 320MHz #6 Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.223 Intel(R) Wi-Fi 7 BE200 320MHz    Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.224 Intel(R) Wi-Fi 7 BE200 320MHz #6 Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.225 Intel(R) Wi-Fi 7 BE200 320MHz #6 Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.226 Intel(R) Wi-Fi 7 BE200 320MHz #6 Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.227 Intel(R) Wi-Fi 7 BE200 320MHz #6 Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+192.168.22.228 Intel(R) Wi-Fi 7 BE200 320MHz #6 Ultra High Band (6GHz) Is6GhzBandSupported           True         False
+
+
+
+Apply results CSV: C:\Test House BE200 control\output\csv\gui-be200-apply-results-20260329-200818-672837.csv
+Apply results JSON: C:\Test House BE200 control\output\json\gui-be200-apply-results-20260329-200818-672965.json
+Rollback CSV:      C:\Test House BE200 control\output\csv\gui-be200-rollback-data-20260329-200818-673058.csv
+Rollback JSON:     C:\Test House BE200 control\output\json\gui-be200-rollback-data-20260329-200818-673147.json
+Transcript log:    C:\Test House BE200 control\output\transcripts\gui-apply-be200-config-20260329-200818-673240.log
+**********************
+Windows PowerShell transcript end
+End time: 20260329200819
+**********************

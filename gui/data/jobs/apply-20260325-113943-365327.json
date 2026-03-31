@@ -1,0 +1,66 @@
+{
+  "id": "apply-20260325-113943-365327",
+  "job_type": "apply",
+  "title": "Apply validated config (WriteOnly)",
+  "status": "success",
+  "started_at": "2026-03-25T11:39:43",
+  "finished_at": "2026-03-25T11:39:46",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\apply-be200-config.ps1",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-113942-758736.csv",
+    "-Mode",
+    "WriteOnly",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-ResultCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-113943-364911.csv",
+    "-ResultJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-113943-365024.json",
+    "-RollbackCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-113943-365116.csv",
+    "-RollbackJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-113943-365206.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-113943-365296.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\apply-be200-config.ps1\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-113942-758736.csv\", \"-Mode\", \"WriteOnly\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-ResultCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-apply-results-20260325-113943-364911.csv\", \"-ResultJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-apply-results-20260325-113943-365024.json\", \"-RollbackCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-rollback-data-20260325-113943-365116.csv\", \"-RollbackJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-rollback-data-20260325-113943-365206.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-apply-be200-config-20260325-113943-365296.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nApplying BE200 advanced-property config (WriteOnly)\n========================================================================\n\nApply summary:\n\nTargetIP       AdapterName PropertyDisplayName    RegistryKeyword ApplyAttempted ApplySucceeded VerificationSucceeded E\n                                                                                                                      x\n                                                                                                                      e\n                                                                                                                      c\n                                                                                                                      u\n                                                                                                                      t\n                                                                                                                      i\n                                                                                                                      o\n                                                                                                                      n\n                                                                                                                      M\n                                                                                                                      o\n                                                                                                                      d\n                                                                                                                      e\n--------       ----------- -------------------    --------------- -------------- -------------- --------------------- -\n192.168.22.221 Wi-Fi       Channel Width for 6GHz ChannelWidth6             True           True                  True W\n192.168.22.222 Wi-Fi 6     Channel Width for 6GHz ChannelWidth6             True           True                  True W\n\n\n\nApply results CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-113943-364911.csv\nApply results JSON: C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-113943-365024.json\nRollback CSV:      C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-113943-365116.csv\nRollback JSON:     C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-113943-365206.json\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-113943-365296.log\n",
+  "stderr": "",
+  "artifacts": {
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-113942-758736.csv",
+    "result_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-113943-364911.csv",
+    "result_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-113943-365024.json",
+    "rollback_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-113943-365116.csv",
+    "rollback_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-113943-365206.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-113943-365296.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222"
+    ],
+    "property_key": "ChannelWidth6||Channel Width for 6GHz",
+    "property_label": "Channel Width for 6GHz",
+    "registry_keyword": "ChannelWidth6",
+    "target_value": "Auto",
+    "mode": "WriteOnly",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-113942-755127.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-113407-066666.csv",
+    "classification": "live-tested",
+    "risk": "medium",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly"
+    ],
+    "validation_job_id": "validation-20260325-113942-758765"
+  }
+}

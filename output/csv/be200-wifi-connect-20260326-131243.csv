@@ -1,0 +1,2 @@
+﻿"AdapterName","Action","Success","State","SSID","RequestedSSID","RadioType","Signal","Authentication","Channel","Message","PSComputerName","RunspaceId","PSShowComputerName","TargetIP"
+"Wi-Fi 6","Connect","False","disconnected","","WBE700v2-5G","","","","","Connection attempt completed but state is 'disconnected'. Connection request was completed successfully.","192.168.22.222","42af18f3-540e-4448-b45e-07f351a03f37","True","192.168.22.222"

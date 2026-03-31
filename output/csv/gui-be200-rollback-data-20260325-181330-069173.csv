@@ -1,0 +1,4 @@
+﻿"ComputerName","TargetIP","AdapterName","PropertyDisplayName","RegistryKeyword","RollbackDisplayValue","RollbackRegistryValue","Notes"
+"ADMIN","192.168.22.221","Wi-Fi","Throughput Booster","ThroughputBoosterEnabled","Disabled","0","Rollback data only. No automatic rollback is performed by this toolkit."
+"ADMIN","192.168.22.221","Wi-Fi","Fat Channel Intolerant","FatChannelIntolerant","Disabled","0","Rollback data only. No automatic rollback is performed by this toolkit."
+"ADMIN","192.168.22.221","Wi-Fi","U-APSD support","uAPSDSupport","Disabled","0","Rollback data only. No automatic rollback is performed by this toolkit."

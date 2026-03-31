@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Preferred Band",
+    "RegistryKeyword":  "RoamingPreferredBandType",
+    "OriginalValue":  "4. Prefer 6GHz band",
+    "OriginalRegistryValue":  "3",
+    "TargetValue":  "4. Prefer 6GHz band",
+    "FinalValue":  "4. Prefer 6GHz band",
+    "FinalRegistryValue":  "3",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "RestartBE200",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  true,
+    "RestartSucceeded":  true,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "ea69720b-08bf-4b81-a7d9-714cb8e502e5",
+    "PSShowComputerName":  true
+}

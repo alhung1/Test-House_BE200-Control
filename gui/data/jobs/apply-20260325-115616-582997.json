@@ -1,0 +1,66 @@
+{
+  "id": "apply-20260325-115616-582997",
+  "job_type": "apply",
+  "title": "Apply validated config (WriteOnly)",
+  "status": "success",
+  "started_at": "2026-03-25T11:56:16",
+  "finished_at": "2026-03-25T11:56:19",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\apply-be200-config.ps1",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-115615-988755.csv",
+    "-Mode",
+    "WriteOnly",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-ResultCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-115616-582603.csv",
+    "-ResultJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-115616-582707.json",
+    "-RollbackCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-115616-582797.csv",
+    "-RollbackJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-115616-582883.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-115616-582972.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\apply-be200-config.ps1\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-115615-988755.csv\", \"-Mode\", \"WriteOnly\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-ResultCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-apply-results-20260325-115616-582603.csv\", \"-ResultJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-apply-results-20260325-115616-582707.json\", \"-RollbackCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-rollback-data-20260325-115616-582797.csv\", \"-RollbackJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-rollback-data-20260325-115616-582883.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-apply-be200-config-20260325-115616-582972.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nApplying BE200 advanced-property config (WriteOnly)\n========================================================================\n\nApply summary:\n\nTargetIP       AdapterName PropertyDisplayName       RegistryKeyword ApplyAttempted ApplySucceeded VerificationSucceede\n                                                                                                                      d\n--------       ----------- -------------------       --------------- -------------- -------------- --------------------\n192.168.22.221 Wi-Fi       802.11a/b/g Wireless Mode WirelessMode              True           True                 True\n192.168.22.222 Wi-Fi 6     802.11a/b/g Wireless Mode WirelessMode              True           True                 True\n\n\n\nApply results CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-115616-582603.csv\nApply results JSON: C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-115616-582707.json\nRollback CSV:      C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-115616-582797.csv\nRollback JSON:     C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-115616-582883.json\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-115616-582972.log\n",
+  "stderr": "",
+  "artifacts": {
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-115615-988755.csv",
+    "result_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-115616-582603.csv",
+    "result_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-115616-582707.json",
+    "rollback_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-115616-582797.csv",
+    "rollback_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-115616-582883.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-115616-582972.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222"
+    ],
+    "property_key": "WirelessMode||802.11a/b/g Wireless Mode",
+    "property_label": "802.11a/b/g Wireless Mode",
+    "registry_keyword": "WirelessMode",
+    "target_value": "5. Dual Band 802.11a/g",
+    "mode": "WriteOnly",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-115615-981846.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-113407-066666.csv",
+    "classification": "live-tested",
+    "risk": "high",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly"
+    ],
+    "validation_job_id": "validation-20260325-115615-988784"
+  }
+}

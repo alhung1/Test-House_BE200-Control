@@ -1,0 +1,2 @@
+﻿"InputRowNumber","Scope","InputTargetIP","EffectiveTargetIP","ComputerName","AdapterMatch","PropertyDisplayName","RegistryKeyword","CurrentValue","CurrentRegistryValue","TargetValue","Apply","TargetValueType","PossibleDisplayValues","PossibleRegistryValues","Notes"
+"1","TARGET","192.168.22.221","192.168.22.221","ADMIN","Intel(R) Wi-Fi 7 BE200 320MHz","MIMO Power Save Mode","MIMOPowerSaveMode","Auto SMPS","0","Auto SMPS","TRUE","DisplayValue","Auto SMPS; Static SMPS; Dynamic SMPS; No SMPS","0; 1; 2; 3",""

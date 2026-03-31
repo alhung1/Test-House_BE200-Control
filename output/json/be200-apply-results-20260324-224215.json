@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Preferred Band",
+    "RegistryKeyword":  "RoamingPreferredBandType",
+    "OriginalValue":  "1. No Preference",
+    "OriginalRegistryValue":  "0",
+    "TargetValue":  "1. No Preference",
+    "FinalValue":  "1. No Preference",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  false,
+    "ApplySucceeded":  false,
+    "VerificationSucceeded":  false,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "Dry-run / WhatIf: no change applied.",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "e0eb4472-2126-439b-a132-4750e2ba041b",
+    "PSShowComputerName":  true
+}

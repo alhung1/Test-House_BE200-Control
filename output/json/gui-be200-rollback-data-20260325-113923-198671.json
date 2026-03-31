@@ -1,0 +1,10 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Channel Width for 6GHz",
+    "RegistryKeyword":  "ChannelWidth6",
+    "RollbackDisplayValue":  "20 MHz Only",
+    "RollbackRegistryValue":  "0",
+    "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+}

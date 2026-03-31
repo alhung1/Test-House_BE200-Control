@@ -1,0 +1,52 @@
+{
+  "id": "wifi-20260330-112936-293405",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Connect)",
+  "status": "success",
+  "started_at": "2026-03-30T11:29:36",
+  "finished_at": "2026-03-30T11:32:11",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Connect",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-SSID",
+    "NETGEAR65_SmartHome",
+    "-WiFiPassword",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-connect-20260330-112936-293255.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-connect-20260330-112936-293371.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Connect\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-SSID\", \"NETGEAR65_SmartHome\", \"-WiFiPassword\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-connect-20260330-112936-293255.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-connect-20260330-112936-293371.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Connect\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\nSSID: NETGEAR65_SmartHome\n\n--- Target: 192.168.22.221 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.222 ---\nWARNING: The network connection to 192.168.22.222 has been interrupted. Attempting to reconnect for up to 4 minutes...\nWARNING: Attempting to reconnect to 192.168.22.222 ...\nWARNING: The network connection to 192.168.22.222 has been restored.\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=associating  SSID=  Success=False\n\n--- Target: 192.168.22.223 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.224 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.225 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.226 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.227 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.228 ---\nProfile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-connect-20260330-112936-293255.csv\nTargets processed: 8\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-connect-20260330-112936-293255.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-connect-20260330-112936-293371.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "action": "Connect",
+    "ssid": "NETGEAR65_SmartHome"
+  }
+}

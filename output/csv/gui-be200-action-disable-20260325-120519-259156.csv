@@ -1,0 +1,4 @@
+﻿"TargetIP","ComputerName","AdapterName","InterfaceDescription","Action","InitialStatus","FinalStatus","ActionAttempted","ActionSucceeded","Notes"
+"192.168.22.221","ADMIN",,,"Disable",,,"True","False","Multiple adapters matched allowlisted InterfaceDescription 'Intel(R) Wi-Fi 7 BE200 320MHz' with non-preferred statuses. Skipping to avoid ambiguity."
+"192.168.22.221","ADMIN",,,"Disable",,,"True","False","No allowlisted Intel BE200 adapter was resolved on this target."
+"192.168.22.222","DESKTOP-9LSD789","Wi-Fi 6","Intel(R) Wi-Fi 7 BE200 320MHz #6","Disable","Up","Disabled","True","True",""

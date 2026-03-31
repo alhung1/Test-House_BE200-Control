@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Throughput Booster",
+    "RegistryKeyword":  "ThroughputBoosterEnabled",
+    "OriginalValue":  "Disabled",
+    "OriginalRegistryValue":  "0",
+    "TargetValue":  "Enabled",
+    "FinalValue":  "Enabled",
+    "FinalRegistryValue":  "1",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "ef277698-c8bd-48d7-9140-a12259bd94f3",
+    "PSShowComputerName":  true
+}

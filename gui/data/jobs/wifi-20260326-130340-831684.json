@@ -1,0 +1,48 @@
+{
+  "id": "wifi-20260326-130340-831684",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Status)",
+  "status": "success",
+  "started_at": "2026-03-26T13:03:40",
+  "finished_at": "2026-03-26T13:03:41",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Status",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260326-130340-831525.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-status-20260326-130340-831648.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Status\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-status-20260326-130340-831525.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-status-20260326-130340-831648.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Status\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\n\n--- Target: 192.168.22.221 ---\n  ERROR: Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.222 ---\n  ERROR: Connecting to remote server 192.168.22.222 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.223 ---\n  ERROR: Connecting to remote server 192.168.22.223 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.224 ---\n  ERROR: Connecting to remote server 192.168.22.224 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.225 ---\n  ERROR: Connecting to remote server 192.168.22.225 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.226 ---\n  ERROR: Connecting to remote server 192.168.22.226 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.227 ---\n  ERROR: Connecting to remote server 192.168.22.227 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.228 ---\n  ERROR: Connecting to remote server 192.168.22.228 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260326-130340-831525.csv\nTargets processed: 8\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260326-130340-831525.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-status-20260326-130340-831648.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "action": "Status",
+    "ssid": ""
+  }
+}

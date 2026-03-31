@@ -1,0 +1,45 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260325140105
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\discover-be200-advanced-properties.ps1 -Username admin -Password password -CsvPath C:\Test House BE200 control\output\csv\gui-restart-batch-19-rollback-20260325-140105-375070.csv -JsonPath C:\Test House BE200 control\output\json\gui-restart-batch-19-rollback-20260325-140105-375192.json -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-restart-batch-19-rollback-20260325-140105-375296.log
+Process ID: 22384
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Discovering BE200 advanced properties
+========================================================================
+Targets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228
+
+Discovery summary:
+
+TargetIP       ComputerName    DiscoverySucceeded PropertyRowCount Notes
+--------       ------------    ------------------ ---------------- -----
+192.168.22.221 ADMIN                         True               91
+192.168.22.222 DESKTOP-9LSD789               True               91
+192.168.22.223 DESKTOP-AMUELNP               True               91
+192.168.22.224 ADMIN                         True               91
+192.168.22.225 ADMIN                         True               91
+192.168.22.226 ADMIN                         True               90
+192.168.22.227 ADMIN                         True               91
+192.168.22.228 ADMIN                         True               91
+
+
+
+Discovery CSV exported to: C:\Test House BE200 control\output\csv\gui-restart-batch-19-rollback-20260325-140105-375070.csv
+Discovery JSON exported to: C:\Test House BE200 control\output\json\gui-restart-batch-19-rollback-20260325-140105-375192.json
+Transcript log exported to: C:\Test House BE200 control\output\transcripts\gui-restart-batch-19-rollback-20260325-140105-375296.log
+**********************
+Windows PowerShell transcript end
+End time: 20260325140112
+**********************

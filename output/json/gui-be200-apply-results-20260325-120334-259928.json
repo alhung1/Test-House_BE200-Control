@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Wake on Pattern Match",
+    "RegistryKeyword":  "*WakeOnPattern",
+    "OriginalValue":  "Disabled",
+    "OriginalRegistryValue":  "0",
+    "TargetValue":  "Enabled",
+    "FinalValue":  "Enabled",
+    "FinalRegistryValue":  "1",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "1b6be3f3-1f1f-4df0-b064-0f052b94a034",
+    "PSShowComputerName":  true
+}

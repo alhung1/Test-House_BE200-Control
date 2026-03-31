@@ -1,0 +1,3 @@
+﻿"TargetIP","ComputerName","AdapterName","InterfaceDescription","Action","InitialStatus","FinalStatus","ActionAttempted","ActionSucceeded","Notes"
+"192.168.22.222","DESKTOP-9LSD789","Wi-Fi 6","Intel(R) Wi-Fi 7 BE200 320MHz #6","Enable","Disabled","Disconnected","True","True",""
+"192.168.22.224","ADMIN","Wi-Fi 6","Intel(R) Wi-Fi 7 BE200 320MHz #6","Enable","Disabled","Disconnected","True","True",""

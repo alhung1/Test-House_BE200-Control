@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "NS offload for WoWLAN",
+    "RegistryKeyword":  "*PMNSOffload",
+    "OriginalValue":  "Enabled",
+    "OriginalRegistryValue":  "1",
+    "TargetValue":  "Disabled",
+    "FinalValue":  "Disabled",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "f16e6a6d-1727-4243-a8ea-e01cef02e718",
+    "PSShowComputerName":  true
+}

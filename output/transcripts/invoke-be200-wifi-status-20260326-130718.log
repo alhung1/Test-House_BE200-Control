@@ -1,0 +1,34 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260326130718
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\invoke-be200-wifi.ps1 -Action Status -TargetIP 192.168.22.221 -Username admin -Password password
+Process ID: 13688
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Invoking BE200 Wi-Fi action: Status
+========================================================================
+Targets: 192.168.22.221
+
+--- Target: 192.168.22.221 ---
+  Result: State=unknown  SSID=  Success=True
+========================================================================
+Wi-Fi action complete
+========================================================================
+Results CSV: C:\Test House BE200 control\output\csv\be200-wifi-status-20260326-130718.csv
+Targets processed: 1
+**********************
+Windows PowerShell transcript end
+End time: 20260326130719
+**********************

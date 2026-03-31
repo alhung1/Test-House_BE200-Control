@@ -1,0 +1,38 @@
+{
+  "id": "discovery-20260325-140226-304903",
+  "job_type": "discovery",
+  "title": "Restart batch 20-rollback",
+  "status": "success",
+  "started_at": "2026-03-25T14:02:26",
+  "finished_at": "2026-03-25T14:02:33",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-restart-batch-20-rollback-20260325-140226-304652.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-restart-batch-20-rollback-20260325-140226-304777.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-restart-batch-20-rollback-20260325-140226-304875.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-restart-batch-20-rollback-20260325-140226-304652.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-restart-batch-20-rollback-20260325-140226-304777.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-restart-batch-20-rollback-20260325-140226-304875.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\n\nDiscovery summary:\n\nTargetIP       ComputerName    DiscoverySucceeded PropertyRowCount Notes\n--------       ------------    ------------------ ---------------- -----\n192.168.22.221 ADMIN                         True               91      \n192.168.22.222 DESKTOP-9LSD789               True               91      \n192.168.22.223 DESKTOP-AMUELNP               True               91      \n192.168.22.224 ADMIN                         True               91      \n192.168.22.225 ADMIN                         True               91      \n192.168.22.226 ADMIN                         True               90      \n192.168.22.227 ADMIN                         True               91      \n192.168.22.228 ADMIN                         True               91      \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-restart-batch-20-rollback-20260325-140226-304652.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-restart-batch-20-rollback-20260325-140226-304777.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-restart-batch-20-rollback-20260325-140226-304875.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-restart-batch-20-rollback-20260325-140226-304652.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-restart-batch-20-rollback-20260325-140226-304777.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-restart-batch-20-rollback-20260325-140226-304875.log"
+  },
+  "summary": {
+    "tag": "20-rollback"
+  }
+}

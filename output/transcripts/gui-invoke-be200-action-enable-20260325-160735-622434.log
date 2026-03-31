@@ -1,0 +1,39 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260325160736
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\invoke-be200-action.ps1 -Action Enable -TargetIP 192.168.22.221,192.168.22.222 -Username admin -Password password -CsvPath C:\Test House BE200 control\output\csv\gui-be200-action-enable-20260325-160735-622303.csv -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-invoke-be200-action-enable-20260325-160735-622434.log -Force
+Process ID: 20176
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Invoking BE200 action: Enable
+========================================================================
+Targets: 192.168.22.221, 192.168.22.222
+
+Action summary:
+
+TargetIP       ComputerName    AdapterName InterfaceDescription             AdapterMacAddress AdapterIfIndex AdapterInt
+                                                                                                             erfaceGuid
+--------       ------------    ----------- --------------------             ----------------- -------------- ----------
+192.168.22.221 ADMIN           Wi-Fi       Intel(R) Wi-Fi 7 BE200 320MHz    90-09-DF-45-88-F5             22
+192.168.22.222 DESKTOP-9LSD789 Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-45-92-D2             25
+
+
+
+Action result CSV: C:\Test House BE200 control\output\csv\gui-be200-action-enable-20260325-160735-622303.csv
+Transcript log:    C:\Test House BE200 control\output\transcripts\gui-invoke-be200-action-enable-20260325-160735-622434.log
+**********************
+Windows PowerShell transcript end
+End time: 20260325160739
+**********************

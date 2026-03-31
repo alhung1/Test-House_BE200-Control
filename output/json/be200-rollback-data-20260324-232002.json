@@ -1,0 +1,42 @@
+﻿[
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.221",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "Preferred Band",
+        "RegistryKeyword":  "RoamingPreferredBandType",
+        "RollbackDisplayValue":  "4. Prefer 6GHz band",
+        "RollbackRegistryValue":  "3",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    },
+    {
+        "ComputerName":  "DESKTOP-AMUELNP",
+        "TargetIP":  "192.168.22.223",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "Preferred Band",
+        "RegistryKeyword":  "RoamingPreferredBandType",
+        "RollbackDisplayValue":  "4. Prefer 6GHz band",
+        "RollbackRegistryValue":  "3",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    },
+    {
+        "ComputerName":  "DESKTOP-9LSD789",
+        "TargetIP":  "192.168.22.222",
+        "AdapterName":  "Wi-Fi 6",
+        "PropertyDisplayName":  "Preferred Band",
+        "RegistryKeyword":  "RoamingPreferredBandType",
+        "RollbackDisplayValue":  "4. Prefer 6GHz band",
+        "RollbackRegistryValue":  "3",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    },
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.224",
+        "AdapterName":  "Wi-Fi 6",
+        "PropertyDisplayName":  "Preferred Band",
+        "RegistryKeyword":  "RoamingPreferredBandType",
+        "RollbackDisplayValue":  "4. Prefer 6GHz band",
+        "RollbackRegistryValue":  "3",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    }
+]

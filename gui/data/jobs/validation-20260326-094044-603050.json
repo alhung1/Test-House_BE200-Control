@@ -1,0 +1,61 @@
+{
+  "id": "validation-20260326-094044-603050",
+  "job_type": "validation",
+  "title": "Validate generated config",
+  "status": "success",
+  "started_at": "2026-03-26T09:40:44",
+  "finished_at": "2026-03-26T09:40:45",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\validate-be200-config.ps1",
+    "-ConfigPath",
+    "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260326-094044-601642.csv",
+    "-DiscoveryPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-143951-561105.csv",
+    "-ValidationReportPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260326-094044-602923.csv",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260326-094044-603023.csv"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\validate-be200-config.ps1\", \"-ConfigPath\", \"C:\\\\Test House BE200 control\\\\gui\\\\work\\\\configs\\\\gui-generated-config-20260326-094044-601642.csv\", \"-DiscoveryPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-discovery-20260325-143951-561105.csv\", \"-ValidationReportPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validation-report-20260326-094044-602923.csv\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260326-094044-603023.csv\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nBE200 config validation completed\n========================================================================\nValid rows:   2\nSkipped rows: 0\nInvalid rows: 0\nValidation report: C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260326-094044-602923.csv\nValidated config:  C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260326-094044-603023.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "config_csv": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260326-094044-601642.csv",
+    "discovery_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-143951-561105.csv",
+    "validation_report_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260326-094044-602923.csv",
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260326-094044-603023.csv"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "property_count": 2,
+    "property_labels": [
+      "Preferred Band",
+      "Roaming Aggressiveness"
+    ],
+    "registry_keywords": [
+      "RoamingPreferredBandType",
+      "RoamAggressiveness"
+    ],
+    "property_label": "Preferred Band; Roaming Aggressiveness",
+    "registry_keyword": "RoamingPreferredBandType; RoamAggressiveness",
+    "mode": "WriteOnly",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260326-094044-601642.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-143951-561105.csv",
+    "classification": "live-tested",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "RestartBE200",
+      "WriteOnly"
+    ],
+    "blocked_modes": [],
+    "accepted_rollout_scope": "All 8 allowlisted targets (192.168.22.221-228)"
+  }
+}

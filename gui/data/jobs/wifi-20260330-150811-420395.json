@@ -1,0 +1,48 @@
+{
+  "id": "wifi-20260330-150811-420395",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Status)",
+  "status": "success",
+  "started_at": "2026-03-30T15:08:11",
+  "finished_at": "2026-03-30T15:08:20",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Status",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260330-150811-420244.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-status-20260330-150811-420359.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Status\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-status-20260330-150811-420244.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-status-20260330-150811-420359.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Status\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\n\n--- Target: 192.168.22.221 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.222 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.223 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.224 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.225 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.226 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.227 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n\n--- Target: 192.168.22.228 ---\n  Result: State=connected  SSID=WBE700v2-5G  Success=True\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260330-150811-420244.csv\nTargets processed: 8\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260330-150811-420244.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-status-20260330-150811-420359.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "action": "Status",
+    "ssid": ""
+  }
+}

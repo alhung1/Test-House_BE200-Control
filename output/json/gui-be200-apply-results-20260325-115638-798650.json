@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "802.11n/ac/ax/be Wireless Mode",
+    "RegistryKeyword":  "IEEE11nMode",
+    "OriginalValue":  "5. 802.11be",
+    "OriginalRegistryValue":  "4",
+    "TargetValue":  "4. 802.11ax",
+    "FinalValue":  "4. 802.11ax",
+    "FinalRegistryValue":  "3",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "d19046fa-0fce-4c75-9c10-fc3893b7f0a0",
+    "PSShowComputerName":  true
+}

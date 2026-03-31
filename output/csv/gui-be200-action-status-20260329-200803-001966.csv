@@ -1,0 +1,2 @@
+﻿"TargetIP","ComputerName","AdapterName","InterfaceDescription","AdapterMacAddress","AdapterIfIndex","AdapterInterfaceGuid","AdapterPnPDeviceID","ResolutionSource","Action","InitialStatus","FinalStatus","ActionAttempted","ActionSucceeded","Notes"
+"192.168.22.221",,,,,,,,,"Status",,,"True","False","Remote action failed: Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."

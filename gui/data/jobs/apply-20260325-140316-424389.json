@@ -1,0 +1,73 @@
+{
+  "id": "apply-20260325-140316-424389",
+  "job_type": "apply",
+  "title": "Apply validated config (RestartBE200)",
+  "status": "success",
+  "started_at": "2026-03-25T14:03:16",
+  "finished_at": "2026-03-25T14:03:33",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\apply-be200-config.ps1",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-140315-609324.csv",
+    "-Mode",
+    "RestartBE200",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-ResultCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-140316-423996.csv",
+    "-ResultJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-140316-424101.json",
+    "-RollbackCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-140316-424190.csv",
+    "-RollbackJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-140316-424275.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-140316-424363.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\apply-be200-config.ps1\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-140315-609324.csv\", \"-Mode\", \"RestartBE200\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-ResultCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-apply-results-20260325-140316-423996.csv\", \"-ResultJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-apply-results-20260325-140316-424101.json\", \"-RollbackCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-rollback-data-20260325-140316-424190.csv\", \"-RollbackJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-rollback-data-20260325-140316-424275.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-apply-be200-config-20260325-140316-424363.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nApplying BE200 advanced-property config (RestartBE200)\n========================================================================\n\nApply summary:\n\nTargetIP       AdapterName PropertyDisplayName        RegistryKeyword          ApplyAttempted ApplySucceeded Verificati\n                                                                                                             onSucceede\n                                                                                                                      d\n--------       ----------- -------------------        ---------------          -------------- -------------- ----------\n192.168.22.221 Wi-Fi       Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.222 Wi-Fi 6     Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.223 Wi-Fi       Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.224 Wi-Fi 6     Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.225 Wi-Fi 6     Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.226 Wi-Fi 6     Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.227 Wi-Fi 6     Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n192.168.22.228 Wi-Fi 6     Sleep on WoWLAN Disconnect *DeviceSleepOnDisconnect           True           True       True\n\n\n\nApply results CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-140316-423996.csv\nApply results JSON: C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-140316-424101.json\nRollback CSV:      C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-140316-424190.csv\nRollback JSON:     C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-140316-424275.json\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-140316-424363.log\n",
+  "stderr": "",
+  "artifacts": {
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-140315-609324.csv",
+    "result_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-140316-423996.csv",
+    "result_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-140316-424101.json",
+    "rollback_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-140316-424190.csv",
+    "rollback_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-140316-424275.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-140316-424363.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "property_key": "*DeviceSleepOnDisconnect||Sleep on WoWLAN Disconnect",
+    "property_label": "Sleep on WoWLAN Disconnect",
+    "registry_keyword": "*DeviceSleepOnDisconnect",
+    "target_value": "Disabled",
+    "mode": "RestartBE200",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-140315-607396.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-133102-651623.csv",
+    "classification": "live-tested",
+    "risk": "high",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly",
+      "RestartBE200"
+    ],
+    "validation_job_id": "validation-20260325-140315-609354"
+  }
+}

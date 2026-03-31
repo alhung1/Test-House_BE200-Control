@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "ARP offload for WoWLAN",
+    "RegistryKeyword":  "*PMARPOffload",
+    "OriginalValue":  "Enabled",
+    "OriginalRegistryValue":  "1",
+    "TargetValue":  "Disabled",
+    "FinalValue":  "Disabled",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "64c6afb1-fe29-4a30-bf8a-4ddd75967107",
+    "PSShowComputerName":  true
+}

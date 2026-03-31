@@ -1,0 +1,48 @@
+{
+  "id": "wifi-20260329-203113-536516",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Status)",
+  "status": "success",
+  "started_at": "2026-03-29T20:31:13",
+  "finished_at": "2026-03-29T20:34:27",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Status",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260329-203113-536359.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-status-20260329-203113-536481.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Status\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-status-20260329-203113-536359.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-status-20260329-203113-536481.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Status\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\n\n--- Target: 192.168.22.221 ---\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.222 ---\n  ERROR: Connecting to remote server 192.168.22.222 failed with the following error message : WinRM cannot complete the operation. Verify that the specified computer name is valid, that the computer is accessible over the network, and that a firewall exception for the WinRM service is enabled and allows access from this computer. By default, the WinRM firewall exception for public profiles limits access to remote computers within the same local subnet. For more information, see the about_Remote_Troubleshooting Help topic.\n\n--- Target: 192.168.22.223 ---\n  Result: State=connected  SSID=RS300-2-6G  Success=True\n\n--- Target: 192.168.22.224 ---\n  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True\n\n--- Target: 192.168.22.225 ---\n  Result: State=disconnected  SSID=  Success=True\n\n--- Target: 192.168.22.226 ---\n  Result: State=disconnected  SSID=  Success=True\n\n--- Target: 192.168.22.227 ---\n  Result: State=disconnected  SSID=  Success=True\n\n--- Target: 192.168.22.228 ---\n  Result: State=disconnected  SSID=  Success=True\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260329-203113-536359.csv\nTargets processed: 8\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-status-20260329-203113-536359.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-status-20260329-203113-536481.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "action": "Status",
+    "ssid": ""
+  }
+}

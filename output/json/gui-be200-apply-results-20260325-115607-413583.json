@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "802.11a/b/g Wireless Mode",
+    "RegistryKeyword":  "WirelessMode",
+    "OriginalValue":  "5. Dual Band 802.11a/g",
+    "OriginalRegistryValue":  "18",
+    "TargetValue":  "6. Dual Band 802.11a/b/g",
+    "FinalValue":  "6. Dual Band 802.11a/b/g",
+    "FinalRegistryValue":  "34",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "d65481ce-3d1b-4769-a9c2-059672ea16b4",
+    "PSShowComputerName":  true
+}

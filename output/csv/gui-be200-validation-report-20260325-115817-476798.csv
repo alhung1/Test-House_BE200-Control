@@ -1,0 +1,3 @@
+﻿"InputRowNumber","ValidationStatus","Reason","Scope","InputTargetIP","EffectiveTargetIP","AdapterMatch","PropertyDisplayName","RegistryKeyword","CurrentValue","TargetValue","Apply","TargetValueType","PossibleDisplayValues","PossibleRegistryValues","ComputerName","Notes"
+"1","Valid","Row is valid and safe to consume.","TARGET","192.168.22.221","192.168.22.221","Intel(R) Wi-Fi 7 BE200 320MHz","ARP offload for WoWLAN","*PMARPOffload","Enabled","Disabled","TRUE","DisplayValue","Disabled; Enabled","0; 1","ADMIN",""
+"2","Valid","Row is valid and safe to consume.","TARGET","192.168.22.222","192.168.22.222","Intel(R) Wi-Fi 7 BE200 320MHz #6","ARP offload for WoWLAN","*PMARPOffload","Enabled","Disabled","TRUE","DisplayValue","Disabled; Enabled","0; 1","DESKTOP-9LSD789",""

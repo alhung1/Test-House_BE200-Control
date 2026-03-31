@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.228",
+    "AdapterName":  "Wi-Fi 6",
+    "PropertyDisplayName":  "802.11a/b/g Wireless Mode",
+    "RegistryKeyword":  "WirelessMode",
+    "OriginalValue":  "5. Dual Band 802.11a/g",
+    "OriginalRegistryValue":  "18",
+    "TargetValue":  "1. 5GHz  802.11a",
+    "FinalValue":  "1. 5GHz  802.11a",
+    "FinalRegistryValue":  "17",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "RestartBE200",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  true,
+    "RestartSucceeded":  true,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.228",
+    "RunspaceId":  "2bee76c5-b436-498c-b963-018e81f7abf2",
+    "PSShowComputerName":  true
+}

@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Roaming Aggressiveness",
+    "RegistryKeyword":  "RoamAggressiveness",
+    "OriginalValue":  "3. Medium",
+    "OriginalRegistryValue":  "2",
+    "TargetValue":  "4. Medium-High",
+    "FinalValue":  "4. Medium-High",
+    "FinalRegistryValue":  "3",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "d15ce0fa-7e06-4cc7-9618-623216af6a61",
+    "PSShowComputerName":  true
+}

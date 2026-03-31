@@ -1,0 +1,47 @@
+{
+  "id": "discovery-20260325-090740",
+  "job_type": "discovery",
+  "title": "Targeted discovery broader-preflight",
+  "status": "failed",
+  "started_at": "2026-03-25T09:07:40",
+  "finished_at": "2026-03-25T09:16:53",
+  "returncode": 1,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.221",
+    "192.168.22.222",
+    "192.168.22.226",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-targeted-be200-discovery-broader-preflight-20260325-090740.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-targeted-be200-discovery-broader-preflight-20260325-090740.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-targeted-discover-be200-broader-preflight-20260325-090740.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.221\", \"192.168.22.222\", \"192.168.22.226\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-targeted-be200-discovery-broader-preflight-20260325-090740.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-targeted-be200-discovery-broader-preflight-20260325-090740.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-targeted-discover-be200-broader-preflight-20260325-090740.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n",
+  "stderr": "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1 : A positional parameter cannot be found that \naccepts argument '192.168.22.226'.\n    + CategoryInfo          : InvalidArgument: (:) [discover-be200-advanced-properties.ps1], ParentContainsErrorRecord \n   Exception\n    + FullyQualifiedErrorId : PositionalParameterNotFound,discover-be200-advanced-properties.ps1\n \n",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-targeted-be200-discovery-broader-preflight-20260325-090740.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-targeted-be200-discovery-broader-preflight-20260325-090740.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-targeted-discover-be200-broader-preflight-20260325-090740.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.226"
+    ],
+    "label": "broader-preflight"
+  }
+}

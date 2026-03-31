@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block title %}Job Detail - BE200 Control Console{% endblock %}
+
+{% block content %}
+{% if not view %}
+  <div class="alert alert-warning">Job detail is unavailable.</div>
+{% else %}
+  <header class="app-page-header">
+    <h1 class="app-page-title">Job detail</h1>
+    <p class="app-page-lead"><strong>{{ view.job.title }}</strong> — {{ view.job.job_type }} — status <span class="text-body">{{ view.job.status }}</span></p>
+  </header>
+
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="card card-be200 zone-readonly">
+        <div class="card-header">Job metadata</div>
+        <div class="card-body">
+          <dl class="row mb-0">
+            <dt class="col-sm-4">Title</dt>
+            <dd class="col-sm-8">{{ view.job.title }}</dd>
+            <dt class="col-sm-4">Type</dt>
+            <dd class="col-sm-8">{{ view.job.job_type }}</dd>
+            <dt class="col-sm-4">Status</dt>
+            <dd class="col-sm-8">{{ view.job.status }}</dd>
+            <dt class="col-sm-4">Started</dt>
+            <dd class="col-sm-8">{{ view.job.started_at }}</dd>
+            <dt class="col-sm-4">Finished</dt>
+            <dd class="col-sm-8">{{ view.job.finished_at }}</dd>
+            <dt class="col-sm-4">Exit Code</dt>
+            <dd class="col-sm-8">{{ view.job.returncode }}</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="card card-be200 zone-readonly mt-4">
+        <div class="card-header">Artifacts</div>
+        <div class="card-body">
+          <ul class="small mb-0 artifact-list">
+            {% for path in artifact_paths %}
+              <li><a href="file:///{{ path|replace('\\', '/') }}">{{ path }}</a></li>
+            {% else %}
+              <li>No artifact paths recorded.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card card-be200 mb-4">
+        <div class="card-header">Summary</div>
+        <div class="card-body">
+          <pre class="mb-0 summary-pre">{{ view.summary_block }}</pre>
+        </div>
+      </div>
+
+      {% if view.rows %}
+        <div class="card card-be200 mb-4">
+          <div class="card-header">Result rows</div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="table table-striped table-sm mb-0 table-be200">
+                <thead>
+                  <tr>
+                    {% for key in view.rows[0].keys() %}
+                      <th>{{ key }}</th>
+                    {% endfor %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for row in view.rows %}
+                    <tr>
+                      {% for key, value in row.items() %}
+                        <td class="small">{{ value }}</td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if view.job.job_type == 'restart_rdp' and view.rows %}
+      <div class="card card-be200 zone-action mb-4">
+        <div class="card-header">Manual RDP launch</div>
+        <div class="card-body">
+          <p class="small mb-2">Opens <code>mstsc</code> for each host with <strong>PingReachable = Yes</strong>, in CSV order, with the configured delay between windows.</p>
+          <form method="post" action="{{ url_for('restart_rdp_launch', job_id=view.job.id) }}">
+            <button type="submit" class="btn btn-primary">Launch RDP (sequential)</button>
+          </form>
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="card card-be200">
+        <div class="card-header">Process output</div>
+        <div class="card-body">
+          <h6 class="fw-semibold">Command</h6>
+          <pre class="summary-pre">{{ view.job.command }}</pre>
+          <h6 class="fw-semibold mt-3">Stdout</h6>
+          <pre class="job-output">{{ view.job.stdout }}</pre>
+          {% if view.job.stderr %}
+            <h6 class="fw-semibold mt-3">Stderr</h6>
+            <pre class="job-output text-danger">{{ view.job.stderr }}</pre>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

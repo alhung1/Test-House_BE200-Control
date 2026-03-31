@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}Wi-Fi Status - BE200 Control Console{% endblock %}
+
+{% block content %}
+<header class="app-page-header">
+  <h1 class="app-page-title">Wi-Fi status</h1>
+  <p class="app-page-lead">Read-only check across fleet targets <code class="small">192.168.22.221</code>–<code class="small">228</code> (see scope strip). No configuration changes.</p>
+</header>
+
+<div class="row g-4 mb-4">
+  <div class="col-auto">
+    <form method="post" class="d-flex align-items-end gap-2 flex-wrap">
+      <input type="hidden" name="action" value="check_status">
+      <div>
+        <label class="form-label form-label-sm mb-0">Username</label>
+        <input class="form-control form-control-sm" type="text" name="username" value="{{ default_username }}" style="width:120px">
+      </div>
+      <div>
+        <label class="form-label form-label-sm mb-0">Password</label>
+        <input class="form-control form-control-sm" type="password" name="password" required style="width:140px">
+      </div>
+      <button class="btn btn-sm btn-primary" type="submit">Check status</button>
+    </form>
+  </div>
+</div>
+
+{% if status_rows %}
+<div class="card card-be200">
+  <div class="card-header">
+    BE200 Wi-Fi status
+    <span class="badge text-bg-secondary ms-2">{{ status_rows|length }} targets</span>
+    {% if summary %}
+      <span class="badge text-bg-success ms-1">{{ summary.connected }} connected</span>
+      {% if summary.disconnected > 0 %}
+        <span class="badge text-bg-warning ms-1">{{ summary.disconnected }} not connected</span>
+      {% endif %}
+    {% endif %}
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-bordered table-sm mb-0 table-be200" style="font-size: 0.85rem;">
+        <thead>
+          <tr>
+            <th>Target</th>
+            <th>Adapter</th>
+            <th>State</th>
+            <th>SSID</th>
+            <th>Radio type</th>
+            <th>Signal</th>
+            <th>Auth</th>
+            <th>Channel</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in status_rows %}
+            <tr class="{% if row.State|lower == 'connected' %}table-success{% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}table-danger{% else %}table-warning{% endif %}">
+              <td>{{ row.TargetIP }}</td>
+              <td>{{ row.AdapterName or '--' }}</td>
+              <td>
+                {% if row.State|lower == 'connected' %}
+                  <span class="badge text-bg-success">{{ row.State }}</span>
+                {% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}
+                  <span class="badge text-bg-danger">{{ row.State }}</span>
+                {% else %}
+                  <span class="badge text-bg-warning">{{ row.State }}</span>
+                {% endif %}
+              </td>
+              <td>{{ row.SSID or '--' }}</td>
+              <td>{{ row.RadioType or '--' }}</td>
+              <td>{{ row.Signal or '--' }}</td>
+              <td>{{ row.Authentication or '--' }}</td>
+              <td>{{ row.Channel or '--' }}</td>
+              <td class="small">{{ row.Message or '--' }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% else %}
+  <div class="card card-be200 zone-readonly">
+    <div class="card-body text-muted">
+      Enter credentials and click <strong>Check status</strong> to view the current Wi-Fi state across all managed BE200 targets (192.168.22.221–228).
+    </div>
+  </div>
+{% endif %}
+{% endblock %}

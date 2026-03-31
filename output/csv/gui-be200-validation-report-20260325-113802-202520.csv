@@ -1,0 +1,2 @@
+﻿"InputRowNumber","ValidationStatus","Reason","Scope","InputTargetIP","EffectiveTargetIP","AdapterMatch","PropertyDisplayName","RegistryKeyword","CurrentValue","TargetValue","Apply","TargetValueType","PossibleDisplayValues","PossibleRegistryValues","ComputerName","Notes"
+"1","Valid","Row is valid and safe to consume.","TARGET","192.168.22.221","192.168.22.221","Intel(R) Wi-Fi 7 BE200 320MHz","Channel Width for 2.4GHz","ChannelWidth24","20 MHz Only","20 MHz Only","TRUE","DisplayValue","20 MHz Only; Auto","0; 1","ADMIN",""

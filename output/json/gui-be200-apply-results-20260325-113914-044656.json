@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Channel Width for 6GHz",
+    "RegistryKeyword":  "ChannelWidth6",
+    "OriginalValue":  "Auto",
+    "OriginalRegistryValue":  "1",
+    "TargetValue":  "20 MHz Only",
+    "FinalValue":  "20 MHz Only",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "fafd1978-ada8-4b73-bcc4-0c1b45409116",
+    "PSShowComputerName":  true
+}

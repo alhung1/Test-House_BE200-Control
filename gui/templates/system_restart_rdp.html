@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Restart + RDP - BE200 Control Console{% endblock %}
+
+{% block content %}
+<header class="app-page-header">
+  <h1 class="app-page-title">Fleet restart and RDP</h1>
+  <p class="app-page-lead">
+    <strong>OS restart</strong> on selected hosts (<code>192.168.22.221</code>–<code>228</code> only). Controller
+    <code>192.168.22.8</code> is never targeted. After restart, the job waits for <strong>ping</strong> recovery;
+    optional TCP 3389 check does not guarantee RDP logon. RDP sessions open from this PC via <code>mstsc</code> (sequential).
+  </p>
+</header>
+
+<div class="card card-be200 zone-risk mb-4">
+  <div class="card-header">Run workflow</div>
+  <div class="card-body">
+    <form method="post" id="restart-rdp-form">
+      <input type="hidden" name="action" value="run">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Targets</label>
+        <div class="mb-1">
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="select-all-btn">Select all</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="clear-all-btn">Clear all</button>
+        </div>
+        <div class="target-grid">
+          {% for target in allowed_targets %}
+            <div class="form-check">
+              <input class="form-check-input tgt" type="checkbox" name="targets" value="{{ target }}" id="t-{{ loop.index }}"
+                {% if target in selected_targets %}checked{% endif %}>
+              <label class="form-check-label" for="t-{{ loop.index }}">{{ target }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Ping timeout (minutes)</label>
+          <input class="form-control" type="number" name="ping_timeout_minutes" value="{{ ping_timeout_minutes }}" min="1" max="120">
+        </div>
+        <div class="col-md-4">
+          <label class="form-label">Seconds between RDP launches</label>
+          <input class="form-control" type="number" name="rdp_delay_seconds" value="{{ rdp_delay_seconds }}" min="1" max="60">
+        </div>
+      </div>
+      <div class="form-check mb-2">
+        <input class="form-check-input" type="checkbox" name="check_rdp_port" value="yes" id="chk-rdp" {% if check_rdp_port %}checked{% endif %}>
+        <label class="form-check-label" for="chk-rdp">After ping, test TCP port 3389 (RDP listener — not logon test)</label>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" name="auto_open_rdp" value="yes" id="chk-auto" {% if auto_open_rdp %}checked{% endif %}>
+        <label class="form-check-label" for="chk-auto">Automatically open RDP (<code>mstsc</code>) for hosts with ping recovery, in selection order</label>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Username</label>
+        <input class="form-control" type="text" name="username" value="{{ default_username }}">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input class="form-control" type="password" name="password" required>
+      </div>
+      <div class="confirmation-box">
+        <div class="form-check mb-0">
+          <input class="form-check-input" type="checkbox" value="yes" name="confirm_restart_rdp" id="confirm-r">
+          <label class="form-check-label" for="confirm-r">
+            I confirm an <strong>operating system restart</strong> on the selected hosts. I understand brief outages and that success means ping (and optional port) recovery, not guaranteed desktop readiness.
+          </label>
+        </div>
+      </div>
+      <button class="btn btn-danger mt-3" type="submit">Start restart + recovery job</button>
+    </form>
+  </div>
+</div>
+
+<p class="small text-muted">Dry-run CLI (no restarts): <code>orchestrate-restart-rdp.ps1 -DryRun ...</code>. Documentation: <code>docs/RESTART_RDP_WORKFLOW.md</code>.</p>
+
+<script>
+(() => {
+  const boxes = () => Array.from(document.querySelectorAll('.tgt'));
+  document.getElementById('select-all-btn').addEventListener('click', () => boxes().forEach(c => c.checked = true));
+  document.getElementById('clear-all-btn').addEventListener('click', () => boxes().forEach(c => c.checked = false));
+  document.getElementById('restart-rdp-form').addEventListener('submit', (e) => {
+    if (!boxes().some(c => c.checked)) { e.preventDefault(); alert('Select at least one target.'); return; }
+    if (!document.getElementById('confirm-r').checked) { e.preventDefault(); alert('Confirm the restart to proceed.'); return; }
+  });
+})();
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Mixed Mode Protection",
+    "RegistryKeyword":  "CtsToItself",
+    "OriginalValue":  "RTS/CTS Enabled",
+    "OriginalRegistryValue":  "0",
+    "TargetValue":  "CTS-to-self Enabled",
+    "FinalValue":  "CTS-to-self Enabled",
+    "FinalRegistryValue":  "1",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "dc1db2d2-1cb6-457a-80a2-0677451a7fb1",
+    "PSShowComputerName":  true
+}

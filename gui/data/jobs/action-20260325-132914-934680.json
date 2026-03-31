@@ -1,0 +1,43 @@
+{
+  "id": "action-20260325-132914-934680",
+  "job_type": "action",
+  "title": "Run BE200 action (Enable)",
+  "status": "success",
+  "started_at": "2026-03-25T13:29:14",
+  "finished_at": "2026-03-25T13:29:17",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Enable",
+    "-TargetIP",
+    "192.168.22.224",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-enable-20260325-132914-934530.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-enable-20260325-132914-934648.log",
+    "-Force"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Enable\", \"-TargetIP\", \"192.168.22.224\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-enable-20260325-132914-934530.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-enable-20260325-132914-934648.log\", \"-Force\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Enable\n========================================================================\nTargets: 192.168.22.224\n\nAction summary:\n\nTargetIP       ComputerName AdapterName InterfaceDescription             AdapterMacAddress AdapterIfIndex AdapterInterf\n                                                                                                          aceGuid      \n--------       ------------ ----------- --------------------             ----------------- -------------- -------------\n192.168.22.224 ADMIN        Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-43-6D-09             30              \n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-enable-20260325-132914-934530.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-enable-20260325-132914-934648.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-enable-20260325-132914-934530.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-enable-20260325-132914-934648.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.224"
+    ],
+    "action": "Enable"
+  }
+}

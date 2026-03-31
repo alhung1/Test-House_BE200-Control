@@ -1,0 +1,32 @@
+﻿[
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.221",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "Throughput Booster",
+        "RegistryKeyword":  "ThroughputBoosterEnabled",
+        "RollbackDisplayValue":  "Enabled",
+        "RollbackRegistryValue":  "1",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    },
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.221",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "Fat Channel Intolerant",
+        "RegistryKeyword":  "FatChannelIntolerant",
+        "RollbackDisplayValue":  "Enabled",
+        "RollbackRegistryValue":  "1",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    },
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.221",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "U-APSD support",
+        "RegistryKeyword":  "uAPSDSupport",
+        "RollbackDisplayValue":  "Enabled",
+        "RollbackRegistryValue":  "1",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    }
+]

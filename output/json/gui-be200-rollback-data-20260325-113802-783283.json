@@ -1,0 +1,10 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Channel Width for 2.4GHz",
+    "RegistryKeyword":  "ChannelWidth24",
+    "RollbackDisplayValue":  "Auto",
+    "RollbackRegistryValue":  "1",
+    "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+}

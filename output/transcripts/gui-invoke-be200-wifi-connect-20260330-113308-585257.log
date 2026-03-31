@@ -1,0 +1,72 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260330113308
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\invoke-be200-wifi.ps1 -Action Connect -Username admin -Password password -SSID NETGEAR65_SmartHome -WiFiPassword Test@9657@168 -CsvPath C:\Test House BE200 control\output\csv\gui-be200-wifi-connect-20260330-113308-585141.csv -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-invoke-be200-wifi-connect-20260330-113308-585257.log
+Process ID: 25508
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Invoking BE200 Wi-Fi action: Connect
+========================================================================
+Targets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228
+SSID: NETGEAR65_SmartHome
+
+--- Target: 192.168.22.221 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.222 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.223 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.224 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.225 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.226 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.227 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+
+--- Target: 192.168.22.228 ---
+INFO: Profile add: Profile NETGEAR65_SmartHome is added on interface Wi-Fi 6.
+INFO: Connect: Connection request was completed successfully.
+  Result: State=connected  SSID=NETGEAR65_SmartHome  Success=True
+========================================================================
+Wi-Fi action complete
+========================================================================
+Results CSV: C:\Test House BE200 control\output\csv\gui-be200-wifi-connect-20260330-113308-585141.csv
+Targets processed: 8
+**********************
+Windows PowerShell transcript end
+End time: 20260330113400
+**********************

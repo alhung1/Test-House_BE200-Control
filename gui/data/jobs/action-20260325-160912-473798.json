@@ -1,0 +1,48 @@
+{
+  "id": "action-20260325-160912-473798",
+  "job_type": "action",
+  "title": "Run BE200 action (Restart)",
+  "status": "success",
+  "started_at": "2026-03-25T16:09:12",
+  "finished_at": "2026-03-25T16:09:28",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Restart",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-restart-20260325-160912-473637.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-restart-20260325-160912-473766.log",
+    "-Force"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Restart\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-restart-20260325-160912-473637.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-restart-20260325-160912-473766.log\", \"-Force\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Restart\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\n\nAction summary:\n\nTargetIP       ComputerName    AdapterName InterfaceDescription             AdapterMacAddress AdapterIfIndex AdapterInt\n                                                                                                             erfaceGuid\n--------       ------------    ----------- --------------------             ----------------- -------------- ----------\n192.168.22.221 ADMIN           Wi-Fi       Intel(R) Wi-Fi 7 BE200 320MHz    90-09-DF-45-88-F5             22           \n192.168.22.222 DESKTOP-9LSD789 Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-45-92-D2             25           \n192.168.22.223 DESKTOP-AMUELNP Wi-Fi       Intel(R) Wi-Fi 7 BE200 320MHz    90-09-DF-43-63-3B              8           \n192.168.22.224 ADMIN           Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-43-6D-09             30           \n192.168.22.225 ADMIN           Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-43-68-F9             15           \n192.168.22.226 ADMIN           Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-43-5C-D3             12           \n192.168.22.227 ADMIN           Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-45-88-FA             12           \n192.168.22.228 ADMIN           Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-43-63-40             18           \n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-restart-20260325-160912-473637.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-restart-20260325-160912-473766.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-restart-20260325-160912-473637.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-restart-20260325-160912-473766.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "action": "Restart"
+  }
+}

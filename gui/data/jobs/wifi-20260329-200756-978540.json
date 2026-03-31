@@ -1,0 +1,45 @@
+{
+  "id": "wifi-20260329-200756-978540",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Verify)",
+  "status": "success",
+  "started_at": "2026-03-29T20:07:56",
+  "finished_at": "2026-03-29T20:07:57",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Verify",
+    "-TargetIP",
+    "192.168.22.221",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-SSID",
+    "SmokeTestSSID-NonExistent",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-verify-20260329-200756-978350.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-verify-20260329-200756-978505.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Verify\", \"-TargetIP\", \"192.168.22.221\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-SSID\", \"SmokeTestSSID-NonExistent\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-verify-20260329-200756-978350.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-verify-20260329-200756-978505.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Verify\n========================================================================\nTargets: 192.168.22.221\nSSID: SmokeTestSSID-NonExistent\n\n--- Target: 192.168.22.221 ---\n  ERROR: Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-verify-20260329-200756-978350.csv\nTargets processed: 1\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-verify-20260329-200756-978350.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-verify-20260329-200756-978505.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "action": "Verify",
+    "ssid": "SmokeTestSSID-NonExistent"
+  }
+}

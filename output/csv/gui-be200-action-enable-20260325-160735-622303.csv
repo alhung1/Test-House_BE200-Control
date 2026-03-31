@@ -1,0 +1,3 @@
+﻿"TargetIP","ComputerName","AdapterName","InterfaceDescription","AdapterMacAddress","AdapterIfIndex","AdapterInterfaceGuid","AdapterPnPDeviceID","ResolutionSource","Action","InitialStatus","FinalStatus","ActionAttempted","ActionSucceeded","Notes"
+"192.168.22.221","ADMIN","Wi-Fi","Intel(R) Wi-Fi 7 BE200 320MHz","90-09-DF-45-88-F5","22",,"PCI\VEN_8086&DEV_272B&SUBSYS_00F48086&REV_1A\4&135AECD5&0&00E9","SavedIdentity","Enable","Disabled","Disconnected","True","True",""
+"192.168.22.222","DESKTOP-9LSD789","Wi-Fi 6","Intel(R) Wi-Fi 7 BE200 320MHz #6","90-09-DF-45-92-D2","25",,"PCI\VEN_8086&DEV_272B&SUBSYS_00F48086&REV_1A\4&135AECD5&0&00E9","SavedIdentity","Enable","Disabled","Disconnected","True","True",""

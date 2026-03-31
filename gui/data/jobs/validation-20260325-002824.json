@@ -1,0 +1,43 @@
+{
+  "id": "validation-20260325-002824",
+  "job_type": "validation",
+  "title": "Validate generated config",
+  "status": "success",
+  "started_at": "2026-03-25T00:28:24",
+  "finished_at": "2026-03-25T00:28:25",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\validate-be200-config.ps1",
+    "-ConfigPath",
+    "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-002824.csv",
+    "-DiscoveryPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-002815.csv",
+    "-ValidationReportPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260325-002824.csv",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-002824.csv"
+  ],
+  "stdout": "========================================================================\nBE200 config validation completed\n========================================================================\nValid rows:   1\nSkipped rows: 0\nInvalid rows: 0\nValidation report: C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260325-002824.csv\nValidated config:  C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-002824.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "config_csv": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-002824.csv",
+    "discovery_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-002815.csv",
+    "validation_report_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260325-002824.csv",
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-002824.csv"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "property_key": "RoamingPreferredBandType||Preferred Band",
+    "target_value": "1. No Preference",
+    "mode": "WriteOnly",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-002824.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-002815.csv"
+  }
+}

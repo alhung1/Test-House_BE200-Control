@@ -1,0 +1,10 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "802.11n/ac/ax/be Wireless Mode",
+    "RegistryKeyword":  "IEEE11nMode",
+    "RollbackDisplayValue":  "5. 802.11be",
+    "RollbackRegistryValue":  "4",
+    "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+}

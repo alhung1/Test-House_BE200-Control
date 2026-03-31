@@ -1,0 +1,73 @@
+{
+  "id": "apply-20260325-135913-224370",
+  "job_type": "apply",
+  "title": "Apply validated config (RestartBE200)",
+  "status": "success",
+  "started_at": "2026-03-25T13:59:13",
+  "finished_at": "2026-03-25T13:59:29",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\apply-be200-config.ps1",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-135912-455982.csv",
+    "-Mode",
+    "RestartBE200",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-ResultCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-135913-223943.csv",
+    "-ResultJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-135913-224062.json",
+    "-RollbackCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-135913-224159.csv",
+    "-RollbackJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-135913-224249.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-135913-224343.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\apply-be200-config.ps1\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-135912-455982.csv\", \"-Mode\", \"RestartBE200\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-ResultCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-apply-results-20260325-135913-223943.csv\", \"-ResultJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-apply-results-20260325-135913-224062.json\", \"-RollbackCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-rollback-data-20260325-135913-224159.csv\", \"-RollbackJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-rollback-data-20260325-135913-224249.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-apply-be200-config-20260325-135913-224343.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nApplying BE200 advanced-property config (RestartBE200)\n========================================================================\n\nApply summary:\n\nTargetIP       AdapterName PropertyDisplayName RegistryKeyword   ApplyAttempted ApplySucceeded VerificationSucceeded Ex\n                                                                                                                     ec\n                                                                                                                     ut\n                                                                                                                     io\n                                                                                                                     nM\n                                                                                                                     od\n                                                                                                                     e \n--------       ----------- ------------------- ---------------   -------------- -------------- --------------------- --\n192.168.22.221 Wi-Fi       Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.222 Wi-Fi 6     Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.223 Wi-Fi       Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.224 Wi-Fi 6     Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.225 Wi-Fi 6     Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.226 Wi-Fi 6     Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.227 Wi-Fi 6     Packet Coalescing   *PacketCoalescing           True           True                  True Re\n192.168.22.228 Wi-Fi 6     Packet Coalescing   *PacketCoalescing           True           True                  True Re\n\n\n\nApply results CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-135913-223943.csv\nApply results JSON: C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-135913-224062.json\nRollback CSV:      C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-135913-224159.csv\nRollback JSON:     C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-135913-224249.json\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-135913-224343.log\n",
+  "stderr": "",
+  "artifacts": {
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-135912-455982.csv",
+    "result_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-135913-223943.csv",
+    "result_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-135913-224062.json",
+    "rollback_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-135913-224159.csv",
+    "rollback_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-135913-224249.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-135913-224343.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "property_key": "*PacketCoalescing||Packet Coalescing",
+    "property_label": "Packet Coalescing",
+    "registry_keyword": "*PacketCoalescing",
+    "target_value": "Enabled",
+    "mode": "RestartBE200",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-135912-454209.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-133102-651623.csv",
+    "classification": "live-tested",
+    "risk": "high",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly",
+      "RestartBE200"
+    ],
+    "validation_job_id": "validation-20260325-135912-456010"
+  }
+}

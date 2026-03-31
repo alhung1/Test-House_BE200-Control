@@ -1,0 +1,73 @@
+{
+  "id": "apply-20260325-134443-952329",
+  "job_type": "apply",
+  "title": "Apply validated config (RestartBE200)",
+  "status": "success",
+  "started_at": "2026-03-25T13:44:43",
+  "finished_at": "2026-03-25T13:45:00",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\apply-be200-config.ps1",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-134443-227695.csv",
+    "-Mode",
+    "RestartBE200",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-ResultCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-134443-951881.csv",
+    "-ResultJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-134443-951999.json",
+    "-RollbackCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-134443-952116.csv",
+    "-RollbackJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-134443-952208.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-134443-952302.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\apply-be200-config.ps1\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-134443-227695.csv\", \"-Mode\", \"RestartBE200\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-ResultCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-apply-results-20260325-134443-951881.csv\", \"-ResultJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-apply-results-20260325-134443-951999.json\", \"-RollbackCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-rollback-data-20260325-134443-952116.csv\", \"-RollbackJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-rollback-data-20260325-134443-952208.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-apply-be200-config-20260325-134443-952302.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nApplying BE200 advanced-property config (RestartBE200)\n========================================================================\n\nApply summary:\n\nTargetIP       AdapterName PropertyDisplayName      RegistryKeyword ApplyAttempted ApplySucceeded VerificationSucceeded\n--------       ----------- -------------------      --------------- -------------- -------------- ---------------------\n192.168.22.221 Wi-Fi       Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.222 Wi-Fi 6     Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.223 Wi-Fi       Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.224 Wi-Fi 6     Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.225 Wi-Fi 6     Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.226 Wi-Fi 6     Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.227 Wi-Fi 6     Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n192.168.22.228 Wi-Fi 6     Channel Width for 2.4GHz ChannelWidth24            True           True                  True\n\n\n\nApply results CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-134443-951881.csv\nApply results JSON: C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-134443-951999.json\nRollback CSV:      C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-134443-952116.csv\nRollback JSON:     C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-134443-952208.json\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-134443-952302.log\n",
+  "stderr": "",
+  "artifacts": {
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-134443-227695.csv",
+    "result_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-134443-951881.csv",
+    "result_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-134443-951999.json",
+    "rollback_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-134443-952116.csv",
+    "rollback_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-134443-952208.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-134443-952302.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "property_key": "ChannelWidth24||Channel Width for 2.4GHz",
+    "property_label": "Channel Width for 2.4GHz",
+    "registry_keyword": "ChannelWidth24",
+    "target_value": "20 MHz Only",
+    "mode": "RestartBE200",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-134443-224174.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-133102-651623.csv",
+    "classification": "live-tested",
+    "risk": "medium",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly",
+      "RestartBE200"
+    ],
+    "validation_job_id": "validation-20260325-134443-227724"
+  }
+}

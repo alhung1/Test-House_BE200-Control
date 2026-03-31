@@ -1,0 +1,40 @@
+{
+  "id": "discovery-20260325-133004-525751",
+  "job_type": "discovery",
+  "title": "Action verify 192.168.22.226",
+  "status": "success",
+  "started_at": "2026-03-25T13:30:04",
+  "finished_at": "2026-03-25T13:30:06",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.226",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-action-verify-226-20260325-133004-525513.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-action-verify-226-20260325-133004-525626.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-action-verify-226-20260325-133004-525723.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.226\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-action-verify-226-20260325-133004-525513.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-action-verify-226-20260325-133004-525626.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-action-verify-226-20260325-133004-525723.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.226\n\nDiscovery summary:\n\nTargetIP       ComputerName DiscoverySucceeded PropertyRowCount Notes\n--------       ------------ ------------------ ---------------- -----\n192.168.22.226 ADMIN                      True               90      \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-action-verify-226-20260325-133004-525513.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-action-verify-226-20260325-133004-525626.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-action-verify-226-20260325-133004-525723.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-action-verify-226-20260325-133004-525513.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-action-verify-226-20260325-133004-525626.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-action-verify-226-20260325-133004-525723.log"
+  },
+  "summary": {
+    "target": "192.168.22.226"
+  }
+}

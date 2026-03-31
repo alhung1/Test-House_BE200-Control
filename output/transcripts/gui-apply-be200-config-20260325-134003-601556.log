@@ -1,0 +1,47 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260325134004
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\apply-be200-config.ps1 -ValidatedConfigPath C:\Test House BE200 control\output\csv\gui-be200-validated-config-20260325-134002-931581.csv -Mode RestartBE200 -Username admin -Password password -ResultCsvPath C:\Test House BE200 control\output\csv\gui-be200-apply-results-20260325-134003-601124.csv -ResultJsonPath C:\Test House BE200 control\output\json\gui-be200-apply-results-20260325-134003-601236.json -RollbackCsvPath C:\Test House BE200 control\output\csv\gui-be200-rollback-data-20260325-134003-601374.csv -RollbackJsonPath C:\Test House BE200 control\output\json\gui-be200-rollback-data-20260325-134003-601465.json -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-apply-be200-config-20260325-134003-601556.log
+Process ID: 20404
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Applying BE200 advanced-property config (RestartBE200)
+========================================================================
+
+Apply summary:
+
+TargetIP       AdapterName PropertyDisplayName    RegistryKeyword      ApplyAttempted ApplySucceeded VerificationSuccee
+                                                                                                                    ded
+--------       ----------- -------------------    ---------------      -------------- -------------- ------------------
+192.168.22.221 Wi-Fi       Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.222 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.223 Wi-Fi       Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.224 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.225 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.226 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.227 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True
+192.168.22.228 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True
+
+
+
+Apply results CSV: C:\Test House BE200 control\output\csv\gui-be200-apply-results-20260325-134003-601124.csv
+Apply results JSON: C:\Test House BE200 control\output\json\gui-be200-apply-results-20260325-134003-601236.json
+Rollback CSV:      C:\Test House BE200 control\output\csv\gui-be200-rollback-data-20260325-134003-601374.csv
+Rollback JSON:     C:\Test House BE200 control\output\json\gui-be200-rollback-data-20260325-134003-601465.json
+Transcript log:    C:\Test House BE200 control\output\transcripts\gui-apply-be200-config-20260325-134003-601556.log
+**********************
+Windows PowerShell transcript end
+End time: 20260325134019
+**********************

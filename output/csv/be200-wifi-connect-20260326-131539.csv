@@ -1,0 +1,3 @@
+﻿"AdapterName","Action","Success","State","SSID","RequestedSSID","RadioType","Signal","Authentication","Channel","Message","PSComputerName","RunspaceId","PSShowComputerName","TargetIP"
+"Wi-Fi","Connect","True","connected","WBE700v2-5G","WBE700v2-5G","802.11be","87%","Open","44","Connected to 'WBE700v2-5G'. Multiple adapters matched 'Intel(R) Wi-Fi 7 BE200 320MHz'; selected lowest ifIndex (5). Connection request was completed successfully.","192.168.22.223","65d15ef6-fe63-4b64-8f89-232e2fe575d5","True","192.168.22.223"
+"Wi-Fi 6","Connect","True","connected","WBE700v2-5G","WBE700v2-5G","802.11be","65%","Open","44","Connected to 'WBE700v2-5G'. Connection request was completed successfully.","192.168.22.224","7c2713c7-bb40-482c-9cb5-e150885c77cd","True","192.168.22.224"

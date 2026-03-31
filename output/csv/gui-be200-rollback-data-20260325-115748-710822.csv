@@ -1,0 +1,3 @@
+﻿"ComputerName","TargetIP","AdapterName","PropertyDisplayName","RegistryKeyword","RollbackDisplayValue","RollbackRegistryValue","Notes"
+"ADMIN","192.168.22.221","Wi-Fi","Ultra High Band (6GHz)","Is6GhzBandSupported","Disabled","0","Rollback data only. No automatic rollback is performed by this toolkit."
+"DESKTOP-9LSD789","192.168.22.222","Wi-Fi 6","Ultra High Band (6GHz)","Is6GhzBandSupported","Disabled","0","Rollback data only. No automatic rollback is performed by this toolkit."

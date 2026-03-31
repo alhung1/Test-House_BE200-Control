@@ -1,0 +1,43 @@
+{
+  "id": "action-20260325-145500-484125",
+  "job_type": "action",
+  "title": "Run BE200 action (Disable)",
+  "status": "success",
+  "started_at": "2026-03-25T14:55:00",
+  "finished_at": "2026-03-25T14:55:02",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Disable",
+    "-TargetIP",
+    "192.168.22.222",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-disable-20260325-145500-483926.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-disable-20260325-145500-484089.log",
+    "-Force"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Disable\", \"-TargetIP\", \"192.168.22.222\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-disable-20260325-145500-483926.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-disable-20260325-145500-484089.log\", \"-Force\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Disable\n========================================================================\nTargets: 192.168.22.222\n\nAction summary:\n\nTargetIP       ComputerName    AdapterName InterfaceDescription             AdapterMacAddress AdapterIfIndex AdapterInt\n                                                                                                             erfaceGuid\n--------       ------------    ----------- --------------------             ----------------- -------------- ----------\n192.168.22.222 DESKTOP-9LSD789 Wi-Fi 6     Intel(R) Wi-Fi 7 BE200 320MHz #6 90-09-DF-45-92-D2             25           \n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-disable-20260325-145500-483926.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-disable-20260325-145500-484089.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-disable-20260325-145500-483926.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-disable-20260325-145500-484089.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.222"
+    ],
+    "action": "Disable"
+  }
+}

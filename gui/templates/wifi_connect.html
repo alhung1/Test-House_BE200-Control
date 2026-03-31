@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Wi-Fi Connect - BE200 Control Console{% endblock %}
+
+{% block content %}
+<header class="app-page-header">
+  <h1 class="app-page-title">Wi-Fi connect</h1>
+  <p class="app-page-lead">Changes wireless profiles on selected fleet targets. Confirm <strong>target scope</strong> and SSID before Connect; only allowlisted BE200 adapters are affected.</p>
+</header>
+
+<div class="row g-4">
+  <div class="col-lg-4">
+    <div class="card card-be200 zone-risk">
+      <div class="card-header">Wi-Fi connect / verify</div>
+      <div class="card-body">
+        <form method="post" id="wifi-connect-form">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Target scope</label>
+            <div class="mb-1">
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="select-all-btn">Select all</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="clear-all-btn">Clear all</button>
+            </div>
+            <div class="target-grid">
+              {% for target in allowed_targets %}
+                <div class="form-check">
+                  <input class="form-check-input target-check" type="checkbox" name="targets" value="{{ target }}" id="target-{{ loop.index }}"
+                    {% if target in selected_targets %}checked{% endif %}>
+                  <label class="form-check-label" for="target-{{ loop.index }}">{{ target }}</label>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">SSID</label>
+            <input class="form-control" type="text" name="ssid" value="{{ ssid }}" required placeholder="Wi-Fi network name">
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label fw-semibold">Wi-Fi password</label>
+            <input class="form-control" type="password" name="wifi_password" placeholder="Wi-Fi network password">
+            <div class="form-text">Required for WPA2/password-protected networks. Leave empty for open networks. Not needed for Verify.</div>
+          </div>
+
+          <hr>
+
+          <div class="mb-2">
+            <label class="form-label">WinRM username</label>
+            <input class="form-control form-control-sm" type="text" name="username" value="{{ default_username }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">WinRM password</label>
+            <input class="form-control form-control-sm" type="password" name="password" required placeholder="Remote management password">
+          </div>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <button class="btn btn-primary" type="submit" name="action" value="connect">Connect</button>
+            <button class="btn btn-outline-info" type="submit" name="action" value="verify">Verify</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="card card-be200 zone-readonly mt-4">
+      <div class="card-header">How it works</div>
+      <div class="card-body small">
+        <p class="mb-2"><strong>Connect</strong> creates a Wi-Fi profile on each selected target and connects the BE200 adapter to the specified SSID. If a Wi-Fi password is provided, WPA2-Personal authentication is used; otherwise, an open-network profile is created.</p>
+        <p class="mb-2"><strong>Verify</strong> checks whether each target's BE200 adapter is currently connected to the expected SSID.</p>
+        <p class="mb-0 text-muted">Only the allowlisted BE200 adapter is targeted. Ethernet and other adapters are never modified.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    {% if result_rows %}
+    <div class="card card-be200">
+      <div class="card-header">
+        Results
+        {% if summary %}
+          <span class="badge text-bg-secondary ms-2">{{ summary.total }} targets</span>
+          <span class="badge text-bg-success ms-1">{{ summary.success }} succeeded</span>
+          {% if summary.failed > 0 %}
+            <span class="badge text-bg-danger ms-1">{{ summary.failed }} failed</span>
+          {% endif %}
+          <span class="badge text-bg-info ms-1">{{ summary.connected }} connected</span>
+        {% endif %}
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-bordered table-sm mb-0 table-be200" style="font-size: 0.85rem;">
+            <thead>
+              <tr>
+                <th>Target</th>
+                <th>Adapter</th>
+                <th>Requested SSID</th>
+                <th>State</th>
+                <th>Actual SSID</th>
+                <th>Radio type</th>
+                <th>Success</th>
+                <th>Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in result_rows %}
+                <tr class="{% if row.Success|lower == 'true' %}table-success{% elif row.State|lower == 'error' %}table-danger{% else %}table-warning{% endif %}">
+                  <td>{{ row.TargetIP }}</td>
+                  <td>{{ row.AdapterName or '--' }}</td>
+                  <td>{{ row.RequestedSSID or '--' }}</td>
+                  <td>
+                    {% if row.State|lower == 'connected' %}
+                      <span class="badge text-bg-success">{{ row.State }}</span>
+                    {% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}
+                      <span class="badge text-bg-danger">{{ row.State }}</span>
+                    {% else %}
+                      <span class="badge text-bg-warning">{{ row.State }}</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ row.SSID or '--' }}</td>
+                  <td>{{ row.RadioType or '--' }}</td>
+                  <td>
+                    {% if row.Success|lower == 'true' %}
+                      <span class="badge text-bg-success">Yes</span>
+                    {% else %}
+                      <span class="badge text-bg-danger">No</span>
+                    {% endif %}
+                  </td>
+                  <td class="small">{{ row.Message or '--' }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    {% else %}
+    <div class="card card-be200 zone-readonly">
+      <div class="card-body text-muted">
+        Select targets, enter the SSID and password, then click <strong>Connect</strong> to join a Wi-Fi network or <strong>Verify</strong> to check current connection status against an expected SSID.
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (() => {
+    const checks = Array.from(document.querySelectorAll('.target-check'));
+    document.getElementById('select-all-btn').addEventListener('click', () => {
+      checks.forEach(c => c.checked = true);
+    });
+    document.getElementById('clear-all-btn').addEventListener('click', () => {
+      checks.forEach(c => c.checked = false);
+    });
+
+    document.getElementById('wifi-connect-form').addEventListener('submit', (e) => {
+      const selected = checks.filter(c => c.checked);
+      if (selected.length === 0) {
+        e.preventDefault();
+        alert('Select at least one target.');
+        return;
+      }
+      const ssid = document.querySelector('input[name="ssid"]').value.trim();
+      if (!ssid) {
+        e.preventDefault();
+        alert('Enter an SSID.');
+        return;
+      }
+    });
+  })();
+</script>
+{% endblock %}

@@ -1,0 +1,2 @@
+﻿"TargetIP","AdapterName","Action","Success","State","SSID","RequestedSSID","RadioType","Signal","Authentication","Channel","Message"
+"192.168.22.221","","Verify","False","Error","","SmokeTestSSID-NonExistent","","","","","Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."

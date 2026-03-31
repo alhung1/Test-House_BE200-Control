@@ -1,0 +1,46 @@
+{
+  "id": "discovery-20260329-202645-236744",
+  "job_type": "discovery",
+  "title": "Refresh discovery inventory",
+  "status": "success",
+  "started_at": "2026-03-29T20:26:45",
+  "finished_at": "2026-03-29T20:29:15",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260329-202645-236510.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-discovery-20260329-202645-236621.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-discover-be200-advanced-properties-20260329-202645-236717.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-discovery-20260329-202645-236510.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-discovery-20260329-202645-236621.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-discover-be200-advanced-properties-20260329-202645-236717.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\nWARNING: The network connection to 192.168.22.222 has been interrupted. Attempting to reconnect for up to 4 minutes...\nWARNING: Attempting to reconnect to 192.168.22.222 ...\nWARNING: The network connection to 192.168.22.222 has been restored.\n\nDiscovery summary:\n\nTargetIP       ComputerName    DiscoverySucceeded PropertyRowCount Notes                                               \n--------       ------------    ------------------ ---------------- -----                                               \n192.168.22.221 ADMIN                         True               91                                                     \n192.168.22.222 DESKTOP-9LSD789               True               91                                                     \n192.168.22.223 DESKTOP-AMUELNP               True               91                                                     \n192.168.22.224 ADMIN                         True               91                                                     \n192.168.22.225 ADMIN                         True               91 Multiple adapters matched allowlisted InterfaceDe...\n192.168.22.226 ADMIN                         True               90                                                     \n192.168.22.227 ADMIN                         True               91 Multiple adapters matched allowlisted InterfaceDe...\n192.168.22.228 ADMIN                         True               91                                                     \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260329-202645-236510.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-be200-discovery-20260329-202645-236621.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-discover-be200-advanced-properties-20260329-202645-236717.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260329-202645-236510.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-be200-discovery-20260329-202645-236621.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-discover-be200-advanced-properties-20260329-202645-236717.log",
+    "template_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-config-template-20260329-202915-967519.csv",
+    "property_matrix_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-property-matrix-20260329-202916-699462.csv",
+    "property_matrix_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-property-matrix-20260329-202916-699589.json"
+  },
+  "summary": {
+    "targets": 8,
+    "property_total": 91,
+    "live_tested": 24,
+    "validation_only": 0,
+    "deferred": 67
+  },
+  "template_job_id": "template-20260329-202915-967561"
+}

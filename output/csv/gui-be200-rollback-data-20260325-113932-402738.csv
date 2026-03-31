@@ -1,0 +1,3 @@
+﻿"ComputerName","TargetIP","AdapterName","PropertyDisplayName","RegistryKeyword","RollbackDisplayValue","RollbackRegistryValue","Notes"
+"ADMIN","192.168.22.221","Wi-Fi","Channel Width for 6GHz","ChannelWidth6","Auto","1","Rollback data only. No automatic rollback is performed by this toolkit."
+"DESKTOP-9LSD789","192.168.22.222","Wi-Fi 6","Channel Width for 6GHz","ChannelWidth6","Auto","1","Rollback data only. No automatic rollback is performed by this toolkit."

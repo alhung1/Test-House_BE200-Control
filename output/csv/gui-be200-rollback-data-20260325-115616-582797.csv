@@ -1,0 +1,3 @@
+﻿"ComputerName","TargetIP","AdapterName","PropertyDisplayName","RegistryKeyword","RollbackDisplayValue","RollbackRegistryValue","Notes"
+"ADMIN","192.168.22.221","Wi-Fi","802.11a/b/g Wireless Mode","WirelessMode","6. Dual Band 802.11a/b/g","34","Rollback data only. No automatic rollback is performed by this toolkit."
+"DESKTOP-9LSD789","192.168.22.222","Wi-Fi 6","802.11a/b/g Wireless Mode","WirelessMode","6. Dual Band 802.11a/b/g","34","Rollback data only. No automatic rollback is performed by this toolkit."

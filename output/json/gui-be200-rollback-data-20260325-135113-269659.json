@@ -1,0 +1,10 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.228",
+    "AdapterName":  "Wi-Fi 6",
+    "PropertyDisplayName":  "802.11a/b/g Wireless Mode",
+    "RegistryKeyword":  "WirelessMode",
+    "RollbackDisplayValue":  "5. Dual Band 802.11a/g",
+    "RollbackRegistryValue":  "18",
+    "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+}

@@ -1,0 +1,297 @@
+{
+  "toolkit_root": "C:\\Test House BE200 control",
+  "output_root": "C:\\Test House BE200 control\\output",
+  "allowed_targets": [
+    "192.168.22.221",
+    "192.168.22.222",
+    "192.168.22.223",
+    "192.168.22.224",
+    "192.168.22.225",
+    "192.168.22.226",
+    "192.168.22.227",
+    "192.168.22.228"
+  ],
+  "adapter_allowlist": [
+    "Intel(R) Wi-Fi 7 BE200 320MHz",
+    "Intel(R) Wi-Fi 7 BE200 320MHz #6"
+  ],
+  "defaults": {
+    "username": "admin",
+    "recent_hours": 24,
+    "history_limit": 20,
+    "run_timeout_seconds": 900,
+    "restart_rdp_timeout_seconds": 7200,
+    "restart_rdp_ping_timeout_minutes": 10,
+    "restart_rdp_mstsc_delay_seconds": 3
+  },
+  "property_policy_overrides": {
+    "RoamingPreferredBandType": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Validated rollout path with successful GUI-driven write and restart verification."
+    },
+    "RoamAggressiveness": {
+      "classification": "live-tested",
+      "risk": "low",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Low-risk roaming preference with successful staged GUI apply and rollback."
+    },
+    "uAPSDSupport": {
+      "classification": "live-tested",
+      "risk": "low",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Low-risk power-save toggle with successful staged GUI apply and rollback."
+    },
+    "ThroughputBoosterEnabled": {
+      "classification": "live-tested",
+      "risk": "low",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Low-risk throughput optimization toggle accepted after staged live testing and rollback."
+    },
+    "FatChannelIntolerant": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Acceptable medium-risk compatibility toggle after staged live testing and rollback."
+    },
+    "ChannelWidth24": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "ChannelWidth52": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "ChannelWidth6": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "IbssTxPower": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "IEEE11nMode": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "WirelessMode": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "Is6GhzBandSupported": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "MIMOPowerSaveMode": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "CtsToItself": {
+      "classification": "live-tested",
+      "risk": "medium",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "EnableChLoad4ApSelection": {
+      "classification": "live-tested",
+      "risk": "low",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*DeviceSleepOnDisconnect": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*PacketCoalescing": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*PMARPOffload": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*PMNSOffload": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*PMWiFiRekeyOffload": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*RscIPv4": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*RscIPv6": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*WakeOnMagicPacket": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    },
+    "*WakeOnPattern": {
+      "classification": "live-tested",
+      "risk": "high",
+      "accepted_modes": [
+        "WriteOnly",
+        "RestartBE200"
+      ],
+      "rationale": "Successful staged GUI WriteOnly apply, read-back, and rollback verification on .221 and on the .221/.222 subset."
+    }
+  },
+  "action_policy_overrides": {
+    "Status": {
+      "accepted": true,
+      "max_targets": 8,
+      "confirmation_required": false,
+      "rationale": "Status is accepted across up to all 8 allowlisted targets per run."
+    },
+    "Restart": {
+      "accepted": true,
+      "max_targets": 8,
+      "confirmation_required": true,
+      "rationale": "Restart is accepted across up to all 8 allowlisted targets per run with explicit confirmation."
+    },
+    "Disable": {
+      "accepted": true,
+      "max_targets": 8,
+      "confirmation_required": true,
+      "accepted_targets": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ],
+      "rationale": "Disable is accepted across up to all 8 allowlisted targets per run using stored BE200 adapter identity for safe reversal."
+    },
+    "Enable": {
+      "accepted": true,
+      "max_targets": 8,
+      "confirmation_required": true,
+      "accepted_targets": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ],
+      "rationale": "Enable is accepted across up to all 8 allowlisted targets per run using stored BE200 adapter identity for safe reversal."
+    }
+  },
+  "app": {
+    "host": "127.0.0.1",
+    "port": 5000,
+    "debug": false,
+    "secret_key": "be200-local-gui"
+  }
+}

@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Ultra High Band (6GHz)",
+    "RegistryKeyword":  "Is6GhzBandSupported",
+    "OriginalValue":  "Enabled",
+    "OriginalRegistryValue":  "1",
+    "TargetValue":  "Disabled",
+    "FinalValue":  "Disabled",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "2de520dc-2c32-4c7f-b180-c77d27acddcc",
+    "PSShowComputerName":  true
+}

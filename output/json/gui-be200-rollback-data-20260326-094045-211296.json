@@ -1,0 +1,22 @@
+﻿[
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.221",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "Preferred Band",
+        "RegistryKeyword":  "RoamingPreferredBandType",
+        "RollbackDisplayValue":  "3. Prefer 5GHz band",
+        "RollbackRegistryValue":  "2",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    },
+    {
+        "ComputerName":  "ADMIN",
+        "TargetIP":  "192.168.22.221",
+        "AdapterName":  "Wi-Fi",
+        "PropertyDisplayName":  "Roaming Aggressiveness",
+        "RegistryKeyword":  "RoamAggressiveness",
+        "RollbackDisplayValue":  "4. Medium-High",
+        "RollbackRegistryValue":  "3",
+        "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+    }
+]

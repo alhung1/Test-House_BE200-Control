@@ -1,0 +1,45 @@
+{
+  "id": "wifi-20260326-131450-749149",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Verify)",
+  "status": "success",
+  "started_at": "2026-03-26T13:14:50",
+  "finished_at": "2026-03-26T13:14:52",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Verify",
+    "-TargetIP",
+    "192.168.22.222",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-SSID",
+    "WBE700v2-2G",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-verify-20260326-131450-748939.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-verify-20260326-131450-749104.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Verify\", \"-TargetIP\", \"192.168.22.222\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-SSID\", \"WBE700v2-2G\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-verify-20260326-131450-748939.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-verify-20260326-131450-749104.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Verify\n========================================================================\nTargets: 192.168.22.222\nSSID: WBE700v2-2G\n\n--- Target: 192.168.22.222 ---\n  Result: State=connected  SSID=WBE700v2-2G  Success=True\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-verify-20260326-131450-748939.csv\nTargets processed: 1\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-verify-20260326-131450-748939.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-verify-20260326-131450-749104.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.222"
+    ],
+    "action": "Verify",
+    "ssid": "WBE700v2-2G"
+  }
+}

@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}Inventory - BE200 Control Console{% endblock %}
+
+{% block content %}
+<header class="app-page-header">
+  <h1 class="app-page-title">Inventory</h1>
+  <p class="app-page-lead">Discovery, remoting, fleet table with <strong>driver versions</strong>, and the <strong>accepted property catalog</strong>. Operational actions require explicit confirmation below.</p>
+</header>
+
+<div class="row g-4">
+  <div class="col-lg-3">
+    <div class="card card-be200 zone-action">
+      <div class="card-header">Toolkit actions</div>
+      <div class="card-body">
+        <form method="post" class="mb-3">
+          <input type="hidden" name="action" value="refresh_discovery">
+          <div class="mb-2">
+            <label class="form-label">Username</label>
+            <input class="form-control" type="text" name="username" value="{{ default_username }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input class="form-control" type="password" name="password" required>
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Run Discovery Refresh</button>
+        </form>
+
+        <form method="post">
+          <input type="hidden" name="action" value="run_remoting">
+          <div class="mb-2">
+            <label class="form-label">Username</label>
+            <input class="form-control" type="text" name="username" value="{{ default_username }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input class="form-control" type="password" name="password" required>
+          </div>
+          <button class="btn btn-outline-primary w-100" type="submit">Run Remoting Test</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card card-be200 zone-risk mt-4">
+      <div class="card-header">BE200 operational actions</div>
+      <div class="card-body">
+        <p class="small text-muted mb-3">Disable, Enable, and Restart affect live adapters. Read the <strong>live policy</strong> callout and check the confirmation box before submit.</p>
+        <form method="post" id="operational-form">
+          <input type="hidden" name="action" value="run_operational">
+          <input type="hidden" name="operation_mirror" id="operation-mirror" value="Status">
+          <div class="mb-2">
+            <label class="form-label">Operation</label>
+            <select class="form-select" name="operation" id="operation-select">
+              <option value="Status">Status</option>
+              <option value="Disable">Disable</option>
+              <option value="Enable">Enable</option>
+              <option value="Restart">Restart</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Current target scope</label>
+            <div class="form-text mb-2">Select one or more targets (up to all 8). The GUI enforces per-action limits and disables unsafe combinations.</div>
+            <div class="target-grid">
+              {% for target in allowed_targets %}
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" name="action_targets" value="{{ target }}" id="action-target-{{ loop.index }}">
+                  <label class="form-check-label" for="action-target-{{ loop.index }}">{{ target }}</label>
+                </div>
+              {% endfor %}
+            </div>
+            <div id="action-policy-note" class="callout-scope callout-scope-live mt-2" role="status" aria-live="polite"></div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Username</label>
+            <input class="form-control" type="text" name="username" value="{{ default_username }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input class="form-control" type="password" name="password" required>
+          </div>
+          <div class="confirmation-box">
+            <div class="form-check mb-0">
+              <input class="form-check-input" type="checkbox" value="yes" id="confirm-operational" name="confirm_operational">
+              <label class="form-check-label" for="confirm-operational">
+                I confirm Disable, Enable, or Restart only when intended. Required for those operations. The GUI remains restricted to allowlisted BE200 adapters only.
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-outline-danger w-100 mt-3" type="submit">Run selected action</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card card-be200 zone-readonly mt-4">
+      <div class="card-header">Current files</div>
+      <div class="card-body small">
+        <div><strong>Discovery CSV</strong><br>{{ artifacts.discovery_csv or "None" }}</div>
+        <hr>
+        <div><strong>Discovery JSON</strong><br>{{ artifacts.discovery_json or "None" }}</div>
+        <hr>
+        <div><strong>Template CSV</strong><br>{{ artifacts.template_csv or "None" }}</div>
+        <hr>
+        <div><strong>Property Matrix CSV</strong><br>{{ artifacts.property_matrix_csv or "None" }}</div>
+        <hr>
+        <div><strong>Property Matrix JSON</strong><br>{{ artifacts.property_matrix_json or "None" }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-9">
+    <div class="card card-be200 mb-4">
+      <div class="card-header">Target fleet</div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-sm mb-0 table-be200">
+            <thead>
+              <tr>
+                <th>Target</th>
+                <th>Computer</th>
+                <th>BE200 adapter</th>
+                <th>Driver version</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for target in inventory.targets %}
+                <tr>
+                  <td class="font-monospace">{{ target.target_ip }}</td>
+                  <td>{{ target.computer_name }}</td>
+                  <td class="small">{{ target.interface_description or "Not discovered" }}</td>
+                  <td class="driver-cell">{{ target.driver_version or "Unknown" }}{% if target.driver_date %}<span class="driver-date">{{ target.driver_date }}</span>{% endif %}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-be200">
+      <div class="card-header">
+        Accepted properties (catalog scope)
+        <span class="badge text-bg-success ms-2">{{ property_catalog|length }} live-tested</span>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-striped table-sm mb-0 table-be200">
+            <thead>
+              <tr>
+                <th>Property</th>
+                <th>Registry keyword</th>
+                <th>Risk</th>
+                <th>Coverage</th>
+                <th>Current values</th>
+                <th>Possible values</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in property_catalog %}
+                <tr>
+                  <td>{{ item.label }}</td>
+                  <td><code>{{ item.registry_keyword }}</code></td>
+                  <td>{{ item.risk }}</td>
+                  <td>{{ item.coverage }}</td>
+                  <td class="small">{{ item.current_values|join(", ") }}</td>
+                  <td class="small">{{ item.possible_display_values|join(", ") }}</td>
+                </tr>
+              {% else %}
+                <tr><td colspan="6" class="text-center text-muted py-4">No discovery data is available yet.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script id="action-policy-data" type="application/json">{{ action_policies|tojson }}</script>
+<script>
+  (() => {
+    const policies = JSON.parse(document.getElementById("action-policy-data").textContent);
+    const operationSelect = document.getElementById("operation-select");
+    const operationMirror = document.getElementById("operation-mirror");
+    const operationalForm = document.getElementById("operational-form");
+    const targetBoxes = Array.from(document.querySelectorAll('input[name="action_targets"]'));
+    const note = document.getElementById("action-policy-note");
+
+    function selectedTargets() {
+      return targetBoxes.filter((item) => item.checked).map((item) => item.value);
+    }
+
+    function isAllowed(action, targets) {
+      const policy = policies[action];
+      if (!policy || !policy.accepted) {
+        return false;
+      }
+      if (targets.length && targets.length > policy.max_targets) {
+        return false;
+      }
+      if (targets.length && policy.accepted_targets.length) {
+        return targets.every((target) => policy.accepted_targets.includes(target));
+      }
+      return true;
+    }
+
+    function syncMirror() {
+      operationMirror.value = operationSelect.value;
+    }
+
+    function refreshActionPolicies() {
+      const targets = selectedTargets();
+      Array.from(operationSelect.options).forEach((option) => {
+        option.disabled = !isAllowed(option.value, targets);
+      });
+
+      if (operationSelect.selectedOptions[0]?.disabled) {
+        const firstEnabled = Array.from(operationSelect.options).find((option) => !option.disabled);
+        if (firstEnabled) {
+          operationSelect.value = firstEnabled.value;
+        }
+      }
+
+      syncMirror();
+
+      const selectedPolicy = policies[operationSelect.value];
+      const acceptedTargets = selectedPolicy.accepted_targets.length ? selectedPolicy.accepted_targets.join(", ") : "all allowlisted targets";
+      const blockedTargets = selectedPolicy.blocked_targets.length ? ` Blocked targets: ${selectedPolicy.blocked_targets.join(", ")}.` : "";
+      note.textContent = `${operationSelect.value}: ${selectedPolicy.rationale} Accepted targets: ${acceptedTargets}. Max targets per run: ${selectedPolicy.max_targets}.${blockedTargets}`;
+    }
+
+    operationalForm.addEventListener("submit", function (e) {
+      syncMirror();
+      const targets = selectedTargets();
+      if (targets.length === 0) {
+        e.preventDefault();
+        alert("Select at least one target before running an operational action.");
+        return;
+      }
+      if (!isAllowed(operationSelect.value, targets)) {
+        e.preventDefault();
+        alert("The selected operation is not accepted for the chosen target(s). Change your selection.");
+        return;
+      }
+    });
+
+    targetBoxes.forEach((box) => box.addEventListener("change", refreshActionPolicies));
+    operationSelect.addEventListener("change", refreshActionPolicies);
+    refreshActionPolicies();
+  })();
+</script>
+{% endblock %}

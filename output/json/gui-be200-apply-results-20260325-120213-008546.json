@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Sleep on WoWLAN Disconnect",
+    "RegistryKeyword":  "*DeviceSleepOnDisconnect",
+    "OriginalValue":  "Enabled",
+    "OriginalRegistryValue":  "1",
+    "TargetValue":  "Disabled",
+    "FinalValue":  "Disabled",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "790952f4-3202-4443-a54d-2e1d063a7fba",
+    "PSShowComputerName":  true
+}

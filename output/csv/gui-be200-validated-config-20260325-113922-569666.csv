@@ -1,0 +1,2 @@
+﻿"InputRowNumber","Scope","InputTargetIP","EffectiveTargetIP","ComputerName","AdapterMatch","PropertyDisplayName","RegistryKeyword","CurrentValue","CurrentRegistryValue","TargetValue","Apply","TargetValueType","PossibleDisplayValues","PossibleRegistryValues","Notes"
+"1","TARGET","192.168.22.221","192.168.22.221","ADMIN","Intel(R) Wi-Fi 7 BE200 320MHz","Channel Width for 6GHz","ChannelWidth6","Auto","1","Auto","TRUE","DisplayValue","20 MHz Only; Auto","0; 1",""

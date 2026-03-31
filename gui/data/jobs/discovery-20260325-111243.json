@@ -1,0 +1,43 @@
+{
+  "id": "discovery-20260325-111243",
+  "job_type": "discovery",
+  "title": "Stage discovery fat-channel-intolerant-rollback",
+  "status": "success",
+  "started_at": "2026-03-25T11:12:43",
+  "finished_at": "2026-03-25T11:12:44",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.221",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.221\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.221\n\nDiscovery summary:\n\nTargetIP       ComputerName DiscoverySucceeded PropertyRowCount Notes\n--------       ------------ ------------------ ---------------- -----\n192.168.22.221 ADMIN                      True               91      \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-stage-discovery-fat-channel-intolerant-rollback-1774462363411.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "label": "fat-channel-intolerant-rollback"
+  }
+}

@@ -1,0 +1,2 @@
+﻿"AdapterName","Action","Success","State","SSID","RequestedSSID","RadioType","Signal","Authentication","Channel","Message","PSComputerName","RunspaceId","PSShowComputerName","TargetIP"
+"Wi-Fi 6","Status","True","disconnected","","","","","","","Status retrieved.","192.168.22.222","1432d1ad-a8c9-4e1b-9923-f19645e82638","True","192.168.22.222"

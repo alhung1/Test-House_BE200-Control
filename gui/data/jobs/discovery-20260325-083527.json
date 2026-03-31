@@ -1,0 +1,43 @@
+{
+  "id": "discovery-20260325-083527",
+  "job_type": "discovery",
+  "title": "Targeted discovery post-restart-delayed",
+  "status": "success",
+  "started_at": "2026-03-25T08:35:27",
+  "finished_at": "2026-03-25T08:35:28",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.221",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-targeted-discover-post-restart-delayed-20260325-083527.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.221\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-targeted-discover-post-restart-delayed-20260325-083527.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.221\n\nDiscovery summary:\n\nTargetIP       ComputerName DiscoverySucceeded PropertyRowCount Notes\n--------       ------------ ------------------ ---------------- -----\n192.168.22.221 ADMIN                      True               91      \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-targeted-discover-post-restart-delayed-20260325-083527.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-targeted-be200-discovery-post-restart-delayed-20260325-083527.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-targeted-discover-post-restart-delayed-20260325-083527.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "label": "post-restart-delayed"
+  }
+}

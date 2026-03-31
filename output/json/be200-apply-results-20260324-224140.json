@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Intel(R) Wi-Fi 7 BE200 320MHz",
+    "PropertyDisplayName":  "Preferred Band",
+    "RegistryKeyword":  "RoamingPreferredBandType",
+    "OriginalValue":  null,
+    "OriginalRegistryValue":  null,
+    "TargetValue":  "1. No Preference",
+    "FinalValue":  null,
+    "FinalRegistryValue":  null,
+    "ApplyAttempted":  false,
+    "ApplySucceeded":  false,
+    "VerificationSucceeded":  false,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "AdapterMatch was not allowlisted on the remote side.",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "328a8d7f-7e89-45ac-8edc-186f26bc7de9",
+    "PSShowComputerName":  true
+}

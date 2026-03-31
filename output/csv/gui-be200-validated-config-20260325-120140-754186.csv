@@ -1,0 +1,3 @@
+﻿"InputRowNumber","Scope","InputTargetIP","EffectiveTargetIP","ComputerName","AdapterMatch","PropertyDisplayName","RegistryKeyword","CurrentValue","CurrentRegistryValue","TargetValue","Apply","TargetValueType","PossibleDisplayValues","PossibleRegistryValues","Notes"
+"1","TARGET","192.168.22.221","192.168.22.221","ADMIN","Intel(R) Wi-Fi 7 BE200 320MHz","RSCv6","*RscIPv6","Enabled","1","Disabled","TRUE","DisplayValue","Disabled; Enabled","0; 1",""
+"2","TARGET","192.168.22.222","192.168.22.222","DESKTOP-9LSD789","Intel(R) Wi-Fi 7 BE200 320MHz #6","RSCv6","*RscIPv6","Enabled","1","Disabled","TRUE","DisplayValue","Disabled; Enabled","0; 1",""

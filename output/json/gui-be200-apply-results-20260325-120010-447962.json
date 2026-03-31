@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Packet Coalescing",
+    "RegistryKeyword":  "*PacketCoalescing",
+    "OriginalValue":  "Disabled",
+    "OriginalRegistryValue":  "0",
+    "TargetValue":  "Enabled",
+    "FinalValue":  "Enabled",
+    "FinalRegistryValue":  "1",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "7743e69a-ba1f-4741-a23e-52c1a00b92c1",
+    "PSShowComputerName":  true
+}

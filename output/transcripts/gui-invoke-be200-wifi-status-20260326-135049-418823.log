@@ -1,0 +1,55 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260326135049
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\invoke-be200-wifi.ps1 -Action Status -Username admin -Password password -CsvPath C:\Test House BE200 control\output\csv\gui-be200-wifi-status-20260326-135049-418708.csv -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-invoke-be200-wifi-status-20260326-135049-418823.log
+Process ID: 17584
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Invoking BE200 Wi-Fi action: Status
+========================================================================
+Targets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228
+
+--- Target: 192.168.22.221 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.222 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.223 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.224 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.225 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.226 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.227 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+
+--- Target: 192.168.22.228 ---
+  Result: State=connected  SSID=RBE873_perf  Success=True
+========================================================================
+Wi-Fi action complete
+========================================================================
+Results CSV: C:\Test House BE200 control\output\csv\gui-be200-wifi-status-20260326-135049-418708.csv
+Targets processed: 8
+**********************
+Windows PowerShell transcript end
+End time: 20260326135057
+**********************

@@ -1,0 +1,40 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260325120303
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\apply-be200-config.ps1 -ValidatedConfigPath C:\Test House BE200 control\output\csv\gui-be200-validated-config-20260325-120302-198145.csv -Mode WriteOnly -Username admin -Password password -ResultCsvPath C:\Test House BE200 control\output\csv\gui-be200-apply-results-20260325-120302-840318.csv -ResultJsonPath C:\Test House BE200 control\output\json\gui-be200-apply-results-20260325-120302-840437.json -RollbackCsvPath C:\Test House BE200 control\output\csv\gui-be200-rollback-data-20260325-120302-840539.csv -RollbackJsonPath C:\Test House BE200 control\output\json\gui-be200-rollback-data-20260325-120302-840628.json -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-apply-be200-config-20260325-120302-840768.log
+Process ID: 13936
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Applying BE200 advanced-property config (WriteOnly)
+========================================================================
+
+Apply summary:
+
+TargetIP       AdapterName PropertyDisplayName  RegistryKeyword    ApplyAttempted ApplySucceeded VerificationSucceeded
+--------       ----------- -------------------  ---------------    -------------- -------------- ---------------------
+192.168.22.221 Wi-Fi       Wake on Magic Packet *WakeOnMagicPacket           True           True                  True
+192.168.22.222 Wi-Fi 6     Wake on Magic Packet *WakeOnMagicPacket           True           True                  True
+
+
+
+Apply results CSV: C:\Test House BE200 control\output\csv\gui-be200-apply-results-20260325-120302-840318.csv
+Apply results JSON: C:\Test House BE200 control\output\json\gui-be200-apply-results-20260325-120302-840437.json
+Rollback CSV:      C:\Test House BE200 control\output\csv\gui-be200-rollback-data-20260325-120302-840539.csv
+Rollback JSON:     C:\Test House BE200 control\output\json\gui-be200-rollback-data-20260325-120302-840628.json
+Transcript log:    C:\Test House BE200 control\output\transcripts\gui-apply-be200-config-20260325-120302-840768.log
+**********************
+Windows PowerShell transcript end
+End time: 20260325120305
+**********************

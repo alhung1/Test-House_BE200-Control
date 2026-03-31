@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "GTK rekeying for WoWLAN",
+    "RegistryKeyword":  "*PMWiFiRekeyOffload",
+    "OriginalValue":  "Enabled",
+    "OriginalRegistryValue":  "1",
+    "TargetValue":  "Disabled",
+    "FinalValue":  "Disabled",
+    "FinalRegistryValue":  "0",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "bb42a2ca-5ad3-44a1-935b-bfa78b526db2",
+    "PSShowComputerName":  true
+}

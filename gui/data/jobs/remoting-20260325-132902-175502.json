@@ -1,0 +1,36 @@
+{
+  "id": "remoting-20260325-132902-175502",
+  "job_type": "remoting",
+  "title": "Run remoting test",
+  "status": "success",
+  "started_at": "2026-03-25T13:29:02",
+  "finished_at": "2026-03-25T13:29:03",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\test-remoting.ps1",
+    "-TargetIP",
+    "192.168.22.223",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-132902-175430.csv"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\test-remoting.ps1\", \"-TargetIP\", \"192.168.22.223\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-test-remoting-summary-20260325-132902-175430.csv\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nTesting remote PowerShell access\n========================================================================\nTargets: 192.168.22.223\n\nReadable summary:\n\nTargetIP       Reachable ComputerName    CurrentUser           WinRMServiceStatus BE200AdapterFound ErrorMessage\n--------       --------- ------------    -----------           ------------------ ----------------- ------------\n192.168.22.223      True DESKTOP-AMUELNP DESKTOP-AMUELNP\\admin Running                         True             \n\n\n\nCSV summary exported to: C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-132902-175430.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-test-remoting-summary-20260325-132902-175430.csv"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.223"
+    ]
+  }
+}

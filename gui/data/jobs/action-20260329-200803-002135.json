@@ -1,0 +1,42 @@
+{
+  "id": "action-20260329-200803-002135",
+  "job_type": "action",
+  "title": "Run BE200 action (Status)",
+  "status": "success",
+  "started_at": "2026-03-29T20:08:03",
+  "finished_at": "2026-03-29T20:08:03",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Status",
+    "-TargetIP",
+    "192.168.22.221",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260329-200803-001966.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260329-200803-002102.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Status\", \"-TargetIP\", \"192.168.22.221\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-status-20260329-200803-001966.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-status-20260329-200803-002102.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Status\n========================================================================\nTargets: 192.168.22.221\n\nAction summary:\n\nTargetIP       ComputerName AdapterName InterfaceDescription AdapterMacAddress AdapterIfIndex AdapterInterfaceGuid Adap\n                                                                                                                   terP\n                                                                                                                   nPDe\n                                                                                                                   vice\n                                                                                                                   ID  \n--------       ------------ ----------- -------------------- ----------------- -------------- -------------------- ----\n192.168.22.221                                                                                                         \n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260329-200803-001966.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260329-200803-002102.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260329-200803-001966.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260329-200803-002102.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "action": "Status"
+  }
+}

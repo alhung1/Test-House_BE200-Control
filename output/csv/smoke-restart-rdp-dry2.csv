@@ -1,0 +1,3 @@
+﻿"TargetIP","RestartRequested","RestartIssued","RestartError","PingReachable","RecoverySeconds","RdpPortOpen","RdpLaunched","FinalStatus","Message"
+"192.168.22.221","Yes","Simulated","","Simulated","0","Simulated","Simulated","Simulated","DryRun: no network actions."
+"192.168.22.222","Yes","Simulated","","Simulated","0","Simulated","Simulated","Simulated","DryRun: no network actions."

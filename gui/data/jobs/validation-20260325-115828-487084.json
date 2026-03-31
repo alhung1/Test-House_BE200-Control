@@ -1,0 +1,53 @@
+{
+  "id": "validation-20260325-115828-487084",
+  "job_type": "validation",
+  "title": "Validate generated config",
+  "status": "success",
+  "started_at": "2026-03-25T11:58:28",
+  "finished_at": "2026-03-25T11:58:29",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\validate-be200-config.ps1",
+    "-ConfigPath",
+    "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-115828-484851.csv",
+    "-DiscoveryPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-113407-066666.csv",
+    "-ValidationReportPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260325-115828-486920.csv",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-115828-487057.csv"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\validate-be200-config.ps1\", \"-ConfigPath\", \"C:\\\\Test House BE200 control\\\\gui\\\\work\\\\configs\\\\gui-generated-config-20260325-115828-484851.csv\", \"-DiscoveryPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-discovery-20260325-113407-066666.csv\", \"-ValidationReportPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validation-report-20260325-115828-486920.csv\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-115828-487057.csv\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nBE200 config validation completed\n========================================================================\nValid rows:   2\nSkipped rows: 0\nInvalid rows: 0\nValidation report: C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260325-115828-486920.csv\nValidated config:  C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-115828-487057.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "config_csv": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-115828-484851.csv",
+    "discovery_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-113407-066666.csv",
+    "validation_report_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validation-report-20260325-115828-486920.csv",
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-115828-487057.csv"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222"
+    ],
+    "property_key": "*PMARPOffload||ARP offload for WoWLAN",
+    "property_label": "ARP offload for WoWLAN",
+    "registry_keyword": "*PMARPOffload",
+    "target_value": "Enabled",
+    "mode": "WriteOnly",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-115828-484851.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-113407-066666.csv",
+    "classification": "live-tested",
+    "risk": "high",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "action-20260325-121504-546430",
+  "job_type": "action",
+  "title": "Run BE200 action (Enable)",
+  "status": "success",
+  "started_at": "2026-03-25T12:15:04",
+  "finished_at": "2026-03-25T12:15:05",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Enable",
+    "-TargetIP",
+    "192.168.22.223",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-enable-20260325-121504-546280.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-enable-20260325-121504-546398.log",
+    "-Force"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Enable\", \"-TargetIP\", \"192.168.22.223\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-enable-20260325-121504-546280.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-enable-20260325-121504-546398.log\", \"-Force\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Enable\n========================================================================\nTargets: 192.168.22.223\n\nAction summary:\n\nTargetIP       ComputerName    AdapterName InterfaceDescription Action InitialStatus FinalStatus ActionAttempted Action\n                                                                                                                 Succee\n                                                                                                                    ded\n--------       ------------    ----------- -------------------- ------ ------------- ----------- --------------- ------\n192.168.22.223 DESKTOP-AMUELNP                                  Enable                                      True  False\n192.168.22.223 DESKTOP-AMUELNP                                  Enable                                      True  False\n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-enable-20260325-121504-546280.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-enable-20260325-121504-546398.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-enable-20260325-121504-546280.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-enable-20260325-121504-546398.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.223"
+    ],
+    "action": "Enable"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "id": "wifi-20260330-183612-208702",
+  "job_type": "wifi",
+  "title": "Run BE200 Wi-Fi (Connect)",
+  "status": "success",
+  "started_at": "2026-03-30T18:36:12",
+  "finished_at": "2026-03-30T18:37:05",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-wifi.ps1",
+    "-Action",
+    "Connect",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-SSID",
+    "WAX610_2G",
+    "-WiFiPassword",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-connect-20260330-183612-208465.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-connect-20260330-183612-208656.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-wifi.ps1\", \"-Action\", \"Connect\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-SSID\", \"WAX610_2G\", \"-WiFiPassword\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-wifi-connect-20260330-183612-208465.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-wifi-connect-20260330-183612-208656.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 Wi-Fi action: Connect\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228\nSSID: WAX610_2G\n\n--- Target: 192.168.22.221 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.222 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.223 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.224 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.225 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.226 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.227 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=connected  SSID=WAX610_2G  Success=True\n\n--- Target: 192.168.22.228 ---\nProfile add: Profile WAX610_2G is added on interface Wi-Fi 6.\nConnect: Connection request was completed successfully.\n  Result: State=disconnected  SSID=  Success=False\n========================================================================\nWi-Fi action complete\n========================================================================\nResults CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-connect-20260330-183612-208465.csv\nTargets processed: 8\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-wifi-connect-20260330-183612-208465.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-wifi-connect-20260330-183612-208656.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "action": "Connect",
+    "ssid": "WAX610_2G"
+  }
+}

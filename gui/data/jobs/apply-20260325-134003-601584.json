@@ -1,0 +1,73 @@
+{
+  "id": "apply-20260325-134003-601584",
+  "job_type": "apply",
+  "title": "Apply validated config (RestartBE200)",
+  "status": "success",
+  "started_at": "2026-03-25T13:40:03",
+  "finished_at": "2026-03-25T13:40:19",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\apply-be200-config.ps1",
+    "-ValidatedConfigPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-134002-931581.csv",
+    "-Mode",
+    "RestartBE200",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-ResultCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-134003-601124.csv",
+    "-ResultJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-134003-601236.json",
+    "-RollbackCsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-134003-601374.csv",
+    "-RollbackJsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-134003-601465.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-134003-601556.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\apply-be200-config.ps1\", \"-ValidatedConfigPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-validated-config-20260325-134002-931581.csv\", \"-Mode\", \"RestartBE200\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-ResultCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-apply-results-20260325-134003-601124.csv\", \"-ResultJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-apply-results-20260325-134003-601236.json\", \"-RollbackCsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-rollback-data-20260325-134003-601374.csv\", \"-RollbackJsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-be200-rollback-data-20260325-134003-601465.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-apply-be200-config-20260325-134003-601556.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nApplying BE200 advanced-property config (RestartBE200)\n========================================================================\n\nApply summary:\n\nTargetIP       AdapterName PropertyDisplayName    RegistryKeyword      ApplyAttempted ApplySucceeded VerificationSuccee\n                                                                                                                    ded\n--------       ----------- -------------------    ---------------      -------------- -------------- ------------------\n192.168.22.221 Wi-Fi       Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.222 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.223 Wi-Fi       Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.224 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.225 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.226 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.227 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True\n192.168.22.228 Wi-Fi 6     Fat Channel Intolerant FatChannelIntolerant           True           True               True\n\n\n\nApply results CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-134003-601124.csv\nApply results JSON: C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-134003-601236.json\nRollback CSV:      C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-134003-601374.csv\nRollback JSON:     C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-134003-601465.json\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-134003-601556.log\n",
+  "stderr": "",
+  "artifacts": {
+    "validated_config_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-validated-config-20260325-134002-931581.csv",
+    "result_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-apply-results-20260325-134003-601124.csv",
+    "result_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-apply-results-20260325-134003-601236.json",
+    "rollback_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-rollback-data-20260325-134003-601374.csv",
+    "rollback_json": "C:\\Test House BE200 control\\output\\json\\gui-be200-rollback-data-20260325-134003-601465.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-apply-be200-config-20260325-134003-601556.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222",
+      "192.168.22.223",
+      "192.168.22.224",
+      "192.168.22.225",
+      "192.168.22.226",
+      "192.168.22.227",
+      "192.168.22.228"
+    ],
+    "property_key": "FatChannelIntolerant||Fat Channel Intolerant",
+    "property_label": "Fat Channel Intolerant",
+    "registry_keyword": "FatChannelIntolerant",
+    "target_value": "Disabled",
+    "mode": "RestartBE200",
+    "generated_config_path": "C:\\Test House BE200 control\\gui\\work\\configs\\gui-generated-config-20260325-134002-929568.csv",
+    "discovery_path": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260325-133102-651623.csv",
+    "classification": "live-tested",
+    "risk": "medium",
+    "apply_allowed": true,
+    "accepted_modes": [
+      "WriteOnly",
+      "RestartBE200"
+    ],
+    "validation_job_id": "validation-20260325-134002-931609"
+  }
+}

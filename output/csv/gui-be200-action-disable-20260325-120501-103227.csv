@@ -1,0 +1,2 @@
+﻿"TargetIP","ComputerName","AdapterName","InterfaceDescription","Action","InitialStatus","FinalStatus","ActionAttempted","ActionSucceeded","Notes"
+"192.168.22.221","ADMIN","Wi-Fi","Intel(R) Wi-Fi 7 BE200 320MHz","Disable","Up","Disabled","True","True",""

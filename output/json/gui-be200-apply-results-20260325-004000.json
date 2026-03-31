@@ -1,0 +1,23 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Preferred Band",
+    "RegistryKeyword":  "RoamingPreferredBandType",
+    "OriginalValue":  "4. Prefer 6GHz band",
+    "OriginalRegistryValue":  "3",
+    "TargetValue":  "4. Prefer 6GHz band",
+    "FinalValue":  "4. Prefer 6GHz band",
+    "FinalRegistryValue":  "3",
+    "ApplyAttempted":  true,
+    "ApplySucceeded":  true,
+    "VerificationSucceeded":  true,
+    "ExecutionMode":  "WriteOnly",
+    "TargetValueType":  "DisplayValue",
+    "RestartAttempted":  false,
+    "RestartSucceeded":  null,
+    "Notes":  "",
+    "PSComputerName":  "192.168.22.221",
+    "RunspaceId":  "9c9315f2-000a-44a8-9227-a7ff32fe5999",
+    "PSShowComputerName":  true
+}

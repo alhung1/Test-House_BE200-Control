@@ -1,0 +1,2 @@
+﻿"AdapterName","Action","Success","State","SSID","RequestedSSID","RadioType","Signal","Authentication","Channel","Message","PSComputerName","RunspaceId","PSShowComputerName","TargetIP"
+"Wi-Fi 2","Status","True","unknown","","","","","","","Multiple adapters matched 'Intel(R) Wi-Fi 7 BE200 320MHz'; selected lowest ifIndex (8).","192.168.22.221","0b81fd6d-b266-48e2-928b-fed4d99ab02f","True","192.168.22.221"

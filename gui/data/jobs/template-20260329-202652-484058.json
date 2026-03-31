@@ -1,0 +1,29 @@
+{
+  "id": "template-20260329-202652-484058",
+  "job_type": "template",
+  "title": "Export template from refreshed discovery",
+  "status": "success",
+  "started_at": "2026-03-29T20:26:52",
+  "finished_at": "2026-03-29T20:26:53",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\export-be200-config-template.ps1",
+    "-DiscoveryPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260329-202333-900346.csv",
+    "-TemplatePath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-config-template-20260329-202652-484020.csv"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\export-be200-config-template.ps1\", \"-DiscoveryPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-discovery-20260329-202333-900346.csv\", \"-TemplatePath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-config-template-20260329-202652-484020.csv\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nBE200 config template exported\n========================================================================\nRows exported: 182\nTemplate path: C:\\Test House BE200 control\\output\\csv\\gui-be200-config-template-20260329-202652-484020.csv\n",
+  "stderr": "",
+  "artifacts": {
+    "template_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-config-template-20260329-202652-484020.csv",
+    "discovery_csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-discovery-20260329-202333-900346.csv"
+  },
+  "summary": {}
+}

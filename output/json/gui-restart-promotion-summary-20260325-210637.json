@@ -1,0 +1,5416 @@
+{
+  "Preferred Band": {
+    "set_value": "3. Prefer 5GHz band",
+    "original_map": {
+      "192.168.22.221": "4. Prefer 6GHz band",
+      "192.168.22.222": "4. Prefer 6GHz band",
+      "192.168.22.223": "4. Prefer 6GHz band",
+      "192.168.22.224": "4. Prefer 6GHz band",
+      "192.168.22.225": "4. Prefer 6GHz band",
+      "192.168.22.226": "4. Prefer 6GHz band",
+      "192.168.22.227": "4. Prefer 6GHz band",
+      "192.168.22.228": "4. Prefer 6GHz band"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "4. Prefer 6GHz band": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-133519-949466",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-133520-663179",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-133554-061530",
+    "set_values": {
+      "192.168.22.221": "3. Prefer 5GHz band",
+      "192.168.22.222": "3. Prefer 5GHz band",
+      "192.168.22.223": "3. Prefer 5GHz band",
+      "192.168.22.224": "3. Prefer 5GHz band",
+      "192.168.22.225": "3. Prefer 5GHz band",
+      "192.168.22.226": "3. Prefer 5GHz band",
+      "192.168.22.227": "3. Prefer 5GHz band",
+      "192.168.22.228": "3. Prefer 5GHz band"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "4. Prefer 6GHz band",
+        "job": "validation-20260325-133601-706832",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "4. Prefer 6GHz band",
+        "job": "apply-20260325-133602-415408",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-133632-866622",
+    "rollback_values": {
+      "192.168.22.221": "4. Prefer 6GHz band",
+      "192.168.22.222": "4. Prefer 6GHz band",
+      "192.168.22.223": "4. Prefer 6GHz band",
+      "192.168.22.224": "4. Prefer 6GHz band",
+      "192.168.22.225": "4. Prefer 6GHz band",
+      "192.168.22.226": "4. Prefer 6GHz band",
+      "192.168.22.227": "4. Prefer 6GHz band",
+      "192.168.22.228": "4. Prefer 6GHz band"
+    }
+  },
+  "Roaming Aggressiveness": {
+    "set_value": "4. Medium-High",
+    "original_map": {
+      "192.168.22.221": "3. Medium",
+      "192.168.22.222": "3. Medium",
+      "192.168.22.223": "3. Medium",
+      "192.168.22.224": "3. Medium",
+      "192.168.22.225": "3. Medium",
+      "192.168.22.226": "3. Medium",
+      "192.168.22.227": "3. Medium",
+      "192.168.22.228": "3. Medium"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "3. Medium": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-133640-567523",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-133641-264364",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-133714-202942",
+    "set_values": {
+      "192.168.22.221": "4. Medium-High",
+      "192.168.22.222": "4. Medium-High",
+      "192.168.22.223": "4. Medium-High",
+      "192.168.22.224": "4. Medium-High",
+      "192.168.22.225": "4. Medium-High",
+      "192.168.22.226": "4. Medium-High",
+      "192.168.22.227": "4. Medium-High",
+      "192.168.22.228": "4. Medium-High"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "3. Medium",
+        "job": "validation-20260325-133721-677257",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "3. Medium",
+        "job": "apply-20260325-133722-395136",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-133753-243314",
+    "rollback_values": {
+      "192.168.22.221": "3. Medium",
+      "192.168.22.222": "3. Medium",
+      "192.168.22.223": "3. Medium",
+      "192.168.22.224": "3. Medium",
+      "192.168.22.225": "3. Medium",
+      "192.168.22.226": "3. Medium",
+      "192.168.22.227": "3. Medium",
+      "192.168.22.228": "3. Medium"
+    }
+  },
+  "U-APSD support": {
+    "set_value": "Enabled",
+    "original_map": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Disabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-133800-864893",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-133801-576734",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-133834-673274",
+    "set_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Disabled",
+        "job": "validation-20260325-133842-327138",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Disabled",
+        "job": "apply-20260325-133843-027322",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-133913-938904",
+    "rollback_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    }
+  },
+  "Fat Channel Intolerant": {
+    "set_value": "Enabled",
+    "original_map": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Disabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-133921-542215",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-133922-240212",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-133955-255404",
+    "set_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Disabled",
+        "job": "validation-20260325-134002-931609",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Disabled",
+        "job": "apply-20260325-134003-601584",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134034-066001",
+    "rollback_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    }
+  },
+  "Channel-Load usage for AP Selection": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134041-671583",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134042-430515",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134114-914228",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-134122-537607",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-134123-281985",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134154-005247",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "Mixed Mode Protection": {
+    "set_value": "CTS-to-self Enabled",
+    "original_map": {
+      "192.168.22.221": "RTS/CTS Enabled",
+      "192.168.22.222": "RTS/CTS Enabled",
+      "192.168.22.223": "RTS/CTS Enabled",
+      "192.168.22.224": "RTS/CTS Enabled",
+      "192.168.22.225": "RTS/CTS Enabled",
+      "192.168.22.226": "RTS/CTS Enabled",
+      "192.168.22.227": "RTS/CTS Enabled",
+      "192.168.22.228": "RTS/CTS Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "RTS/CTS Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134201-721288",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134202-410968",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134235-050485",
+    "set_values": {
+      "192.168.22.221": "CTS-to-self Enabled",
+      "192.168.22.222": "CTS-to-self Enabled",
+      "192.168.22.223": "CTS-to-self Enabled",
+      "192.168.22.224": "CTS-to-self Enabled",
+      "192.168.22.225": "CTS-to-self Enabled",
+      "192.168.22.226": "CTS-to-self Enabled",
+      "192.168.22.227": "CTS-to-self Enabled",
+      "192.168.22.228": "CTS-to-self Enabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "RTS/CTS Enabled",
+        "job": "validation-20260325-134242-700196",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "RTS/CTS Enabled",
+        "job": "apply-20260325-134243-486529",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134314-251259",
+    "rollback_values": {
+      "192.168.22.221": "RTS/CTS Enabled",
+      "192.168.22.222": "RTS/CTS Enabled",
+      "192.168.22.223": "RTS/CTS Enabled",
+      "192.168.22.224": "RTS/CTS Enabled",
+      "192.168.22.225": "RTS/CTS Enabled",
+      "192.168.22.226": "RTS/CTS Enabled",
+      "192.168.22.227": "RTS/CTS Enabled",
+      "192.168.22.228": "RTS/CTS Enabled"
+    }
+  },
+  "Transmit Power": {
+    "set_value": "4. Medium-High",
+    "original_map": {
+      "192.168.22.221": "5. Highest",
+      "192.168.22.222": "5. Highest",
+      "192.168.22.223": "5. Highest",
+      "192.168.22.224": "5. Highest",
+      "192.168.22.225": "5. Highest",
+      "192.168.22.226": "5. Highest",
+      "192.168.22.227": "5. Highest",
+      "192.168.22.228": "5. Highest"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "5. Highest": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134321-922953",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134322-722538",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134356-072542",
+    "set_values": {
+      "192.168.22.221": "4. Medium-High",
+      "192.168.22.222": "4. Medium-High",
+      "192.168.22.223": "4. Medium-High",
+      "192.168.22.224": "4. Medium-High",
+      "192.168.22.225": "4. Medium-High",
+      "192.168.22.226": "4. Medium-High",
+      "192.168.22.227": "4. Medium-High",
+      "192.168.22.228": "4. Medium-High"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "5. Highest",
+        "job": "validation-20260325-134403-724835",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "5. Highest",
+        "job": "apply-20260325-134404-469426",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134435-483017",
+    "rollback_values": {
+      "192.168.22.221": "5. Highest",
+      "192.168.22.222": "5. Highest",
+      "192.168.22.223": "5. Highest",
+      "192.168.22.224": "5. Highest",
+      "192.168.22.225": "5. Highest",
+      "192.168.22.226": "5. Highest",
+      "192.168.22.227": "5. Highest",
+      "192.168.22.228": "5. Highest"
+    }
+  },
+  "Channel Width for 2.4GHz": {
+    "set_value": "20 MHz Only",
+    "original_map": {
+      "192.168.22.221": "Auto",
+      "192.168.22.222": "Auto",
+      "192.168.22.223": "Auto",
+      "192.168.22.224": "Auto",
+      "192.168.22.225": "Auto",
+      "192.168.22.226": "Auto",
+      "192.168.22.227": "Auto",
+      "192.168.22.228": "Auto"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Auto": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134443-227724",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134443-952329",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134516-906920",
+    "set_values": {
+      "192.168.22.221": "20 MHz Only",
+      "192.168.22.222": "20 MHz Only",
+      "192.168.22.223": "20 MHz Only",
+      "192.168.22.224": "20 MHz Only",
+      "192.168.22.225": "20 MHz Only",
+      "192.168.22.226": "20 MHz Only",
+      "192.168.22.227": "20 MHz Only",
+      "192.168.22.228": "20 MHz Only"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto",
+        "job": "validation-20260325-134524-535480",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto",
+        "job": "apply-20260325-134525-284122",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134556-283831",
+    "rollback_values": {
+      "192.168.22.221": "Auto",
+      "192.168.22.222": "Auto",
+      "192.168.22.223": "Auto",
+      "192.168.22.224": "Auto",
+      "192.168.22.225": "Auto",
+      "192.168.22.226": "Auto",
+      "192.168.22.227": "Auto",
+      "192.168.22.228": "Auto"
+    }
+  },
+  "Channel Width for 5GHz": {
+    "set_value": "20 MHz Only",
+    "original_map": {
+      "192.168.22.221": "Auto",
+      "192.168.22.222": "Auto",
+      "192.168.22.223": "Auto",
+      "192.168.22.224": "Auto",
+      "192.168.22.225": "Auto",
+      "192.168.22.226": "Auto",
+      "192.168.22.227": "Auto",
+      "192.168.22.228": "Auto"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Auto": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134603-897578",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134604-681740",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134637-995471",
+    "set_values": {
+      "192.168.22.221": "20 MHz Only",
+      "192.168.22.222": "20 MHz Only",
+      "192.168.22.223": "20 MHz Only",
+      "192.168.22.224": "20 MHz Only",
+      "192.168.22.225": "20 MHz Only",
+      "192.168.22.226": "20 MHz Only",
+      "192.168.22.227": "20 MHz Only",
+      "192.168.22.228": "20 MHz Only"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto",
+        "job": "validation-20260325-134645-662694",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto",
+        "job": "apply-20260325-134646-417325",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134717-240386",
+    "rollback_values": {
+      "192.168.22.221": "Auto",
+      "192.168.22.222": "Auto",
+      "192.168.22.223": "Auto",
+      "192.168.22.224": "Auto",
+      "192.168.22.225": "Auto",
+      "192.168.22.226": "Auto",
+      "192.168.22.227": "Auto",
+      "192.168.22.228": "Auto"
+    }
+  },
+  "Channel Width for 6GHz": {
+    "set_value": "20 MHz Only",
+    "original_map": {
+      "192.168.22.221": "Auto",
+      "192.168.22.222": "Auto",
+      "192.168.22.223": "Auto",
+      "192.168.22.224": "Auto",
+      "192.168.22.225": "Auto",
+      "192.168.22.226": "Auto",
+      "192.168.22.227": "Auto",
+      "192.168.22.228": "Auto"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Auto": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134724-928993",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134725-681425",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134758-996210",
+    "set_values": {
+      "192.168.22.221": "20 MHz Only",
+      "192.168.22.222": "20 MHz Only",
+      "192.168.22.223": "20 MHz Only",
+      "192.168.22.224": "20 MHz Only",
+      "192.168.22.225": "20 MHz Only",
+      "192.168.22.226": "20 MHz Only",
+      "192.168.22.227": "20 MHz Only",
+      "192.168.22.228": "20 MHz Only"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto",
+        "job": "validation-20260325-134806-772972",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto",
+        "job": "apply-20260325-134807-508136",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134838-641816",
+    "rollback_values": {
+      "192.168.22.221": "Auto",
+      "192.168.22.222": "Auto",
+      "192.168.22.223": "Auto",
+      "192.168.22.224": "Auto",
+      "192.168.22.225": "Auto",
+      "192.168.22.226": "Auto",
+      "192.168.22.227": "Auto",
+      "192.168.22.228": "Auto"
+    }
+  },
+  "MIMO Power Save Mode": {
+    "set_value": "Dynamic SMPS",
+    "original_map": {
+      "192.168.22.221": "Auto SMPS",
+      "192.168.22.222": "Auto SMPS",
+      "192.168.22.223": "Auto SMPS",
+      "192.168.22.224": "Auto SMPS",
+      "192.168.22.225": "Auto SMPS",
+      "192.168.22.226": "Auto SMPS",
+      "192.168.22.227": "Auto SMPS",
+      "192.168.22.228": "Auto SMPS"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Auto SMPS": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-134846-307713",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-134847-059910",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-134920-193516",
+    "set_values": {
+      "192.168.22.221": "Dynamic SMPS",
+      "192.168.22.222": "Dynamic SMPS",
+      "192.168.22.223": "Dynamic SMPS",
+      "192.168.22.224": "Dynamic SMPS",
+      "192.168.22.225": "Dynamic SMPS",
+      "192.168.22.226": "Dynamic SMPS",
+      "192.168.22.227": "Dynamic SMPS",
+      "192.168.22.228": "Dynamic SMPS"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto SMPS",
+        "job": "validation-20260325-134927-824475",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Auto SMPS",
+        "job": "apply-20260325-134928-571584",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-134959-855693",
+    "rollback_values": {
+      "192.168.22.221": "Auto SMPS",
+      "192.168.22.222": "Auto SMPS",
+      "192.168.22.223": "Auto SMPS",
+      "192.168.22.224": "Auto SMPS",
+      "192.168.22.225": "Auto SMPS",
+      "192.168.22.226": "Auto SMPS",
+      "192.168.22.227": "Auto SMPS",
+      "192.168.22.228": "Auto SMPS"
+    }
+  },
+  "802.11a/b/g Wireless Mode": {
+    "set_value": "5. Dual Band 802.11a/g",
+    "original_map": {
+      "192.168.22.221": "6. Dual Band 802.11a/b/g",
+      "192.168.22.222": "6. Dual Band 802.11a/b/g",
+      "192.168.22.223": "6. Dual Band 802.11a/b/g",
+      "192.168.22.224": "6. Dual Band 802.11a/b/g",
+      "192.168.22.225": "6. Dual Band 802.11a/b/g",
+      "192.168.22.226": "6. Dual Band 802.11a/b/g",
+      "192.168.22.227": "6. Dual Band 802.11a/b/g",
+      "192.168.22.228": "1. 5GHz  802.11a"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "6. Dual Band 802.11a/b/g": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227"
+      ],
+      "1. 5GHz  802.11a": [
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135007-538889",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135008-285856",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135041-383404",
+    "set_values": {
+      "192.168.22.221": "5. Dual Band 802.11a/g",
+      "192.168.22.222": "5. Dual Band 802.11a/g",
+      "192.168.22.223": "5. Dual Band 802.11a/g",
+      "192.168.22.224": "5. Dual Band 802.11a/g",
+      "192.168.22.225": "5. Dual Band 802.11a/g",
+      "192.168.22.226": "5. Dual Band 802.11a/g",
+      "192.168.22.227": "5. Dual Band 802.11a/g",
+      "192.168.22.228": "5. Dual Band 802.11a/g"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227"
+        ],
+        "value": "6. Dual Band 802.11a/b/g",
+        "job": "validation-20260325-135049-038311",
+        "status": "success"
+      },
+      {
+        "targets": [
+          "192.168.22.228"
+        ],
+        "value": "1. 5GHz  802.11a",
+        "job": "validation-20260325-135112-612405",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227"
+        ],
+        "value": "6. Dual Band 802.11a/b/g",
+        "job": "apply-20260325-135049-761616",
+        "status": "success"
+      },
+      {
+        "targets": [
+          "192.168.22.228"
+        ],
+        "value": "1. 5GHz  802.11a",
+        "job": "apply-20260325-135113-269779",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135130-366073",
+    "rollback_values": {
+      "192.168.22.221": "6. Dual Band 802.11a/b/g",
+      "192.168.22.222": "6. Dual Band 802.11a/b/g",
+      "192.168.22.223": "6. Dual Band 802.11a/b/g",
+      "192.168.22.224": "6. Dual Band 802.11a/b/g",
+      "192.168.22.225": "6. Dual Band 802.11a/b/g",
+      "192.168.22.226": "6. Dual Band 802.11a/b/g",
+      "192.168.22.227": "6. Dual Band 802.11a/b/g",
+      "192.168.22.228": "1. 5GHz  802.11a"
+    }
+  },
+  "802.11n/ac/ax/be Wireless Mode": {
+    "set_value": "4. 802.11ax",
+    "original_map": {
+      "192.168.22.221": "5. 802.11be",
+      "192.168.22.222": "5. 802.11be",
+      "192.168.22.223": "5. 802.11be",
+      "192.168.22.224": "5. 802.11be",
+      "192.168.22.225": "5. 802.11be",
+      "192.168.22.226": "4. 802.11ax",
+      "192.168.22.227": "4. 802.11ax",
+      "192.168.22.228": "5. 802.11be"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "5. 802.11be": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.228"
+      ],
+      "4. 802.11ax": [
+        "192.168.22.226",
+        "192.168.22.227"
+      ]
+    },
+    "validation_job": "validation-20260325-135138-059372",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135138-804478",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135211-581656",
+    "set_values": {
+      "192.168.22.221": "4. 802.11ax",
+      "192.168.22.222": "4. 802.11ax",
+      "192.168.22.223": "4. 802.11ax",
+      "192.168.22.224": "4. 802.11ax",
+      "192.168.22.225": "4. 802.11ax",
+      "192.168.22.226": "4. 802.11ax",
+      "192.168.22.227": "4. 802.11ax",
+      "192.168.22.228": "4. 802.11ax"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.228"
+        ],
+        "value": "5. 802.11be",
+        "job": "validation-20260325-135219-283012",
+        "status": "success"
+      },
+      {
+        "targets": [
+          "192.168.22.226",
+          "192.168.22.227"
+        ],
+        "value": "4. 802.11ax",
+        "job": "validation-20260325-135241-276838",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.228"
+        ],
+        "value": "5. 802.11be",
+        "job": "apply-20260325-135219-985865",
+        "status": "success"
+      },
+      {
+        "targets": [
+          "192.168.22.226",
+          "192.168.22.227"
+        ],
+        "value": "4. 802.11ax",
+        "job": "apply-20260325-135241-939983",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135300-944298",
+    "rollback_values": {
+      "192.168.22.221": "5. 802.11be",
+      "192.168.22.222": "5. 802.11be",
+      "192.168.22.223": "5. 802.11be",
+      "192.168.22.224": "5. 802.11be",
+      "192.168.22.225": "5. 802.11be",
+      "192.168.22.226": "4. 802.11ax",
+      "192.168.22.227": "4. 802.11ax",
+      "192.168.22.228": "5. 802.11be"
+    }
+  },
+  "Ultra High Band (6GHz)": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135308-493891",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135309-208669",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135342-491660",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-135350-163650",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-135350-855531",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135421-662656",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "ARP offload for WoWLAN": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135429-294707",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135429-981274",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135503-106663",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-135510-606908",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-135511-340316",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135542-605758",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "GTK rekeying for WoWLAN": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135550-246825",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135550-969608",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135623-840421",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-135631-418530",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-135632-138659",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135702-093264",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "NS offload for WoWLAN": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135709-734689",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135710-498318",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135743-730432",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-135751-462047",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-135752-147463",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135823-098305",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "Packet Coalescing": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135830-743862",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135831-468629",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-135904-694291",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-135912-456010",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-135913-224370",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-135944-227648",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "RSCv4": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-135951-886919",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-135952-658202",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-140025-658087",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-140033-334361",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-140034-108095",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-140105-375323",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "RSCv6": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-140113-181012",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-140113-934801",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-140146-851343",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-140154-577157",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-140155-318097",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-140226-304903",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "Sleep on WoWLAN Disconnect": {
+    "set_value": "Enabled",
+    "original_map": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Disabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-140233-889447",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-140234-679313",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-140307-899306",
+    "set_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Disabled",
+        "job": "validation-20260325-140315-609354",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Disabled",
+        "job": "apply-20260325-140316-424389",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-140347-298963",
+    "rollback_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    }
+  },
+  "Wake on Magic Packet": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-140355-066978",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-140355-822318",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-140428-350840",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-140435-999940",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-140436-779279",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-140507-818731",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  },
+  "Wake on Pattern Match": {
+    "set_value": "Disabled",
+    "original_map": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    },
+    "status": "passed",
+    "rollback_groups": {
+      "Enabled": [
+        "192.168.22.221",
+        "192.168.22.222",
+        "192.168.22.223",
+        "192.168.22.224",
+        "192.168.22.225",
+        "192.168.22.226",
+        "192.168.22.227",
+        "192.168.22.228"
+      ]
+    },
+    "validation_job": "validation-20260325-140515-600856",
+    "validation_status": "success",
+    "apply_job": "apply-20260325-140516-348274",
+    "apply_status": "success",
+    "remoting_after_set": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "set_discovery_job": "discovery-20260325-140549-670033",
+    "set_values": {
+      "192.168.22.221": "Disabled",
+      "192.168.22.222": "Disabled",
+      "192.168.22.223": "Disabled",
+      "192.168.22.224": "Disabled",
+      "192.168.22.225": "Disabled",
+      "192.168.22.226": "Disabled",
+      "192.168.22.227": "Disabled",
+      "192.168.22.228": "Disabled"
+    },
+    "rollback_validation_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "validation-20260325-140557-387931",
+        "status": "success"
+      }
+    ],
+    "rollback_apply_jobs": [
+      {
+        "targets": [
+          "192.168.22.221",
+          "192.168.22.222",
+          "192.168.22.223",
+          "192.168.22.224",
+          "192.168.22.225",
+          "192.168.22.226",
+          "192.168.22.227",
+          "192.168.22.228"
+        ],
+        "value": "Enabled",
+        "job": "apply-20260325-140558-154335",
+        "status": "success"
+      }
+    ],
+    "remoting_after_rollback": [
+      {
+        "TargetIP": "192.168.22.221",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.222",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-9LSD789",
+        "CurrentUser": "DESKTOP-9LSD789\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.223",
+        "Reachable": "True",
+        "ComputerName": "DESKTOP-AMUELNP",
+        "CurrentUser": "DESKTOP-AMUELNP\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.224",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.225",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.226",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.227",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      },
+      {
+        "TargetIP": "192.168.22.228",
+        "Reachable": "True",
+        "ComputerName": "ADMIN",
+        "CurrentUser": "admin\\admin",
+        "WinRMServiceStatus": "Running",
+        "BE200AdapterFound": "True",
+        "ErrorMessage": ""
+      }
+    ],
+    "rollback_discovery_job": "discovery-20260325-140629-793186",
+    "rollback_values": {
+      "192.168.22.221": "Enabled",
+      "192.168.22.222": "Enabled",
+      "192.168.22.223": "Enabled",
+      "192.168.22.224": "Enabled",
+      "192.168.22.225": "Enabled",
+      "192.168.22.226": "Enabled",
+      "192.168.22.227": "Enabled",
+      "192.168.22.228": "Enabled"
+    }
+  }
+}

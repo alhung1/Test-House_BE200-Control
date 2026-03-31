@@ -1,0 +1,10 @@
+﻿{
+    "ComputerName":  "ADMIN",
+    "TargetIP":  "192.168.22.221",
+    "AdapterName":  "Wi-Fi",
+    "PropertyDisplayName":  "Transmit Power",
+    "RegistryKeyword":  "IbssTxPower",
+    "RollbackDisplayValue":  "5. Highest",
+    "RollbackRegistryValue":  "100",
+    "Notes":  "Rollback data only. No automatic rollback is performed by this toolkit."
+}

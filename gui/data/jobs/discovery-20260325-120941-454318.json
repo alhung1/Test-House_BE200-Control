@@ -1,0 +1,43 @@
+{
+  "id": "discovery-20260325-120941-454318",
+  "job_type": "discovery",
+  "title": "Disable/Enable check 226",
+  "status": "success",
+  "started_at": "2026-03-25T12:09:41",
+  "finished_at": "2026-03-25T12:09:43",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.226",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-disable-enable-check-226-20260325-120941-454068.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-disable-enable-check-226-20260325-120941-454185.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-disable-enable-check-226-20260325-120941-454288.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.226\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-disable-enable-check-226-20260325-120941-454068.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-disable-enable-check-226-20260325-120941-454185.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-disable-enable-check-226-20260325-120941-454288.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.226\n\nDiscovery summary:\n\nTargetIP       ComputerName DiscoverySucceeded PropertyRowCount Notes\n--------       ------------ ------------------ ---------------- -----\n192.168.22.226 ADMIN                      True               90      \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-disable-enable-check-226-20260325-120941-454068.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-disable-enable-check-226-20260325-120941-454185.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-disable-enable-check-226-20260325-120941-454288.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-disable-enable-check-226-20260325-120941-454068.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-disable-enable-check-226-20260325-120941-454185.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-disable-enable-check-226-20260325-120941-454288.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.226"
+    ],
+    "label": "226"
+  }
+}

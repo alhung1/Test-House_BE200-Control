@@ -1,0 +1,63 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20260326130341
+Username: NRH-CONTROL\NRH-CONTROL
+RunAs User: NRH-CONTROL\NRH-CONTROL
+Configuration Name: 
+Machine: NRH-CONTROL (Microsoft Windows NT 10.0.19045.0)
+Host Application: powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\Test House BE200 control\invoke-be200-wifi.ps1 -Action Status -Username admin -Password admin -CsvPath C:\Test House BE200 control\output\csv\gui-be200-wifi-status-20260326-130340-831525.csv -TranscriptPath C:\Test House BE200 control\output\transcripts\gui-invoke-be200-wifi-status-20260326-130340-831648.log
+Process ID: 2760
+PSVersion: 5.1.19041.6456
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.19041.6456
+BuildVersion: 10.0.19041.6456
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+========================================================================
+Invoking BE200 Wi-Fi action: Status
+========================================================================
+Targets: 192.168.22.221, 192.168.22.222, 192.168.22.223, 192.168.22.224, 192.168.22.225, 192.168.22.226, 192.168.22.227, 192.168.22.228
+
+--- Target: 192.168.22.221 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.221] Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.221 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.222 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.222] Connecting to remote server 192.168.22.222 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.222 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.223 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.223] Connecting to remote server 192.168.22.223 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.223 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.224 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.224] Connecting to remote server 192.168.22.224 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.224 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.225 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.225] Connecting to remote server 192.168.22.225 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.225 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.226 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.226] Connecting to remote server 192.168.22.226 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.226 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.227 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.227] Connecting to remote server 192.168.22.227 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.227 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+
+--- Target: 192.168.22.228 ---
+PS>TerminatingError(): "The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: [192.168.22.228] Connecting to remote server 192.168.22.228 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic."
+  ERROR: Connecting to remote server 192.168.22.228 failed with the following error message : Access is denied. For more information, see the about_Remote_Troubleshooting Help topic.
+========================================================================
+Wi-Fi action complete
+========================================================================
+Results CSV: C:\Test House BE200 control\output\csv\gui-be200-wifi-status-20260326-130340-831525.csv
+Targets processed: 8
+**********************
+Windows PowerShell transcript end
+End time: 20260326130341
+**********************

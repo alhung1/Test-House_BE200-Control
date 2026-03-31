@@ -1,0 +1,42 @@
+{
+  "id": "action-20260325-091805",
+  "job_type": "action",
+  "title": "Run BE200 action (Status)",
+  "status": "success",
+  "started_at": "2026-03-25T09:18:05",
+  "finished_at": "2026-03-25T09:18:07",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\invoke-be200-action.ps1",
+    "-Action",
+    "Status",
+    "-TargetIP",
+    "192.168.22.221",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260325-091805.csv",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260325-091805.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\invoke-be200-action.ps1\", \"-Action\", \"Status\", \"-TargetIP\", \"192.168.22.221\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-be200-action-status-20260325-091805.csv\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-invoke-be200-action-status-20260325-091805.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nInvoking BE200 action: Status\n========================================================================\nTargets: 192.168.22.221\n\nAction summary:\n\nTargetIP       ComputerName AdapterName InterfaceDescription Action InitialStatus FinalStatus ActionAttempted ActionSuc\n                                                                                                                 ceeded\n--------       ------------ ----------- -------------------- ------ ------------- ----------- --------------- ---------\n192.168.22.221 ADMIN                                         Status                                      True     False\n\n\n\nAction result CSV: C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260325-091805.csv\nTranscript log:    C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260325-091805.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-be200-action-status-20260325-091805.csv",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-invoke-be200-action-status-20260325-091805.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221"
+    ],
+    "action": "Status"
+  }
+}

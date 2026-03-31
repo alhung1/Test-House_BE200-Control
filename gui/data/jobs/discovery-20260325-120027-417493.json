@@ -1,0 +1,44 @@
+{
+  "id": "discovery-20260325-120027-417493",
+  "job_type": "discovery",
+  "title": "Stage discovery packet-coalescing-set",
+  "status": "success",
+  "started_at": "2026-03-25T12:00:27",
+  "finished_at": "2026-03-25T12:00:29",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.221,192.168.22.222",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-stage-discovery-packet-coalescing-set-1774465227417.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-stage-discovery-packet-coalescing-set-1774465227417.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-stage-discovery-packet-coalescing-set-1774465227417.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.221,192.168.22.222\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-stage-discovery-packet-coalescing-set-1774465227417.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-stage-discovery-packet-coalescing-set-1774465227417.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-stage-discovery-packet-coalescing-set-1774465227417.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.221, 192.168.22.222\n\nDiscovery summary:\n\nTargetIP       ComputerName    DiscoverySucceeded PropertyRowCount Notes\n--------       ------------    ------------------ ---------------- -----\n192.168.22.221 ADMIN                         True               91      \n192.168.22.222 DESKTOP-9LSD789               True               91      \n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-stage-discovery-packet-coalescing-set-1774465227417.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-stage-discovery-packet-coalescing-set-1774465227417.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-stage-discovery-packet-coalescing-set-1774465227417.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-stage-discovery-packet-coalescing-set-1774465227417.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-stage-discovery-packet-coalescing-set-1774465227417.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-stage-discovery-packet-coalescing-set-1774465227417.log"
+  },
+  "summary": {
+    "targets": [
+      "192.168.22.221",
+      "192.168.22.222"
+    ],
+    "label": "packet-coalescing-set"
+  }
+}

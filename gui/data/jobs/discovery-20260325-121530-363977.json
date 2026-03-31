@@ -1,0 +1,40 @@
+{
+  "id": "discovery-20260325-121530-363977",
+  "job_type": "discovery",
+  "title": "Disable/Enable retest 192.168.22.225",
+  "status": "success",
+  "started_at": "2026-03-25T12:15:30",
+  "finished_at": "2026-03-25T12:15:31",
+  "returncode": 0,
+  "command": [
+    "powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "C:\\Test House BE200 control\\discover-be200-advanced-properties.ps1",
+    "-TargetIP",
+    "192.168.22.225",
+    "-Username",
+    "admin",
+    "-Password",
+    "********",
+    "-CsvPath",
+    "C:\\Test House BE200 control\\output\\csv\\gui-disable-enable-retest-225-20260325-121530-363730.csv",
+    "-JsonPath",
+    "C:\\Test House BE200 control\\output\\json\\gui-disable-enable-retest-225-20260325-121530-363849.json",
+    "-TranscriptPath",
+    "C:\\Test House BE200 control\\output\\transcripts\\gui-disable-enable-retest-225-20260325-121530-363949.log"
+  ],
+  "stdout": "GUI launch argv: {\"argv\": [\"powershell.exe\", \"-NoProfile\", \"-NonInteractive\", \"-ExecutionPolicy\", \"Bypass\", \"-File\", \"C:\\\\Test House BE200 control\\\\discover-be200-advanced-properties.ps1\", \"-TargetIP\", \"192.168.22.225\", \"-Username\", \"admin\", \"-Password\", \"********\", \"-CsvPath\", \"C:\\\\Test House BE200 control\\\\output\\\\csv\\\\gui-disable-enable-retest-225-20260325-121530-363730.csv\", \"-JsonPath\", \"C:\\\\Test House BE200 control\\\\output\\\\json\\\\gui-disable-enable-retest-225-20260325-121530-363849.json\", \"-TranscriptPath\", \"C:\\\\Test House BE200 control\\\\output\\\\transcripts\\\\gui-disable-enable-retest-225-20260325-121530-363949.log\"], \"env_flags\": {\"BE200_NONINTERACTIVE\": \"1\", \"BE200_GUI\": \"1\"}}\n\n========================================================================\nDiscovering BE200 advanced properties\n========================================================================\nTargets: 192.168.22.225\n\nDiscovery summary:\n\nTargetIP       ComputerName DiscoverySucceeded PropertyRowCount Notes                                                  \n--------       ------------ ------------------ ---------------- -----                                                  \n192.168.22.225 ADMIN                      True                0 Multiple adapters matched allowlisted InterfaceDescr...\n\n\n\nDiscovery CSV exported to: C:\\Test House BE200 control\\output\\csv\\gui-disable-enable-retest-225-20260325-121530-363730.csv\nDiscovery JSON exported to: C:\\Test House BE200 control\\output\\json\\gui-disable-enable-retest-225-20260325-121530-363849.json\nTranscript log exported to: C:\\Test House BE200 control\\output\\transcripts\\gui-disable-enable-retest-225-20260325-121530-363949.log\n",
+  "stderr": "",
+  "artifacts": {
+    "csv": "C:\\Test House BE200 control\\output\\csv\\gui-disable-enable-retest-225-20260325-121530-363730.csv",
+    "json": "C:\\Test House BE200 control\\output\\json\\gui-disable-enable-retest-225-20260325-121530-363849.json",
+    "transcript": "C:\\Test House BE200 control\\output\\transcripts\\gui-disable-enable-retest-225-20260325-121530-363949.log"
+  },
+  "summary": {
+    "target": "192.168.22.225"
+  }
+}
