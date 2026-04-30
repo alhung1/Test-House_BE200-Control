@@ -1,19 +1,43 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge %}
 
 {% block title %}Wi-Fi Connect - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Wi-Fi connect</h1>
-  <p class="app-page-lead">Changes wireless profiles on selected fleet targets. Confirm <strong>target scope</strong> and SSID before Connect; only allowlisted BE200 adapters are affected.</p>
-</header>
+{{ page_header("Wi-Fi Connect", "Changes wireless profiles on selected fleet targets. Confirm <strong>target scope</strong> and SSID before Connect; only allowlisted BE200 adapters are affected.", "State Change", "warning") }}
 
 <div class="row g-4">
   <div class="col-lg-4">
     <div class="card card-be200 zone-risk">
-      <div class="card-header">Wi-Fi connect / verify</div>
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Wi-Fi connect / verify</span>
+        {{ tone_badge("warning", "Adapter profile change") }}
+      </div>
       <div class="card-body">
-        <form method="post" id="wifi-connect-form">
+        <form method="post" id="wifi-connect-form" data-guarded-submit="true">
+          <div class="summary-card mb-3">
+            <h6>Execution summary</h6>
+            <dl class="summary-list">
+              <div>
+                <dt>Targets</dt>
+                <dd id="wifi-summary-targets">{{ selected_targets|length }} selected</dd>
+              </div>
+              <div>
+                <dt>SSID</dt>
+                <dd id="wifi-summary-ssid">{{ ssid or "Not set" }}</dd>
+              </div>
+              <div>
+                <dt>Script</dt>
+                <dd><code>invoke-be200-wifi.ps1</code></dd>
+              </div>
+              <div>
+                <dt>Verify rule</dt>
+                <dd>SSID match only; not full reachability validation</dd>
+              </div>
+            </dl>
+            <div class="summary-note">Connect changes the Wi-Fi profile. Verify checks current SSID state but does not guarantee end-to-end network reachability.</div>
+          </div>
+
           <div class="mb-3">
             <label class="form-label fw-semibold">Target scope</label>
             <div class="mb-1">
@@ -23,8 +47,7 @@
             <div class="target-grid">
               {% for target in allowed_targets %}
                 <div class="form-check">
-                  <input class="form-check-input target-check" type="checkbox" name="targets" value="{{ target }}" id="target-{{ loop.index }}"
-                    {% if target in selected_targets %}checked{% endif %}>
+                  <input class="form-check-input target-check" type="checkbox" name="targets" value="{{ target }}" id="target-{{ loop.index }}" {% if target in selected_targets %}checked{% endif %}>
                   <label class="form-check-label" for="target-{{ loop.index }}">{{ target }}</label>
                 </div>
               {% endfor %}
@@ -33,7 +56,7 @@
 
           <div class="mb-3">
             <label class="form-label fw-semibold">SSID</label>
-            <input class="form-control" type="text" name="ssid" value="{{ ssid }}" required placeholder="Wi-Fi network name">
+            <input class="form-control" type="text" name="ssid" id="ssid-field" value="{{ ssid }}" required placeholder="Wi-Fi network name">
           </div>
 
           <div class="mb-3">
@@ -54,8 +77,8 @@
           </div>
 
           <div class="d-flex gap-2 flex-wrap">
-            <button class="btn btn-primary" type="submit" name="action" value="connect">Connect</button>
-            <button class="btn btn-outline-info" type="submit" name="action" value="verify">Verify</button>
+            <button class="btn btn-primary" type="submit" name="action" value="connect" data-running-label="Connecting...">Connect</button>
+            <button class="btn btn-outline-info" type="submit" name="action" value="verify" data-running-label="Verifying...">Verify</button>
           </div>
         </form>
       </div>
@@ -64,7 +87,7 @@
     <div class="card card-be200 zone-readonly mt-4">
       <div class="card-header">How it works</div>
       <div class="card-body small">
-        <p class="mb-2"><strong>Connect</strong> creates a Wi-Fi profile on each selected target and connects the BE200 adapter to the specified SSID. If a Wi-Fi password is provided, WPA2-Personal authentication is used; otherwise, an open-network profile is created.</p>
+        <p class="mb-2"><strong>Connect</strong> creates a Wi-Fi profile on each selected target and connects the BE200 adapter to the specified SSID.</p>
         <p class="mb-2"><strong>Verify</strong> checks whether each target's BE200 adapter is currently connected to the expected SSID.</p>
         <p class="mb-0 text-muted">Only the allowlisted BE200 adapter is targeted. Ethernet and other adapters are never modified.</p>
       </div>
@@ -86,8 +109,8 @@
         {% endif %}
       </div>
       <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-bordered table-sm mb-0 table-be200" style="font-size: 0.85rem;">
+        <div class="table-responsive table-responsive-sticky">
+          <table class="table table-bordered table-sm mb-0 table-be200 table-sticky" style="font-size: 0.85rem;">
             <thead>
               <tr>
                 <th>Target</th>
@@ -102,26 +125,26 @@
             </thead>
             <tbody>
               {% for row in result_rows %}
-                <tr class="{% if row.Success|lower == 'true' %}table-success{% elif row.State|lower == 'error' %}table-danger{% else %}table-warning{% endif %}">
-                  <td>{{ row.TargetIP }}</td>
+                <tr class="{% if row.Success|lower == 'true' %}row-success{% elif row.State|lower == 'error' %}row-danger{% else %}row-warning{% endif %}">
+                  <td class="font-mono">{{ row.TargetIP }}</td>
                   <td>{{ row.AdapterName or '--' }}</td>
                   <td>{{ row.RequestedSSID or '--' }}</td>
                   <td>
                     {% if row.State|lower == 'connected' %}
-                      <span class="badge text-bg-success">{{ row.State }}</span>
+                      <span class="badge text-bg-success badge-be200">{{ row.State }}</span>
                     {% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}
-                      <span class="badge text-bg-danger">{{ row.State }}</span>
+                      <span class="badge text-bg-danger badge-be200">{{ row.State }}</span>
                     {% else %}
-                      <span class="badge text-bg-warning">{{ row.State }}</span>
+                      <span class="badge text-bg-warning badge-be200">{{ row.State }}</span>
                     {% endif %}
                   </td>
                   <td>{{ row.SSID or '--' }}</td>
                   <td>{{ row.RadioType or '--' }}</td>
                   <td>
                     {% if row.Success|lower == 'true' %}
-                      <span class="badge text-bg-success">Yes</span>
+                      <span class="badge text-bg-success badge-be200">Yes</span>
                     {% else %}
-                      <span class="badge text-bg-danger">No</span>
+                      <span class="badge text-bg-danger badge-be200">No</span>
                     {% endif %}
                   </td>
                   <td class="small">{{ row.Message or '--' }}</td>
@@ -145,12 +168,24 @@
 <script>
   (() => {
     const checks = Array.from(document.querySelectorAll('.target-check'));
+    const ssidField = document.getElementById('ssid-field');
+    const targetSummary = document.getElementById('wifi-summary-targets');
+    const ssidSummary = document.getElementById('wifi-summary-ssid');
     document.getElementById('select-all-btn').addEventListener('click', () => {
       checks.forEach(c => c.checked = true);
+      refreshSummary();
     });
     document.getElementById('clear-all-btn').addEventListener('click', () => {
       checks.forEach(c => c.checked = false);
+      refreshSummary();
     });
+    checks.forEach((item) => item.addEventListener('change', refreshSummary));
+    ssidField.addEventListener('input', refreshSummary);
+
+    function refreshSummary() {
+      targetSummary.textContent = `${checks.filter(c => c.checked).length} selected`;
+      ssidSummary.textContent = ssidField.value.trim() || 'Not set';
+    }
 
     document.getElementById('wifi-connect-form').addEventListener('submit', (e) => {
       const selected = checks.filter(c => c.checked);
@@ -159,13 +194,13 @@
         alert('Select at least one target.');
         return;
       }
-      const ssid = document.querySelector('input[name="ssid"]').value.trim();
+      const ssid = ssidField.value.trim();
       if (!ssid) {
         e.preventDefault();
         alert('Enter an SSID.');
-        return;
       }
     });
+    refreshSummary();
   })();
 </script>
 {% endblock %}

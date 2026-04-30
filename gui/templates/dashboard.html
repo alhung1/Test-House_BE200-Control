@@ -1,17 +1,31 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, preflight_tile, status_badge, tone_badge %}
 
 {% block title %}Dashboard - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Dashboard</h1>
-  <p class="app-page-lead">Controller health, artifact locations, and recent jobs. Use the scope strip above to confirm fleet and adapter policy before any action.</p>
-</header>
+{{ page_header("Dashboard", "Controller health, artifact readiness, and recent job outcomes. Treat this page as the operator preflight screen before discovery, apply, or system-level actions.", "Read Only", "secondary") }}
+
+<section class="mb-4">
+  <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+    <h2 class="h5 mb-0">Preflight console</h2>
+    {% if preflight.unresolved_jobs %}
+      {{ tone_badge("warning", preflight.unresolved_jobs|length ~ " unresolved job(s)") }}
+    {% else %}
+      {{ tone_badge("ok", "No unresolved jobs") }}
+    {% endif %}
+  </div>
+  <div class="row g-4 preflight-grid">
+    {% for tile in preflight.tiles %}
+      {{ preflight_tile(tile) }}
+    {% endfor %}
+  </div>
+</section>
 
 <div class="row g-4">
   <div class="col-lg-4">
     <div class="card card-be200 h-100 zone-readonly">
-      <div class="card-header">Controller Status</div>
+      <div class="card-header">Controller status</div>
       <div class="card-body">
         <dl class="row mb-0">
           <dt class="col-sm-4">Host</dt>
@@ -19,17 +33,11 @@
           <dt class="col-sm-4">User</dt>
           <dd class="col-sm-8">{{ controller.user }}</dd>
           <dt class="col-sm-4">Toolkit</dt>
-          <dd class="col-sm-8 text-break">{{ toolkit_root }}</dd>
+          <dd class="col-sm-8 text-break font-mono">{{ toolkit_root }}</dd>
           <dt class="col-sm-4">Remoting</dt>
-          <dd class="col-sm-8">
-            {% if remoting_status.recent %}
-              <span class="badge text-bg-success">Recent</span>
-            {% else %}
-              <span class="badge text-bg-secondary">Not Recent</span>
-            {% endif %}
-          </dd>
+          <dd class="col-sm-8">{{ tone_badge('ok' if remoting_status.recent else 'warning', 'Recent' if remoting_status.recent else 'Needs refresh') }}</dd>
           <dt class="col-sm-4">Remoting CSV</dt>
-          <dd class="col-sm-8 text-break small">{{ remoting_status.path or "None" }}</dd>
+          <dd class="col-sm-8 text-break small font-mono">{{ remoting_status.path or "None" }}</dd>
         </dl>
       </div>
     </div>
@@ -37,21 +45,21 @@
 
   <div class="col-lg-4">
     <div class="card card-be200 h-100 zone-readonly">
-      <div class="card-header">Latest Artifacts</div>
+      <div class="card-header">Latest artifacts</div>
       <div class="card-body">
         <dl class="row mb-0">
           <dt class="col-sm-5">Discovery CSV</dt>
-          <dd class="col-sm-7 small text-break">{{ artifacts.discovery_csv or "None" }}</dd>
+          <dd class="col-sm-7 small text-break font-mono">{{ artifacts.discovery_csv or "None" }}</dd>
           <dt class="col-sm-5">Discovery JSON</dt>
-          <dd class="col-sm-7 small text-break">{{ artifacts.discovery_json or "None" }}</dd>
+          <dd class="col-sm-7 small text-break font-mono">{{ artifacts.discovery_json or "None" }}</dd>
           <dt class="col-sm-5">Template</dt>
-          <dd class="col-sm-7 small text-break">{{ artifacts.template_csv or "None" }}</dd>
+          <dd class="col-sm-7 small text-break font-mono">{{ artifacts.template_csv or "None" }}</dd>
           <dt class="col-sm-5">Property Matrix</dt>
-          <dd class="col-sm-7 small text-break">{{ artifacts.property_matrix_csv or "None" }}</dd>
+          <dd class="col-sm-7 small text-break font-mono">{{ artifacts.property_matrix_csv or "None" }}</dd>
           <dt class="col-sm-5">Validated Config</dt>
-          <dd class="col-sm-7 small text-break">{{ artifacts.validated_config_csv or "None" }}</dd>
+          <dd class="col-sm-7 small text-break font-mono">{{ artifacts.validated_config_csv or "None" }}</dd>
           <dt class="col-sm-5">Latest Apply</dt>
-          <dd class="col-sm-7 small text-break">{{ artifacts.apply_results_csv or "None" }}</dd>
+          <dd class="col-sm-7 small text-break font-mono">{{ artifacts.apply_results_csv or "None" }}</dd>
         </dl>
       </div>
     </div>
@@ -59,31 +67,67 @@
 
   <div class="col-lg-4">
     <div class="card card-be200 h-100 zone-action">
-      <div class="card-header">Quick Links</div>
+      <div class="card-header">Quick actions</div>
       <div class="card-body">
         <div class="d-grid gap-2">
           <a class="btn btn-primary" href="{{ url_for('inventory') }}">Open Inventory</a>
           <a class="btn btn-outline-primary" href="{{ url_for('editor') }}">Open Property Editor</a>
+          <a class="btn btn-outline-secondary" href="{{ url_for('current_settings') }}">Open Fleet Diff</a>
         </div>
+        {% if property_summary %}
+          <div class="summary-note">
+            <div><span class="helper-text-strong">{{ property_summary.live_tested }}</span> live-tested properties</div>
+            <div><span class="helper-text-strong">{{ property_summary.mixed_current_values }}</span> properties currently mixed across targets</div>
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
 
+{% if preflight.unresolved_jobs %}
+  <div class="preflight-issues mt-4">
+    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+      <h2 class="h6 mb-0">Needs attention</h2>
+      <a class="btn btn-sm btn-outline-danger" href="{{ url_for('history', actionable=1) }}">Show actionable history</a>
+    </div>
+    <div class="row g-3">
+      {% for item in preflight.unresolved_jobs %}
+        <div class="col-lg-6">
+          <div class="card card-be200 zone-risk h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <span>{{ item.title }}</span>
+              {{ tone_badge(status_tone(item.status), item.status) }}
+            </div>
+            <div class="card-body">
+              <div class="small text-muted mb-2">{{ item.started_at }}</div>
+              <div class="mb-2">{{ describe_result_overview(item) or "Review job detail for row-level results." }}</div>
+              <a class="btn btn-sm btn-outline-danger" href="{{ url_for('job_detail', job_id=item.id) }}">Open job</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
 <div class="row g-4 mt-1">
   <div class="col-lg-12">
     <div class="card card-be200">
-      <div class="card-header">Recent Jobs</div>
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Recent jobs</span>
+        <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('history') }}">Full history</a>
+      </div>
       <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-striped table-sm mb-0 table-be200">
+        <div class="table-responsive table-responsive-sticky">
+          <table class="table table-striped table-sm mb-0 table-be200 table-sticky">
             <thead>
               <tr>
                 <th>Started</th>
                 <th>Type</th>
                 <th>Title</th>
                 <th>Status</th>
-                <th>Summary</th>
+                <th>Outcome</th>
                 <th></th>
               </tr>
             </thead>
@@ -93,18 +137,16 @@
                   <td class="small">{{ item.started_at }}</td>
                   <td>{{ item.job_type }}</td>
                   <td>{{ item.title }}</td>
-                  <td>
-                    <span class="badge {% if item.status == 'success' %}text-bg-success{% else %}text-bg-danger{% endif %}">
-                      {{ item.status }}
-                    </span>
-                  </td>
+                  <td>{{ status_badge(item.status, describe_result_overview(item)) }}</td>
                   <td class="small">
                     {% if item.summary.property_label %}
-                      {{ item.summary.property_label }}
-                    {% elif item.summary.action %}
-                      {{ item.summary.action }}
-                    {% elif item.summary.property_total %}
-                      {{ item.summary.property_total }} properties
+                      <div><strong>{{ item.summary.property_label }}</strong></div>
+                    {% endif %}
+                    {% if item.summary.action %}
+                      <div>action: {{ item.summary.action }}</div>
+                    {% endif %}
+                    {% if item.status_reason %}
+                      <div>{{ item.status_reason }}</div>
                     {% endif %}
                   </td>
                   <td><a class="btn btn-sm btn-outline-secondary" href="{{ url_for('job_detail', job_id=item.id) }}">Open</a></td>

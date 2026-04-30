@@ -1,12 +1,19 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge, status_badge %}
 
 {% block title %}Property Editor - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Property editor</h1>
-  <p class="app-page-lead">Build configs from the <strong>accepted</strong> catalog only. Validation shows modes and row status; <strong>real apply</strong> requires an explicit checkbox confirmation.</p>
-</header>
+{{ page_header("Property Editor", "Build configs from the <strong>accepted</strong> catalog only. Validation stays in the PowerShell toolkit, while this page adds stronger pre-apply summaries and discovery freshness checks.", "Configuration / State Change", "primary") }}
+
+{% if discovery_freshness %}
+  <div class="alert alert-{{ 'success' if discovery_freshness.state == 'ok' else ('warning' if discovery_freshness.state == 'warning' else 'danger') }}">
+    <strong>Discovery freshness:</strong> {{ discovery_freshness.banner }}
+    {% if discovery_freshness.path %}
+      <div class="small font-mono mt-1">{{ discovery_freshness.path }}</div>
+    {% endif %}
+  </div>
+{% endif %}
 
 <div class="row g-4">
   <div class="col-lg-5">
@@ -18,17 +25,40 @@
             No discovery snapshot is available yet. Run a discovery refresh from the Inventory page first.
           </div>
         {% else %}
-          <form method="post" id="editor-form">
+          <form method="post" id="editor-form" data-guarded-submit="true">
             <input type="hidden" name="action" value="validate">
             <input type="hidden" name="discovery_path" value="{{ discovery_path }}">
             <input type="hidden" name="property_entries" id="property-entries-field" value="{{ property_entries_json }}">
+
+            <div class="summary-card mb-3">
+              <h6>Execution summary</h6>
+              <dl class="summary-list">
+                <div>
+                  <dt>Targets</dt>
+                  <dd id="editor-summary-targets">{{ selected_targets|length }} selected</dd>
+                </div>
+                <div>
+                  <dt>Properties</dt>
+                  <dd id="editor-summary-properties">0 configured</dd>
+                </div>
+                <div>
+                  <dt>Mode</dt>
+                  <dd id="editor-summary-mode">{{ selected_mode }}</dd>
+                </div>
+                <div>
+                  <dt>Script</dt>
+                  <dd><code>validate-be200-config.ps1</code></dd>
+                </div>
+              </dl>
+              <div class="summary-note" id="editor-summary-note">Validation writes a report and validated config only. No live change happens until real apply is explicitly confirmed later.</div>
+            </div>
 
             <div class="mb-3">
               <label class="form-label">Target scope</label>
               <div class="target-grid">
                 {% for target in allowed_targets %}
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="targets" value="{{ target }}" id="target-{{ loop.index }}" {% if target in selected_targets %}checked{% endif %}>
+                    <input class="form-check-input editor-target" type="checkbox" name="targets" value="{{ target }}" id="target-{{ loop.index }}" {% if target in selected_targets %}checked{% endif %}>
                     <label class="form-check-label" for="target-{{ loop.index }}">{{ target }}</label>
                   </div>
                 {% endfor %}
@@ -52,7 +82,7 @@
 
             <div id="property-rows-container"></div>
 
-            <button class="btn btn-primary w-100 mt-3" type="submit">Run validation</button>
+            <button class="btn btn-primary w-100 mt-3" type="submit" data-running-label="Validating...">Run validation</button>
           </form>
         {% endif %}
       </div>
@@ -64,8 +94,8 @@
       <div class="card card-be200 mb-4 zone-readonly">
         <div class="card-header">Generated config preview <span class="badge text-bg-secondary ms-2">{{ preview_rows|length }} rows</span></div>
         <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-sm mb-0 table-be200">
+          <div class="table-responsive table-responsive-sticky">
+            <table class="table table-sm mb-0 table-be200 table-sticky">
               <thead>
                 <tr>
                   <th>Target</th>
@@ -77,7 +107,7 @@
               <tbody>
                 {% for row in preview_rows %}
                   <tr>
-                    <td>{{ row.target_ip }}</td>
+                    <td class="font-mono">{{ row.target_ip }}</td>
                     <td>{{ row.property_label }}</td>
                     <td>{{ row.current_value }}</td>
                     <td>{{ row.target_value }}</td>
@@ -92,28 +122,48 @@
 
     {% if validation_view %}
       <div class="card card-be200 mb-4 zone-readonly">
-        <div class="card-header">Validation summary</div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>Validation summary</span>
+          {{ status_badge(validation_view.job.status, describe_result_overview(validation_view.job)) }}
+        </div>
         <div class="card-body">
-          <p class="mb-1"><strong>Status:</strong> {{ validation_view.job.status }}</p>
-          <p class="mb-1"><strong>Properties:</strong> {{ validation_view.job.summary.property_label }}</p>
-          <p class="mb-1"><strong>Property count:</strong> {{ validation_view.job.summary.property_count or 1 }}</p>
-          <p class="mb-1"><strong>Mode:</strong> {{ validation_view.job.summary.mode }}</p>
-          <p class="mb-1"><strong>Accepted modes:</strong> {{ validation_view.job.summary.accepted_modes|join(", ") if validation_view.job.summary.accepted_modes else "None" }}</p>
-          <p class="mb-1"><strong>Valid rows:</strong> {{ validation_view.summary_block.Valid }}</p>
-          <p class="mb-1"><strong>Skipped rows:</strong> {{ validation_view.summary_block.Skipped }}</p>
-          <p class="mb-3"><strong>Invalid rows:</strong> {{ validation_view.summary_block.Invalid }}</p>
-          <p class="small text-break mb-0">
-            Validation report: {{ validation_view.job.artifacts.validation_report_csv }}<br>
-            Validated config: {{ validation_view.job.artifacts.validated_config_csv }}
-          </p>
+          <div class="result-chip-row mb-3">
+            {{ tone_badge("success", validation_view.summary_block.Valid ~ " valid") }}
+            {{ tone_badge("warning", validation_view.summary_block.Skipped ~ " skipped") }}
+            {{ tone_badge("danger", validation_view.summary_block.Invalid ~ " invalid") }}
+          </div>
+          <div class="summary-card">
+            <dl class="summary-list">
+              <div>
+                <dt>Properties</dt>
+                <dd>{{ validation_view.job.summary.property_label }}</dd>
+              </div>
+              <div>
+                <dt>Property count</dt>
+                <dd>{{ validation_view.job.summary.property_count or 1 }}</dd>
+              </div>
+              <div>
+                <dt>Mode</dt>
+                <dd>{{ validation_view.job.summary.mode }}</dd>
+              </div>
+              <div>
+                <dt>Accepted modes</dt>
+                <dd>{{ validation_view.job.summary.accepted_modes|join(", ") if validation_view.job.summary.accepted_modes else "None" }}</dd>
+              </div>
+            </dl>
+            <div class="summary-note">
+              <div>Validation report: <span class="font-mono">{{ validation_view.job.artifacts.validation_report_csv }}</span></div>
+              <div>Validated config: <span class="font-mono">{{ validation_view.job.artifacts.validated_config_csv }}</span></div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="card card-be200 mb-4 zone-readonly">
         <div class="card-header">Validation rows</div>
         <div class="card-body p-0">
-          <div class="table-responsive">
-            <table class="table table-striped table-sm mb-0 table-be200">
+          <div class="table-responsive table-responsive-sticky">
+            <table class="table table-striped table-sm mb-0 table-be200 table-sticky">
               <thead>
                 <tr>
                   <th>Status</th>
@@ -126,9 +176,9 @@
               </thead>
               <tbody>
                 {% for row in validation_view.rows %}
-                  <tr>
+                  <tr class="{% if row.ValidationStatus == 'Invalid' %}row-danger{% elif row.ValidationStatus == 'Skipped' %}row-warning{% else %}row-success{% endif %}">
                     <td>{{ row.ValidationStatus }}</td>
-                    <td>{{ row.EffectiveTargetIP }}</td>
+                    <td class="font-mono">{{ row.EffectiveTargetIP }}</td>
                     <td>{{ row.PropertyDisplayName or row.RegistryKeyword }}</td>
                     <td>{{ row.CurrentValue }}</td>
                     <td>{{ row.TargetValue }}</td>
@@ -164,9 +214,34 @@
         </div>
       {% elif validation_view.job.status == "success" and validation_view.summary_block.Valid > 0 %}
         <div class="card card-be200 zone-risk">
-          <div class="card-header">Real apply — confirmation required</div>
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Real apply - confirmation required</span>
+            {{ tone_badge("danger", "Live change") }}
+          </div>
           <div class="card-body">
-            <form method="post">
+            <div class="summary-card mb-3">
+              <h6>Execution summary</h6>
+              <dl class="summary-list">
+                <div>
+                  <dt>Validated rows</dt>
+                  <dd>{{ validation_view.summary_block.Valid }}</dd>
+                </div>
+                <div>
+                  <dt>Mode</dt>
+                  <dd>{{ selected_mode }}</dd>
+                </div>
+                <div>
+                  <dt>Script</dt>
+                  <dd><code>apply-be200-config.ps1</code></dd>
+                </div>
+                <div>
+                  <dt>Adapter restart</dt>
+                  <dd>{{ "Yes" if selected_mode == "RestartBE200" else "No" }}</dd>
+                </div>
+              </dl>
+              <div class="summary-note">This step writes the validated config to selected targets and records apply results plus rollback artifacts.</div>
+            </div>
+            <form method="post" data-guarded-submit="true">
               <input type="hidden" name="action" value="apply">
               <input type="hidden" name="validation_job_id" value="{{ validation_view.job.id }}">
               <input type="hidden" name="mode" value="{{ selected_mode }}">
@@ -186,7 +261,7 @@
                   </label>
                 </div>
               </div>
-              <button class="btn btn-danger mt-3" type="submit">Run real apply</button>
+              <button class="btn btn-danger mt-3" type="submit" data-running-label="Applying...">Run real apply</button>
             </form>
           </div>
         </div>
@@ -215,14 +290,38 @@
     const addBtn = document.getElementById("add-property-btn");
     const hiddenField = document.getElementById("property-entries-field");
     const form = document.getElementById("editor-form");
+    const modeSelect = document.getElementById("mode-select");
+    const summaryTargets = document.getElementById("editor-summary-targets");
+    const summaryProperties = document.getElementById("editor-summary-properties");
+    const summaryMode = document.getElementById("editor-summary-mode");
+    const summaryNote = document.getElementById("editor-summary-note");
+    const targetChecks = Array.from(document.querySelectorAll(".editor-target"));
     let rowIndex = 0;
 
     function buildOptionHtml() {
       let html = '<option value="">Select an accepted property</option>';
       catalog.forEach((item) => {
-        html += `<option value="${item.key}">${item.label}</option>`;
+        html += `<option value="${item.key}">${item.label} [${item.risk}]</option>`;
       });
       return html;
+    }
+
+    function refreshSummary() {
+      const selectedTargets = targetChecks.filter((item) => item.checked).length;
+      const entries = Array.from(container.querySelectorAll(".property-row"));
+      const selectedProperties = entries
+        .map((row) => row.querySelector("select")?.value || "")
+        .filter(Boolean)
+        .map((value) => catalog.find((item) => item.key === value))
+        .filter(Boolean);
+      const risks = [...new Set(selectedProperties.map((item) => item.risk))];
+      const labels = selectedProperties.map((item) => item.label);
+      summaryTargets.textContent = `${selectedTargets} selected`;
+      summaryProperties.textContent = `${selectedProperties.length} configured`;
+      summaryMode.textContent = modeSelect.value;
+      summaryNote.textContent = selectedProperties.length
+        ? `Selected properties: ${labels.join(", ")}. Risk bands in this set: ${risks.join(", ") || "none"}.`
+        : "Validation writes a report and validated config only. No live change happens until real apply is explicitly confirmed later.";
     }
 
     function addRow(prefillKey, prefillValue) {
@@ -250,7 +349,7 @@
       removeBtn.type = "button";
       removeBtn.className = "btn btn-sm btn-outline-danger w-100";
       removeBtn.textContent = "Remove";
-      removeBtn.addEventListener("click", () => { div.remove(); syncHidden(); });
+      removeBtn.addEventListener("click", () => { div.remove(); syncHidden(); refreshSummary(); });
 
       function refreshValues() {
         const item = catalog.find((c) => c.key === propSelect.value);
@@ -269,11 +368,12 @@
         });
         valSelect.disabled = values.length === 0;
         syncHidden();
+        refreshSummary();
       }
 
       propSelect.addEventListener("change", refreshValues);
-      valSelect.addEventListener("change", () => { if (valSelect.value) valInput.value = valSelect.value; syncHidden(); });
-      valInput.addEventListener("input", syncHidden);
+      valSelect.addEventListener("change", () => { if (valSelect.value) valInput.value = valSelect.value; syncHidden(); refreshSummary(); });
+      valInput.addEventListener("input", () => { syncHidden(); refreshSummary(); });
 
       div.appendChild(propSelect);
       div.appendChild(valSelect);
@@ -288,24 +388,33 @@
       container.querySelectorAll(".property-row").forEach((row) => {
         const sel = row.querySelector("select");
         const inp = row.querySelector('input[type="text"]');
-        if (sel && sel.value && inp && inp.value) {
-          entries.push({ property_key: sel.value, target_value: inp.value });
+        if (sel && sel.value && inp) {
+          entries.push({ property_key: sel.value, target_value: inp.value || "" });
         }
       });
       hiddenField.value = JSON.stringify(entries);
     }
 
-    addBtn.addEventListener("click", () => addRow("", ""));
+    if (addBtn) {
+      addBtn.addEventListener("click", () => addRow("", ""));
+    }
 
-    form.addEventListener("submit", (e) => {
-      syncHidden();
-      let entries;
-      try { entries = JSON.parse(hiddenField.value); } catch { entries = []; }
-      if (!entries.length) {
-        e.preventDefault();
-        alert("Add at least one property row with a selected property and target value.");
-      }
-    });
+    targetChecks.forEach((item) => item.addEventListener("change", refreshSummary));
+    if (modeSelect) {
+      modeSelect.addEventListener("change", refreshSummary);
+    }
+
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        syncHidden();
+        let entries;
+        try { entries = JSON.parse(hiddenField.value); } catch { entries = []; }
+        if (!entries.length || entries.every((entry) => !entry.target_value)) {
+          e.preventDefault();
+          alert("Add at least one property row with a selected property and target value.");
+        }
+      });
+    }
 
     try {
       const saved = JSON.parse(hiddenField.value);
@@ -313,6 +422,7 @@
         saved.forEach((entry) => addRow(entry.property_key || "", entry.target_value || ""));
       }
     } catch {}
+    refreshSummary();
   })();
 </script>
 {% endblock %}

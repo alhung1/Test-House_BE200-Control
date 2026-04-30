@@ -1,18 +1,53 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, status_badge, tone_badge %}
 
 {% block title %}History - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Execution history</h1>
-  <p class="app-page-lead">Full job list with property labels, modes, targets, and classifications preserved for audit.</p>
-</header>
+{{ page_header("Execution History", "Filter by status, job type, or target-related search terms to focus on the runs that still need operator follow-up.", "Overview", "secondary") }}
 
-<div class="card card-be200">
-  <div class="card-header">All jobs</div>
+<div class="card card-be200 mb-4">
+  <form method="get" class="filter-bar" data-guarded-submit="true">
+    <div>
+      <label class="form-label form-label-sm mb-1">Status</label>
+      <select class="form-select form-select-sm" name="status">
+        <option value="">All</option>
+        <option value="success" {% if filters.status == 'success' %}selected{% endif %}>Success</option>
+        <option value="partial" {% if filters.status == 'partial' %}selected{% endif %}>Partial</option>
+        <option value="failed" {% if filters.status == 'failed' %}selected{% endif %}>Failed</option>
+      </select>
+    </div>
+    <div>
+      <label class="form-label form-label-sm mb-1">Job type</label>
+      <select class="form-select form-select-sm" name="job_type">
+        <option value="">All</option>
+        {% for item in job_types %}
+          <option value="{{ item }}" {% if filters.job_type == item %}selected{% endif %}>{{ item }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="flex-grow-1">
+      <label class="form-label form-label-sm mb-1">Search</label>
+      <input class="form-control form-control-sm" type="text" name="search" value="{{ filters.search }}" placeholder="Target IP, property label, keyword, action, script">
+    </div>
+    <div class="form-check mb-2">
+      <input class="form-check-input" type="checkbox" name="actionable" value="1" id="actionable-only" {% if filters.actionable_only %}checked{% endif %}>
+      <label class="form-check-label small" for="actionable-only">Show only partial / failed</label>
+    </div>
+    <div class="d-flex gap-2">
+      <button class="btn btn-sm btn-primary" type="submit">Apply filters</button>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('history') }}">Reset</a>
+    </div>
+  </form>
   <div class="card-body p-0">
-    <div class="table-responsive">
-      <table class="table table-striped table-sm mb-0 table-be200">
+    <div class="d-flex flex-wrap align-items-center justify-content-between px-3 py-2 border-bottom small text-muted">
+      <div>{{ history|length }} shown of {{ total_history_count }} job(s)</div>
+      {% if filters.actionable_only %}
+        {{ tone_badge("warning", "Actionable view") }}
+      {% endif %}
+    </div>
+    <div class="table-responsive table-responsive-sticky">
+      <table class="table table-striped table-sm mb-0 table-be200 table-sticky">
         <thead>
           <tr>
             <th>Started</th>
@@ -29,11 +64,7 @@
               <td class="small">{{ item.started_at }}</td>
               <td>{{ item.job_type }}</td>
               <td>{{ item.title }}</td>
-              <td>
-                <span class="badge {% if item.status == 'success' %}text-bg-success{% else %}text-bg-danger{% endif %}">
-                  {{ item.status }}
-                </span>
-              </td>
+              <td>{{ status_badge(item.status, describe_result_overview(item)) }}</td>
               <td class="small">
                 {% if item.summary.property_label %}
                   <div><strong>{{ item.summary.property_label }}</strong></div>
@@ -53,16 +84,15 @@
                   <div>targets: {{ item.summary.targets }}</div>
                 {% elif item.summary.action %}
                   <div>action: {{ item.summary.action }}</div>
-                {% elif item.summary.property_total %}
-                  <div>properties: {{ item.summary.property_total }}</div>
-                {% else %}
-                  <code>{{ item.summary }}</code>
+                {% endif %}
+                {% if describe_result_overview(item) %}
+                  <div>{{ describe_result_overview(item) }}</div>
                 {% endif %}
               </td>
               <td><a class="btn btn-sm btn-outline-secondary" href="{{ url_for('job_detail', job_id=item.id) }}">Open</a></td>
             </tr>
           {% else %}
-            <tr><td colspan="6" class="text-center text-muted py-4">No GUI jobs recorded yet.</td></tr>
+            <tr><td colspan="6" class="text-center text-muted py-4">No jobs match the current filter.</td></tr>
           {% endfor %}
         </tbody>
       </table>

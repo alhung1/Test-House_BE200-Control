@@ -1,16 +1,14 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge %}
 
 {% block title %}Wi-Fi Status - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Wi-Fi status</h1>
-  <p class="app-page-lead">Read-only check across fleet targets <code class="small">192.168.22.221</code>–<code class="small">228</code> (see scope strip). No configuration changes.</p>
-</header>
+{{ page_header("Wi-Fi Status", "Read-only check across fleet targets <code>192.168.22.221</code>-<code>228</code>. No configuration changes happen on this page.", "Read Only", "secondary") }}
 
 <div class="row g-4 mb-4">
   <div class="col-auto">
-    <form method="post" class="d-flex align-items-end gap-2 flex-wrap">
+    <form method="post" class="d-flex align-items-end gap-2 flex-wrap" data-guarded-submit="true">
       <input type="hidden" name="action" value="check_status">
       <div>
         <label class="form-label form-label-sm mb-0">Username</label>
@@ -20,7 +18,7 @@
         <label class="form-label form-label-sm mb-0">Password</label>
         <input class="form-control form-control-sm" type="password" name="password" required style="width:140px">
       </div>
-      <button class="btn btn-sm btn-primary" type="submit">Check status</button>
+      <button class="btn btn-sm btn-primary" type="submit" data-running-label="Checking...">Check status</button>
     </form>
   </div>
 </div>
@@ -38,8 +36,8 @@
     {% endif %}
   </div>
   <div class="card-body p-0">
-    <div class="table-responsive">
-      <table class="table table-bordered table-sm mb-0 table-be200" style="font-size: 0.85rem;">
+    <div class="table-responsive table-responsive-sticky">
+      <table class="table table-bordered table-sm mb-0 table-be200 table-sticky" style="font-size: 0.85rem;">
         <thead>
           <tr>
             <th>Target</th>
@@ -55,16 +53,16 @@
         </thead>
         <tbody>
           {% for row in status_rows %}
-            <tr class="{% if row.State|lower == 'connected' %}table-success{% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}table-danger{% else %}table-warning{% endif %}">
-              <td>{{ row.TargetIP }}</td>
+            <tr class="{% if row.State|lower == 'connected' %}row-success{% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}row-danger{% else %}row-warning{% endif %}">
+              <td class="font-mono">{{ row.TargetIP }}</td>
               <td>{{ row.AdapterName or '--' }}</td>
               <td>
                 {% if row.State|lower == 'connected' %}
-                  <span class="badge text-bg-success">{{ row.State }}</span>
+                  <span class="badge text-bg-success badge-be200">{{ row.State }}</span>
                 {% elif row.State|lower == 'error' or row.State|lower == 'disabled' %}
-                  <span class="badge text-bg-danger">{{ row.State }}</span>
+                  <span class="badge text-bg-danger badge-be200">{{ row.State }}</span>
                 {% else %}
-                  <span class="badge text-bg-warning">{{ row.State }}</span>
+                  <span class="badge text-bg-warning badge-be200">{{ row.State }}</span>
                 {% endif %}
               </td>
               <td>{{ row.SSID or '--' }}</td>
@@ -83,7 +81,7 @@
 {% else %}
   <div class="card card-be200 zone-readonly">
     <div class="card-body text-muted">
-      Enter credentials and click <strong>Check status</strong> to view the current Wi-Fi state across all managed BE200 targets (192.168.22.221–228).
+      Enter credentials and click <strong>Check status</strong> to view the current Wi-Fi state across all managed BE200 targets.
     </div>
   </div>
 {% endif %}

@@ -11,6 +11,7 @@
   <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
 </head>
 <body>
+  {% from "_macros.html" import tone_badge %}
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <nav class="navbar navbar-expand-lg navbar-dark app-navbar mb-0">
     <div class="container-fluid px-4 py-2">
@@ -20,17 +21,18 @@
       </button>
       <div class="collapse navbar-collapse" id="mainNav">
         <div class="navbar-nav ms-auto flex-wrap align-items-lg-center gap-lg-1 py-lg-0 py-2">
-          <div class="nav-label d-none d-lg-block">Monitor</div>
+          <div class="nav-label d-none d-lg-block">Overview</div>
           <a class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}" href="{{ url_for('dashboard') }}">Dashboard</a>
           <a class="nav-link {% if request.endpoint == 'history' %}active{% endif %}" href="{{ url_for('history') }}">History</a>
-          <div class="nav-label d-none d-lg-block">Configure</div>
+          <div class="nav-label d-none d-lg-block">Discovery</div>
           <a class="nav-link {% if request.endpoint == 'inventory' %}active{% endif %}" href="{{ url_for('inventory') }}">Inventory</a>
           <a class="nav-link {% if request.endpoint == 'current_settings' %}active{% endif %}" href="{{ url_for('current_settings') }}">Current Settings</a>
+          <div class="nav-label d-none d-lg-block">Configuration</div>
           <a class="nav-link {% if request.endpoint == 'editor' %}active{% endif %}" href="{{ url_for('editor') }}">Property Editor</a>
-          <div class="nav-label d-none d-lg-block">Wi-Fi</div>
+          <div class="nav-label d-none d-lg-block">Operations</div>
           <a class="nav-link {% if request.endpoint == 'wifi_connect' %}active{% endif %}" href="{{ url_for('wifi_connect') }}">Wi-Fi Connect</a>
           <a class="nav-link {% if request.endpoint == 'wifi_status' %}active{% endif %}" href="{{ url_for('wifi_status') }}">Wi-Fi Status</a>
-          <div class="nav-label d-none d-lg-block">System</div>
+          <a class="nav-link {% if request.endpoint == 'open_ncpa' %}active{% endif %}" href="{{ url_for('open_ncpa') }}">Open NCPA</a>
           <a class="nav-link {% if request.endpoint == 'system_restart_rdp' %}active{% endif %}" href="{{ url_for('system_restart_rdp') }}">Restart + RDP</a>
         </div>
       </div>
@@ -40,9 +42,11 @@
   <main id="main-content" class="container-fluid px-4 pb-5 pt-3 app-main" tabindex="-1">
     <div class="scope-strip" role="region" aria-label="Accepted operational scope">
       <span class="scope-strip-label">Fleet targets</span>
-      <span><code>192.168.22.221</code> – <code>192.168.22.228</code></span>
+      <span><code>{{ allowed_targets[0] }}</code> - <code>{{ allowed_targets[-1] }}</code></span>
       <span class="scope-strip-label ms-lg-3">Adapter policy</span>
       <span>Only allowlisted <strong>BE200</strong> adapters are in scope for changes; other NICs are never modified.</span>
+      <span class="scope-strip-label ms-lg-3">Runtime</span>
+      {{ tone_badge("ok", "Local operator GUI") }}
     </div>
 
     {% with messages = get_flashed_messages(with_categories=true) %}
@@ -60,5 +64,63 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (() => {
+      document.querySelectorAll("form[data-guarded-submit='true']").forEach((form) => {
+        if (form.dataset.submitGuardAttached === "yes") {
+          return;
+        }
+        form.dataset.submitGuardAttached = "yes";
+        form.addEventListener("submit", (event) => {
+          if (form.dataset.submitting === "yes") {
+            return;
+          }
+          form.dataset.submitting = "yes";
+          form.querySelectorAll("input[data-submit-proxy='true']").forEach((node) => node.remove());
+          const submitter = event.submitter;
+          if (submitter && submitter.name) {
+            const proxy = document.createElement("input");
+            proxy.type = "hidden";
+            proxy.name = submitter.name;
+            proxy.value = submitter.value;
+            proxy.dataset.submitProxy = "true";
+            form.appendChild(proxy);
+          }
+          Array.from(form.querySelectorAll("button[type='submit'], input[type='submit']")).forEach((button) => {
+            const isInput = button.tagName === "INPUT";
+            if (!button.dataset.originalText) {
+              button.dataset.originalText = isInput ? button.value : button.innerHTML;
+            }
+            button.disabled = true;
+            if (isInput) {
+              button.value = button.dataset.runningLabel || "Running...";
+            } else {
+              button.innerHTML = button.dataset.runningLabel || "Running...";
+            }
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-copy-target]").forEach((button) => {
+        button.dataset.originalLabel = button.textContent;
+        button.addEventListener("click", async () => {
+          const target = document.getElementById(button.dataset.copyTarget);
+          if (!target) {
+            return;
+          }
+          const text = target.textContent || target.value || "";
+          try {
+            await navigator.clipboard.writeText(text);
+            button.textContent = "Copied";
+          } catch {
+            button.textContent = "Copy failed";
+          }
+          setTimeout(() => {
+            button.textContent = button.dataset.originalLabel;
+          }, 1500);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

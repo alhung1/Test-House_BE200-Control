@@ -1,22 +1,42 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge %}
 
 {% block title %}Restart + RDP - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Fleet restart and RDP</h1>
-  <p class="app-page-lead">
-    <strong>OS restart</strong> on selected hosts (<code>192.168.22.221</code>–<code>228</code> only). Controller
-    <code>192.168.22.8</code> is never targeted. After restart, the job waits for <strong>ping</strong> recovery;
-    optional TCP 3389 check does not guarantee RDP logon. RDP sessions open from this PC via <code>mstsc</code> (sequential).
-  </p>
-</header>
+{{ page_header("Fleet Restart and RDP", "<strong>OS restart</strong> on selected hosts only. Controller <code>192.168.22.8</code> is never targeted. Success means ping recovery plus optional TCP 3389 reachability, not guaranteed desktop readiness.", "System Level", "danger") }}
 
-<div class="card card-be200 zone-risk mb-4">
-  <div class="card-header">Run workflow</div>
+<div class="card card-be200 zone-system mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Run workflow</span>
+    {{ tone_badge("danger", "OS restart") }}
+  </div>
   <div class="card-body">
-    <form method="post" id="restart-rdp-form">
+    <form method="post" id="restart-rdp-form" data-guarded-submit="true">
       <input type="hidden" name="action" value="run">
+      <div class="summary-card mb-3">
+        <h6>Execution summary</h6>
+        <dl class="summary-list">
+          <div>
+            <dt>Targets</dt>
+            <dd id="restart-summary-targets">{{ selected_targets|length }} selected</dd>
+          </div>
+          <div>
+            <dt>Script</dt>
+            <dd><code>orchestrate-restart-rdp.ps1</code></dd>
+          </div>
+          <div>
+            <dt>Ping timeout</dt>
+            <dd id="restart-summary-timeout">{{ ping_timeout_minutes }} minute(s)</dd>
+          </div>
+          <div>
+            <dt>RDP launch</dt>
+            <dd id="restart-summary-rdp">{{ "Automatic" if auto_open_rdp else "Manual only" }}</dd>
+          </div>
+        </dl>
+        <div class="summary-note" id="restart-summary-note">This workflow records restart outcome, ping recovery, optional TCP 3389 state, and mstsc launch status.</div>
+      </div>
+
       <div class="mb-3">
         <label class="form-label fw-semibold">Targets</label>
         <div class="mb-1">
@@ -26,8 +46,7 @@
         <div class="target-grid">
           {% for target in allowed_targets %}
             <div class="form-check">
-              <input class="form-check-input tgt" type="checkbox" name="targets" value="{{ target }}" id="t-{{ loop.index }}"
-                {% if target in selected_targets %}checked{% endif %}>
+              <input class="form-check-input tgt" type="checkbox" name="targets" value="{{ target }}" id="t-{{ loop.index }}" {% if target in selected_targets %}checked{% endif %}>
               <label class="form-check-label" for="t-{{ loop.index }}">{{ target }}</label>
             </div>
           {% endfor %}
@@ -36,7 +55,7 @@
       <div class="row g-3 mb-3">
         <div class="col-md-4">
           <label class="form-label">Ping timeout (minutes)</label>
-          <input class="form-control" type="number" name="ping_timeout_minutes" value="{{ ping_timeout_minutes }}" min="1" max="120">
+          <input class="form-control" type="number" name="ping_timeout_minutes" id="ping-timeout" value="{{ ping_timeout_minutes }}" min="1" max="120">
         </div>
         <div class="col-md-4">
           <label class="form-label">Seconds between RDP launches</label>
@@ -45,7 +64,7 @@
       </div>
       <div class="form-check mb-2">
         <input class="form-check-input" type="checkbox" name="check_rdp_port" value="yes" id="chk-rdp" {% if check_rdp_port %}checked{% endif %}>
-        <label class="form-check-label" for="chk-rdp">After ping, test TCP port 3389 (RDP listener — not logon test)</label>
+        <label class="form-check-label" for="chk-rdp">After ping, test TCP port 3389 (RDP listener only)</label>
       </div>
       <div class="form-check mb-3">
         <input class="form-check-input" type="checkbox" name="auto_open_rdp" value="yes" id="chk-auto" {% if auto_open_rdp %}checked{% endif %}>
@@ -67,7 +86,7 @@
           </label>
         </div>
       </div>
-      <button class="btn btn-danger mt-3" type="submit">Start restart + recovery job</button>
+      <button class="btn btn-danger mt-3" type="submit" data-running-label="Running restart...">Start restart + recovery job</button>
     </form>
   </div>
 </div>
@@ -77,12 +96,28 @@
 <script>
 (() => {
   const boxes = () => Array.from(document.querySelectorAll('.tgt'));
-  document.getElementById('select-all-btn').addEventListener('click', () => boxes().forEach(c => c.checked = true));
-  document.getElementById('clear-all-btn').addEventListener('click', () => boxes().forEach(c => c.checked = false));
+  const targetSummary = document.getElementById('restart-summary-targets');
+  const timeoutSummary = document.getElementById('restart-summary-timeout');
+  const rdpSummary = document.getElementById('restart-summary-rdp');
+  const pingTimeout = document.getElementById('ping-timeout');
+  const autoRdp = document.getElementById('chk-auto');
+  document.getElementById('select-all-btn').addEventListener('click', () => { boxes().forEach(c => c.checked = true); refreshSummary(); });
+  document.getElementById('clear-all-btn').addEventListener('click', () => { boxes().forEach(c => c.checked = false); refreshSummary(); });
+  boxes().forEach((box) => box.addEventListener('change', refreshSummary));
+  pingTimeout.addEventListener('input', refreshSummary);
+  autoRdp.addEventListener('change', refreshSummary);
+
+  function refreshSummary() {
+    targetSummary.textContent = `${boxes().filter(c => c.checked).length} selected`;
+    timeoutSummary.textContent = `${pingTimeout.value || 0} minute(s)`;
+    rdpSummary.textContent = autoRdp.checked ? 'Automatic' : 'Manual only';
+  }
+
   document.getElementById('restart-rdp-form').addEventListener('submit', (e) => {
     if (!boxes().some(c => c.checked)) { e.preventDefault(); alert('Select at least one target.'); return; }
-    if (!document.getElementById('confirm-r').checked) { e.preventDefault(); alert('Confirm the restart to proceed.'); return; }
+    if (!document.getElementById('confirm-r').checked) { e.preventDefault(); alert('Confirm the restart to proceed.'); }
   });
+  refreshSummary();
 })();
 </script>
 {% endblock %}

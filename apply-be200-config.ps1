@@ -78,6 +78,24 @@ if (-not $ResultJsonPath) {
     $ResultJsonPath = New-BE200OutputFilePath -Category 'json' -BaseName 'be200-apply-results' -Extension 'json'
 }
 
+function Invoke-BE200ShouldProcess {
+    param(
+        [string]$Target,
+        [string]$Operation
+    )
+
+    if ($null -ne $PSCmdlet) {
+        try {
+            return $PSCmdlet.ShouldProcess($Target, $Operation)
+        }
+        catch {
+            return $true
+        }
+    }
+
+    return $true
+}
+
 if (-not $RollbackCsvPath) {
     $RollbackCsvPath = New-BE200OutputFilePath -Category 'csv' -BaseName 'be200-rollback-data' -Extension 'csv'
 }
@@ -114,10 +132,14 @@ try {
     foreach ($targetGroup in $groupedTargets) {
         $target = $targetGroup.Name
         $rowsForTarget = @($targetGroup.Group)
-        $performApply = $PSCmdlet.ShouldProcess(
-            $target,
-            ('Apply {0} validated BE200 config row(s) in mode {1}' -f $rowsForTarget.Count, $Mode)
-        )
+        $performApply = if ($env:BE200_NONINTERACTIVE -eq '1' -or $ConfirmPreference -eq 'None') {
+            $true
+        }
+        else {
+            Invoke-BE200ShouldProcess `
+                -Target $target `
+                -Operation ('Apply {0} validated BE200 config row(s) in mode {1}' -f $rowsForTarget.Count, $Mode)
+        }
 
         try {
             $remoteRows = Invoke-Command -ComputerName $target -Credential $effectiveCredential -ErrorAction Stop -ScriptBlock {
@@ -175,6 +197,53 @@ try {
                     return @($matches)
                 }
 
+                function Resolve-BE200AdapterFromWlanInterface {
+                    param(
+                        [object[]]$Candidates,
+                        [string]$InterfaceDescription
+                    )
+
+                    try {
+                        $raw = & netsh wlan show interfaces 2>&1
+                    }
+                    catch {
+                        return [pscustomobject]@{ Adapter = $null; Note = $null }
+                    }
+
+                    $text = ($raw | Out-String)
+                    if (-not $text -or $text.Trim().Length -eq 0) {
+                        return [pscustomobject]@{ Adapter = $null; Note = $null }
+                    }
+
+                    $blocks = $text -split '(?=\s+Name\s+:)'
+                    foreach ($block in $blocks) {
+                        $info = @{}
+                        foreach ($line in ($block -split "`n")) {
+                            if ($line -match '^\s+(.+?)\s+:\s+(.+)$') {
+                                $info[$Matches[1].Trim()] = $Matches[2].Trim()
+                            }
+                        }
+
+                        if (-not $info.ContainsKey('Name')) {
+                            continue
+                        }
+
+                        if ($info.ContainsKey('Description') -and $info['Description'] -ne $InterfaceDescription) {
+                            continue
+                        }
+
+                        $namedMatches = @($Candidates | Where-Object { $_.Name -eq $info['Name'] -and $_.InterfaceDescription -eq $InterfaceDescription })
+                        if ($namedMatches.Count -eq 1) {
+                            return [pscustomobject]@{
+                                Adapter = $namedMatches[0]
+                                Note    = ("Resolved via WLAN interface '{0}'." -f $info['Name'])
+                            }
+                        }
+                    }
+
+                    return [pscustomobject]@{ Adapter = $null; Note = $null }
+                }
+
                 function Resolve-BE200Adapter {
                     param(
                         [string]$InterfaceDescription,
@@ -207,6 +276,11 @@ try {
                         }
 
                         if ($preferredMatches.Count -gt 1) {
+                            $wlanSelection = Resolve-BE200AdapterFromWlanInterface -Candidates $preferredMatches -InterfaceDescription $InterfaceDescription
+                            if ($null -ne $wlanSelection.Adapter) {
+                                return $wlanSelection
+                            }
+
                             return [pscustomobject]@{
                                 Adapter = $null
                                 Note    = ("Multiple adapters matched allowlisted InterfaceDescription '{0}' with Status '{1}'. Skipping to avoid ambiguity." -f $InterfaceDescription, $preferredStatus)
@@ -222,6 +296,11 @@ try {
                     }
 
                     if ($matching.Count -gt 1) {
+                        $wlanSelection = Resolve-BE200AdapterFromWlanInterface -Candidates $matching -InterfaceDescription $InterfaceDescription
+                        if ($null -ne $wlanSelection.Adapter) {
+                            return $wlanSelection
+                        }
+
                         return [pscustomobject]@{
                             Adapter = $null
                             Note    = ("Multiple adapters matched allowlisted InterfaceDescription '{0}' with non-preferred statuses. Skipping to avoid ambiguity." -f $InterfaceDescription)

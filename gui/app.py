@@ -15,6 +15,7 @@ from services import (
     inventory_summary,
     latest_artifacts,
     load_app_config,
+    load_flask_secret,
     load_csv,
     prepare_generated_config,
     prepare_multi_property_config,
@@ -38,6 +39,18 @@ from services import (
     run_restart_rdp_job,
     summarize_restart_rdp_rows,
     launch_mstsc_sequence,
+    run_open_ncpa_job,
+    summarize_open_ncpa_rows,
+)
+from view_models import (
+    build_editor_prefill_query,
+    build_preflight,
+    current_settings_view,
+    describe_result_overview,
+    discovery_freshness,
+    filter_history_items,
+    filter_job_rows,
+    status_tone,
 )
 
 
@@ -46,26 +59,45 @@ CONFIG = load_app_config(GUI_ROOT)
 ensure_runtime_dirs(CONFIG)
 
 app = Flask(__name__)
-app.secret_key = CONFIG["app"]["secret_key"]
+app.secret_key = load_flask_secret(CONFIG)
+
+
+def current_config() -> dict[str, object]:
+    return app.config.get("BE200_CONFIG", CONFIG)
 
 
 @app.context_processor
 def inject_globals() -> dict[str, object]:
+    cfg = current_config()
     return {
-        "allowed_targets": CONFIG["allowed_targets"],
-        "default_username": CONFIG["defaults"]["username"],
-        "toolkit_root": CONFIG["toolkit_root"],
+        "allowed_targets": cfg["allowed_targets"],
+        "default_username": cfg["defaults"]["username"],
+        "toolkit_root": cfg["toolkit_root"],
+        "status_tone": status_tone,
+        "describe_result_overview": describe_result_overview,
+        "build_editor_prefill_query": build_editor_prefill_query,
     }
 
 
 def latest_discovery_path() -> str | None:
-    return latest_artifacts(CONFIG)["discovery_csv"]
+    return latest_artifacts(current_config())["discovery_csv"]
+
+
+def job_flash_category(status: str) -> str:
+    if status == "success":
+        return "success"
+    if status == "partial":
+        return "warning"
+    if status == "failed":
+        return "danger"
+    return "info"
 
 
 def build_job_view(job: dict[str, object] | None) -> dict[str, object] | None:
     if not job:
         return None
 
+    cfg = current_config()
     artifacts = job.get("artifacts", {})
     job_type = job.get("job_type")
     context: dict[str, object] = {"job": job, "rows": [], "summary_block": None}
@@ -79,9 +111,9 @@ def build_job_view(job: dict[str, object] | None) -> dict[str, object] | None:
         context["rows"] = rows
         context["summary_block"] = summarize_apply_results(rows)
     elif job_type == "discovery":
-        rows = discovery_rows(CONFIG, artifacts.get("csv"))
+        rows = discovery_rows(cfg, artifacts.get("csv"))
         context["rows"] = rows[:100]
-        context["summary_block"] = inventory_summary(CONFIG, rows)
+        context["summary_block"] = inventory_summary(cfg, rows)
     elif job_type == "remoting":
         rows = load_csv(artifacts.get("csv", ""))
         context["rows"] = rows
@@ -101,32 +133,42 @@ def build_job_view(job: dict[str, object] | None) -> dict[str, object] | None:
         rows = load_csv(artifacts.get("csv", ""))
         context["rows"] = rows
         context["summary_block"] = summarize_restart_rdp_rows(rows)
+    elif job_type == "open_ncpa":
+        rows = load_csv(artifacts.get("csv", ""))
+        context["rows"] = rows
+        context["summary_block"] = summarize_open_ncpa_rows(rows)
+    context["result_overview"] = describe_result_overview(job)
     return context
 
 
 @app.route("/")
 def dashboard() -> str:
-    artifacts = latest_artifacts(CONFIG)
+    cfg = current_config()
+    artifacts = latest_artifacts(cfg)
     discovery_path = artifacts["discovery_csv"]
-    discovery = discovery_rows(CONFIG, discovery_path)
-    inventory = inventory_summary(CONFIG, discovery) if discovery else {"targets": [], "variants": []}
-    property_data = property_catalog(discovery, config=CONFIG) if discovery else []
+    discovery = discovery_rows(cfg, discovery_path)
+    inventory = inventory_summary(cfg, discovery) if discovery else {"targets": [], "variants": []}
+    property_data = property_catalog(discovery, config=cfg) if discovery else []
+    history = get_history(cfg, int(cfg["defaults"]["history_limit"]))
+    remoting = recent_remoting_status(cfg)
     return render_template(
         "dashboard.html",
         controller=controller_identity(),
         artifacts=artifacts,
-        remoting_status=recent_remoting_status(CONFIG),
-        history=get_history(CONFIG, int(CONFIG["defaults"]["history_limit"])),
+        remoting_status=remoting,
+        history=history,
         inventory=inventory,
-        property_summary=summarize_property_catalog(CONFIG, property_data) if property_data else None,
+        property_summary=summarize_property_catalog(cfg, property_data) if property_data else None,
+        preflight=build_preflight(cfg, artifacts, history, remoting),
     )
 
 
 @app.route("/inventory", methods=["GET", "POST"])
 def inventory() -> str:
+    cfg = current_config()
     if request.method == "POST":
         action = request.form.get("action")
-        username = request.form.get("username", CONFIG["defaults"]["username"]).strip()
+        username = request.form.get("username", cfg["defaults"]["username"]).strip()
         password = request.form.get("password", "")
 
         if not password:
@@ -134,13 +176,13 @@ def inventory() -> str:
             return redirect(url_for("inventory"))
 
         if action == "refresh_discovery":
-            job = run_discovery_refresh(CONFIG, username, password)
-            flash(f"Discovery refresh finished with status: {job['status']}.", "info")
+            job = run_discovery_refresh(cfg, username, password)
+            flash(f"Discovery refresh finished with status: {job['status']}.", job_flash_category(job["status"]))
             return redirect(url_for("job_detail", job_id=job["id"]))
 
         if action == "run_remoting":
-            job = run_remoting_test(CONFIG, username, password, CONFIG["allowed_targets"])
-            flash(f"Remoting test finished with status: {job['status']}.", "info")
+            job = run_remoting_test(cfg, username, password, cfg["allowed_targets"])
+            flash(f"Remoting test finished with status: {job['status']}.", job_flash_category(job["status"]))
             return redirect(url_for("job_detail", job_id=job["id"]))
 
         if action == "run_operational":
@@ -148,7 +190,7 @@ def inventory() -> str:
             if not operation:
                 operation = request.form.get("operation_mirror", "").strip()
             selected_targets = request.form.getlist("action_targets")
-            policy = action_policy(CONFIG, operation)
+            policy = action_policy(cfg, operation)
             if operation not in {"Status", "Restart", "Disable", "Enable"} or not policy["accepted"]:
                 flash(
                     f"Operational action '{operation or '(none)'}' is not accepted. "
@@ -170,26 +212,27 @@ def inventory() -> str:
                 return redirect(url_for("inventory"))
 
             job = run_action_job(
-                CONFIG,
+                cfg,
                 operation,
                 username,
                 password,
                 selected_targets,
                 force=policy["confirmation_required"],
             )
-            flash(f"{operation} action finished with status: {job['status']}.", "info")
+            flash(f"{operation} action finished with status: {job['status']}.", job_flash_category(job["status"]))
             return redirect(url_for("job_detail", job_id=job["id"]))
 
-    artifacts = latest_artifacts(CONFIG)
-    discovery = discovery_rows(CONFIG, artifacts["discovery_csv"])
-    inventory_data = inventory_summary(CONFIG, discovery)
-    property_data = [item for item in property_catalog(discovery, config=CONFIG) if item["classification"] == "live-tested"]
+    artifacts = latest_artifacts(cfg)
+    discovery = discovery_rows(cfg, artifacts["discovery_csv"])
+    inventory_data = inventory_summary(cfg, discovery)
+    property_data = [item for item in property_catalog(discovery, config=cfg) if item["classification"] == "live-tested"]
     return render_template(
         "inventory.html",
         artifacts=artifacts,
         inventory=inventory_data,
         property_catalog=property_data,
-        action_policies={name: action_policy(CONFIG, name) for name in ("Status", "Restart", "Disable", "Enable")},
+        action_policies={name: action_policy(cfg, name) for name in ("Status", "Restart", "Disable", "Enable")},
+        discovery_freshness=discovery_freshness(artifacts["discovery_csv"]),
     )
 
 
@@ -197,13 +240,14 @@ def inventory() -> str:
 def editor() -> str:
     import json as _json
 
-    artifacts = latest_artifacts(CONFIG)
+    cfg = current_config()
+    artifacts = latest_artifacts(cfg)
     discovery_path = request.values.get("discovery_path") or artifacts["discovery_csv"]
-    rows = discovery_rows(CONFIG, discovery_path)
+    rows = discovery_rows(cfg, discovery_path)
     selected_targets = request.values.getlist("targets")
     if request.method == "GET" and not selected_targets:
-        selected_targets = CONFIG["allowed_targets"]
-    full_catalog = property_catalog(rows, selected_targets, CONFIG)
+        selected_targets = cfg["allowed_targets"]
+    full_catalog = property_catalog(rows, selected_targets, cfg)
     catalog = [item for item in full_catalog if item["classification"] == "live-tested"]
     catalog_by_key = {item["key"]: item for item in catalog}
     validation_view = None
@@ -214,6 +258,9 @@ def editor() -> str:
         property_entries: list[dict[str, str]] = _json.loads(property_entries_json)
     except (ValueError, TypeError):
         property_entries = []
+    prefill_property_key = request.values.get("property_key", "").strip()
+    if request.method == "GET" and prefill_property_key and not property_entries:
+        property_entries = [{"property_key": prefill_property_key, "target_value": ""}]
 
     if request.method == "POST":
         action = request.form.get("action")
@@ -253,7 +300,7 @@ def editor() -> str:
                         )
                     else:
                         config_path, errors, preview_rows = prepare_multi_property_config(
-                            CONFIG, discovery_path, selected_targets, property_entries,
+                            cfg, discovery_path, selected_targets, property_entries,
                         )
                         if errors:
                             for error in errors:
@@ -275,21 +322,21 @@ def editor() -> str:
                                 "blocked_modes": sorted({"WriteOnly", "RestartBE200"} - common_modes),
                                 "accepted_rollout_scope": "All 8 allowlisted targets (192.168.22.221-228)",
                             }
-                            job = run_validate_job(CONFIG, config_path, discovery_path, validation_summary)
+                            job = run_validate_job(cfg, config_path, discovery_path, validation_summary)
                             validation_view = build_job_view(job)
-                            flash(f"Validation finished with status: {job['status']}.", "info")
+                            flash(f"Validation finished with status: {job['status']}.", job_flash_category(job["status"]))
 
         elif action == "apply":
             if request.form.get("confirm_apply") != "yes":
                 flash("Explicit confirmation is required before real apply.", "danger")
             else:
                 validation_job_id = request.form.get("validation_job_id", "")
-                username = request.form.get("username", CONFIG["defaults"]["username"]).strip()
+                username = request.form.get("username", cfg["defaults"]["username"]).strip()
                 password = request.form.get("password", "")
                 if not password:
                     flash("Password is required for apply.", "danger")
                 else:
-                    validation_job = get_job(CONFIG, validation_job_id)
+                    validation_job = get_job(cfg, validation_job_id)
                     if not validation_job:
                         flash("Validation job could not be found.", "danger")
                     elif validation_job["status"] != "success":
@@ -315,14 +362,14 @@ def editor() -> str:
                         apply_summary = dict(validation_job.get("summary", {}))
                         apply_summary["validation_job_id"] = validation_job_id
                         apply_job = run_apply_job(
-                            CONFIG,
+                            cfg,
                             validated_config_path,
                             request.form.get("mode", "WriteOnly"),
                             username,
                             password,
                             apply_summary,
                         )
-                        flash(f"Apply finished with status: {apply_job['status']}.", "info")
+                        flash(f"Apply finished with status: {apply_job['status']}.", job_flash_category(apply_job["status"]))
                         return redirect(url_for("job_detail", job_id=apply_job["id"]))
 
     return render_template(
@@ -335,46 +382,58 @@ def editor() -> str:
         property_entries_json=_json.dumps(property_entries) if property_entries else "[]",
         validation_view=validation_view,
         preview_rows=preview_rows,
+        discovery_freshness=discovery_freshness(discovery_path),
     )
 
 
 @app.route("/current-settings", methods=["GET", "POST"])
 def current_settings() -> str:
+    cfg = current_config()
     if request.method == "POST":
         action = request.form.get("action")
-        username = request.form.get("username", CONFIG["defaults"]["username"]).strip()
+        username = request.form.get("username", cfg["defaults"]["username"]).strip()
         password = request.form.get("password", "")
         if action == "refresh_discovery" and password:
-            job = run_discovery_refresh(CONFIG, username, password)
-            flash(f"Discovery refresh finished with status: {job['status']}.", "info")
+            job = run_discovery_refresh(cfg, username, password)
+            flash(f"Discovery refresh finished with status: {job['status']}.", job_flash_category(job["status"]))
             return redirect(url_for("current_settings"))
 
-    artifacts = latest_artifacts(CONFIG)
-    discovery = discovery_rows(CONFIG, artifacts["discovery_csv"])
-    matrix = current_settings_matrix(CONFIG, discovery)
-    inv = inventory_summary(CONFIG, discovery)
+    artifacts = latest_artifacts(cfg)
+    discovery = discovery_rows(cfg, artifacts["discovery_csv"])
+    matrix = current_settings_matrix(cfg, discovery)
+    for item in matrix:
+        item["all_targets"] = list(cfg["allowed_targets"])
+    inv = inventory_summary(cfg, discovery)
+    search = request.args.get("search", "").strip()
+    mismatched_only = request.args.get("mismatched") == "1"
+    sort_mode = request.args.get("sort", "label")
+    filtered_matrix = current_settings_view(matrix, search=search, mismatched_only=mismatched_only, sort_mode=sort_mode)
     return render_template(
         "current_settings.html",
-        matrix=matrix,
+        matrix=filtered_matrix,
+        total_matrix_count=len(matrix),
         inventory=inv,
         discovery_path=artifacts["discovery_csv"],
+        discovery_freshness=discovery_freshness(artifacts["discovery_csv"]),
+        matrix_filters={"search": search, "mismatched": mismatched_only, "sort": sort_mode},
     )
 
 
 @app.route("/wifi-connect", methods=["GET", "POST"])
 def wifi_connect() -> str:
+    cfg = current_config()
     result_rows: list[dict[str, object]] = []
     summary: dict[str, object] | None = None
     last_ssid = ""
-    selected_targets = CONFIG["allowed_targets"][:]
+    selected_targets = cfg["allowed_targets"][:]
 
     if request.method == "POST":
         action = request.form.get("action", "")
-        username = request.form.get("username", CONFIG["defaults"]["username"]).strip()
+        username = request.form.get("username", cfg["defaults"]["username"]).strip()
         password = request.form.get("password", "")
         ssid = request.form.get("ssid", "").strip()
         wifi_password = request.form.get("wifi_password", "")
-        selected_targets = request.form.getlist("targets") or CONFIG["allowed_targets"][:]
+        selected_targets = request.form.getlist("targets") or cfg["allowed_targets"][:]
         last_ssid = ssid
 
         if not password:
@@ -386,17 +445,16 @@ def wifi_connect() -> str:
         elif action in ("connect", "verify"):
             wifi_action = "Connect" if action == "connect" else "Verify"
             job = run_wifi_job(
-                CONFIG, wifi_action, ssid,
+                cfg, wifi_action, ssid,
                 wifi_password if action == "connect" else "",
                 username, password, selected_targets,
             )
             result_rows = load_csv(job["artifacts"]["csv"])
             summary = summarize_wifi_results(result_rows)
-            status_label = "info" if job["status"] == "success" else "warning"
             flash(
                 f"Wi-Fi {wifi_action} finished with status: {job['status']}. "
                 f"Job ID: {job['id']}",
-                status_label,
+                job_flash_category(job["status"]),
             )
         else:
             flash("Unknown action.", "danger")
@@ -412,20 +470,21 @@ def wifi_connect() -> str:
 
 @app.route("/wifi-status", methods=["GET", "POST"])
 def wifi_status() -> str:
+    cfg = current_config()
     status_rows: list[dict[str, object]] = []
     summary: dict[str, object] | None = None
 
     if request.method == "POST":
         action = request.form.get("action", "")
-        username = request.form.get("username", CONFIG["defaults"]["username"]).strip()
+        username = request.form.get("username", cfg["defaults"]["username"]).strip()
         password = request.form.get("password", "")
 
         if not password:
             flash("WinRM password is required.", "danger")
         elif action == "check_status":
             job = run_wifi_job(
-                CONFIG, "Status", "", "", username, password,
-                CONFIG["allowed_targets"],
+                cfg, "Status", "", "", username, password,
+                cfg["allowed_targets"],
             )
             if job["status"] == "success":
                 status_rows = load_csv(job["artifacts"]["csv"])
@@ -451,13 +510,64 @@ def wifi_status() -> str:
 FORBIDDEN_CONTROLLER = "192.168.22.8"
 
 
+@app.route("/open-ncpa", methods=["GET", "POST"])
+def open_ncpa() -> str:
+    cfg = current_config()
+    delay_sec = int(cfg["defaults"].get("open_ncpa_default_delay_seconds", 3))
+    open_mstsc = bool(cfg["defaults"].get("open_ncpa_open_mstsc_default", True))
+    selected = cfg["allowed_targets"][:]
+
+    if request.method == "POST":
+        action = request.form.get("action", "")
+        selected = request.form.getlist("targets")
+        open_mstsc = request.form.get("open_mstsc") == "yes"
+        try:
+            delay_sec = int(request.form.get("delay_seconds", delay_sec))
+        except ValueError:
+            delay_sec = 3
+        delay_sec = max(0, min(120, delay_sec))
+
+        if action == "run":
+            username = request.form.get("username", cfg["defaults"]["username"]).strip()
+            password = request.form.get("password", "")
+            if not password:
+                flash("Password is required.", "danger")
+            else:
+                ordered, err = validate_restart_rdp_targets(selected, cfg["allowed_targets"], FORBIDDEN_CONTROLLER)
+                if err:
+                    flash(err, "danger")
+                else:
+                    assert ordered is not None
+                    job = run_open_ncpa_job(
+                        cfg,
+                        ordered,
+                        username,
+                        password,
+                        delay_seconds=delay_sec,
+                        open_mstsc=open_mstsc,
+                    )
+                    flash(
+                        f"Open NCPA job finished with status: {job['status']}. Job ID: {job['id']}",
+                        job_flash_category(job["status"]),
+                    )
+                    return redirect(url_for("job_detail", job_id=job["id"]))
+
+    return render_template(
+        "open_ncpa.html",
+        selected_targets=selected,
+        delay_seconds=delay_sec,
+        open_mstsc=open_mstsc,
+    )
+
+
 @app.route("/system-restart-rdp", methods=["GET", "POST"])
 def system_restart_rdp() -> str:
-    ping_minutes = int(CONFIG["defaults"].get("restart_rdp_ping_timeout_minutes", 10))
-    rdp_delay = int(CONFIG["defaults"].get("restart_rdp_mstsc_delay_seconds", 3))
+    cfg = current_config()
+    ping_minutes = int(cfg["defaults"].get("restart_rdp_ping_timeout_minutes", 10))
+    rdp_delay = int(cfg["defaults"].get("restart_rdp_mstsc_delay_seconds", 3))
     check_port = False
     auto_rdp = False
-    selected = CONFIG["allowed_targets"][:]
+    selected = cfg["allowed_targets"][:]
 
     if request.method == "POST":
         action = request.form.get("action", "")
@@ -476,7 +586,7 @@ def system_restart_rdp() -> str:
         rdp_delay = max(1, min(60, rdp_delay))
 
         if action == "run":
-            username = request.form.get("username", CONFIG["defaults"]["username"]).strip()
+            username = request.form.get("username", cfg["defaults"]["username"]).strip()
             password = request.form.get("password", "")
 
             if not password:
@@ -484,13 +594,13 @@ def system_restart_rdp() -> str:
             elif request.form.get("confirm_restart_rdp") != "yes":
                 flash("Confirm the OS restart before running this workflow.", "danger")
             else:
-                ordered, err = validate_restart_rdp_targets(selected, CONFIG["allowed_targets"], FORBIDDEN_CONTROLLER)
+                ordered, err = validate_restart_rdp_targets(selected, cfg["allowed_targets"], FORBIDDEN_CONTROLLER)
                 if err:
                     flash(err, "danger")
                 else:
                     assert ordered is not None
                     job = run_restart_rdp_job(
-                        CONFIG,
+                        cfg,
                         ordered,
                         username,
                         password,
@@ -499,7 +609,10 @@ def system_restart_rdp() -> str:
                         auto_open_rdp=auto_rdp,
                         rdp_delay_seconds=rdp_delay,
                     )
-                    flash(f"Restart+RDP job finished with status: {job['status']}. Job ID: {job['id']}", "info")
+                    flash(
+                        f"Restart+RDP job finished with status: {job['status']}. Job ID: {job['id']}",
+                        job_flash_category(job["status"]),
+                    )
                     return redirect(url_for("job_detail", job_id=job["id"]))
 
     return render_template(
@@ -514,7 +627,8 @@ def system_restart_rdp() -> str:
 
 @app.route("/jobs/<job_id>/launch-rdp", methods=["POST"])
 def restart_rdp_launch(job_id: str) -> str:
-    job = get_job(CONFIG, job_id)
+    cfg = current_config()
+    job = get_job(cfg, job_id)
     if not job or job.get("job_type") != "restart_rdp":
         flash("Job not found or not a Restart+RDP job.", "danger")
         return redirect(url_for("history"))
@@ -524,12 +638,12 @@ def restart_rdp_launch(job_id: str) -> str:
         for r in rows
         if str(r.get("PingReachable", "")).lower() == "yes"
     ]
-    ordered, err = validate_restart_rdp_targets(ips, CONFIG["allowed_targets"], FORBIDDEN_CONTROLLER)
+    ordered, err = validate_restart_rdp_targets(ips, cfg["allowed_targets"], FORBIDDEN_CONTROLLER)
     if err or not ordered:
         flash(err or "No ping-recovered targets to connect.", "warning")
         return redirect(url_for("job_detail", job_id=job_id))
     try:
-        delay = float(CONFIG["defaults"].get("restart_rdp_mstsc_delay_seconds", 3))
+        delay = float(cfg["defaults"].get("restart_rdp_mstsc_delay_seconds", 3))
         launch_mstsc_sequence(ordered, delay_seconds=delay)
         flash(f"Launched {len(ordered)} RDP session(s) sequentially.", "info")
     except Exception as exc:
@@ -540,16 +654,45 @@ def restart_rdp_launch(job_id: str) -> str:
 
 @app.route("/history")
 def history() -> str:
-    return render_template("history.html", history=get_history(CONFIG, None))
+    cfg = current_config()
+    all_history = get_history(cfg, None)
+    filters = {
+        "status": request.args.get("status", "").strip(),
+        "job_type": request.args.get("job_type", "").strip(),
+        "search": request.args.get("search", "").strip(),
+        "actionable_only": request.args.get("actionable") == "1",
+    }
+    filtered = filter_history_items(all_history, **filters)
+    job_types = sorted({item.get("job_type", "") for item in all_history if item.get("job_type")})
+    return render_template(
+        "history.html",
+        history=filtered,
+        total_history_count=len(all_history),
+        filters=filters,
+        job_types=job_types,
+    )
 
 
 @app.route("/jobs/<job_id>")
 def job_detail(job_id: str) -> str:
-    job = get_job(CONFIG, job_id)
+    cfg = current_config()
+    job = get_job(cfg, job_id)
     if not job:
         flash("Job was not found.", "warning")
         return redirect(url_for("history"))
-    return render_template("job_detail.html", view=build_job_view(job), artifact_paths=flatten_artifact_paths(job))
+    row_filter = request.args.get("rows", "all")
+    view = build_job_view(job)
+    row_counts = {"success": 0, "warning": 0, "danger": 0}
+    if view and view.get("rows"):
+        filtered_rows, row_counts = filter_job_rows(str(view["job"]["job_type"]), list(view["rows"]), row_filter)
+        view["rows"] = filtered_rows
+    return render_template(
+        "job_detail.html",
+        view=view,
+        artifact_paths=flatten_artifact_paths(job),
+        row_filter=row_filter,
+        row_counts=row_counts,
+    )
 
 
 if __name__ == "__main__":

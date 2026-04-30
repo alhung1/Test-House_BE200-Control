@@ -121,6 +121,11 @@ code, kbd, pre, .font-mono { font-family: var(--app-font-mono); }
   margin-bottom: 0.25rem;
 }
 .app-page-lead { color: var(--app-muted); font-size: 0.95rem; max-width: 54rem; margin-bottom: 0; }
+.page-risk-chip {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
 
 .card-be200 {
   border: 1px solid var(--app-border);
@@ -149,6 +154,14 @@ code, kbd, pre, .font-mono { font-family: var(--app-font-mono); }
   background: linear-gradient(180deg, #fef2f2 0%, #fee2e2 100%);
   color: var(--app-danger);
 }
+.zone-system {
+  border-left: 4px solid #7f1d1d;
+  background: linear-gradient(90deg, rgba(185, 28, 28, 0.10) 0%, var(--app-surface) 12px);
+}
+.zone-system > .card-header {
+  background: linear-gradient(180deg, #fee2e2 0%, #fecaca 100%);
+  color: #7f1d1d;
+}
 
 .callout-scope {
   background: var(--app-primary-subtle);
@@ -171,6 +184,62 @@ code, kbd, pre, .font-mono { font-family: var(--app-font-mono); }
 }
 .confirmation-box .form-check-label { font-weight: 600; color: #b45309; }
 
+.summary-card {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  background: #f8fafc;
+  padding: 0.9rem 1rem;
+}
+.summary-card h6 {
+  color: var(--app-text);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+.summary-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.summary-list dt {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--app-muted);
+  margin-bottom: 0.2rem;
+}
+.summary-list dd {
+  margin-bottom: 0;
+  color: var(--app-text-body);
+}
+.summary-note {
+  border-top: 1px solid var(--app-border);
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--app-muted);
+}
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: end;
+  padding: 1rem;
+  border-bottom: 1px solid var(--app-border);
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+}
+.filter-bar .form-control,
+.filter-bar .form-select {
+  min-width: 140px;
+}
+
+.table-sticky thead th,
+.table-responsive-sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .table-be200 thead th {
   background: #1e3a5f;
   color: #f8fafc;
@@ -186,8 +255,22 @@ code, kbd, pre, .font-mono { font-family: var(--app-font-mono); }
   background-color: rgba(248, 250, 252, 0.9);
 }
 .table-be200 td { vertical-align: middle; font-size: 0.875rem; }
+.table-be200 td code,
+.table-be200 td.font-monospace,
+.table-be200 td .font-mono-inline {
+  font-family: var(--app-font-mono);
+}
 .table-be200 tbody tr:hover td {
   background-color: rgba(219, 234, 254, 0.35) !important;
+}
+.table-be200 tbody tr.row-warning td {
+  background-color: rgba(254, 249, 195, 0.65) !important;
+}
+.table-be200 tbody tr.row-danger td {
+  background-color: rgba(254, 226, 226, 0.65) !important;
+}
+.table-be200 tbody tr.row-success td {
+  background-color: rgba(220, 252, 231, 0.55);
 }
 
 .matrix-table-wrap {
@@ -248,6 +331,34 @@ code, kbd, pre, .font-mono { font-family: var(--app-font-mono); }
 }
 .artifact-list { padding-left: 1.1rem; margin-bottom: 0; }
 .artifact-list a { word-break: break-all; }
+.badge-be200 {
+  font-size: 0.77rem;
+  padding: 0.42rem 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.preflight-grid .card-body {
+  min-height: 5rem;
+}
+.preflight-issues {
+  border: 1px solid var(--app-border);
+  border-radius: var(--app-radius);
+  background: #fff7ed;
+  padding: 0.9rem 1rem;
+}
+.result-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.result-chip-row .badge {
+  font-size: 0.78rem;
+}
+.helper-text-strong {
+  color: var(--app-text);
+  font-weight: 600;
+}
 
 .btn:focus-visible,
 .form-control:focus-visible,
@@ -261,3 +372,6 @@ code, kbd, pre, .font-mono { font-family: var(--app-font-mono); }
 .alert { border-radius: var(--app-radius); border-width: 1px; }
 .btn-primary { background-color: var(--app-primary); border-color: var(--app-primary); }
 .btn-primary:hover { background-color: var(--app-primary-hover); border-color: var(--app-primary-hover); }
+.btn-outline-danger:hover {
+  color: #fff;
+}

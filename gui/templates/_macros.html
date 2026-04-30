@@ -1,0 +1,48 @@
+{% macro tone_badge(tone, text, extra_class="") -%}
+  <span class="badge badge-be200 text-bg-{{ 'success' if tone == 'ok' else tone }} {{ extra_class }}">{{ text }}</span>
+{%- endmacro %}
+
+{% macro status_badge(status, overview_text=None) -%}
+  <div class="d-flex flex-wrap align-items-center gap-2">
+    <span class="badge badge-be200 text-bg-{% if status == 'success' %}success{% elif status == 'partial' %}warning{% elif status == 'failed' %}danger{% else %}secondary{% endif %}">{{ status or 'unknown' }}</span>
+    {% if overview_text %}
+      <span class="small text-muted">{{ overview_text }}</span>
+    {% endif %}
+  </div>
+{%- endmacro %}
+
+{% macro page_header(title, lead, section_label=None, section_tone='secondary') -%}
+  <header class="app-page-header">
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+      <h1 class="app-page-title mb-0">{{ title }}</h1>
+      {% if section_label %}
+        <span class="badge page-risk-chip text-bg-{{ section_tone }}">{{ section_label }}</span>
+      {% endif %}
+    </div>
+    <p class="app-page-lead">{{ lead|safe }}</p>
+  </header>
+{%- endmacro %}
+
+{% macro preflight_tile(tile) -%}
+  <div class="col-md-6 col-xl-4">
+    <div class="card card-be200 h-100 zone-{{ 'readonly' if tile.tone in ['ok', 'secondary'] else ('action' if tile.tone == 'warning' else 'risk') }}">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>{{ tile.label }}</span>
+        {{ tone_badge(tile.tone, tile.value) }}
+      </div>
+      <div class="card-body">
+        <p class="mb-0 small text-muted">{{ tile.detail }}</p>
+      </div>
+    </div>
+  </div>
+{%- endmacro %}
+
+{% macro artifact_list(paths) -%}
+  <ul class="small mb-0 artifact-list">
+    {% for path in paths %}
+      <li><a href="file:///{{ path|replace('\\', '/') }}">{{ path }}</a></li>
+    {% else %}
+      <li>No artifact paths recorded.</li>
+    {% endfor %}
+  </ul>
+{%- endmacro %}

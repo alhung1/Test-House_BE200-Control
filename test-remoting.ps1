@@ -59,6 +59,50 @@ Write-BE200Section -Message 'Testing remote PowerShell access'
 Write-Host ('Targets: {0}' -f ($resolvedTargets -join ', ')) -ForegroundColor Yellow
 
 $scriptBlock = {
+    function Resolve-BE200AdapterFromWlanInterface {
+        param(
+            [object[]]$Candidates,
+            [string]$InterfaceDescription
+        )
+
+        try {
+            $raw = & netsh wlan show interfaces 2>&1
+        }
+        catch {
+            return $null
+        }
+
+        $text = ($raw | Out-String)
+        if (-not $text -or $text.Trim().Length -eq 0) {
+            return $null
+        }
+
+        $blocks = $text -split '(?=\s+Name\s+:)'
+        foreach ($block in $blocks) {
+            $info = @{}
+            foreach ($line in ($block -split "`n")) {
+                if ($line -match '^\s+(.+?)\s+:\s+(.+)$') {
+                    $info[$Matches[1].Trim()] = $Matches[2].Trim()
+                }
+            }
+
+            if (-not $info.ContainsKey('Name')) {
+                continue
+            }
+
+            if ($info.ContainsKey('Description') -and $info['Description'] -ne $InterfaceDescription) {
+                continue
+            }
+
+            $namedMatches = @($Candidates | Where-Object { $_.Name -eq $info['Name'] -and $_.InterfaceDescription -eq $InterfaceDescription })
+            if ($namedMatches.Count -eq 1) {
+                return $namedMatches[0]
+            }
+        }
+
+        return $null
+    }
+
     function Select-PreferredBE200Adapters {
         param([string[]]$AllowedInterfaceDescriptions)
 
@@ -89,6 +133,10 @@ $scriptBlock = {
                 }
 
                 if ($preferredMatches.Count -gt 1) {
+                    $wlanAdapter = Resolve-BE200AdapterFromWlanInterface -Candidates $preferredMatches -InterfaceDescription $interfaceDescription
+                    if ($null -ne $wlanAdapter) {
+                        [void]$selected.Add($wlanAdapter)
+                    }
                     $resolved = $true
                     break
                 }
@@ -100,6 +148,12 @@ $scriptBlock = {
 
             if ($matching.Count -eq 1) {
                 [void]$selected.Add($matching[0])
+                continue
+            }
+
+            $wlanAdapter = Resolve-BE200AdapterFromWlanInterface -Candidates $matching -InterfaceDescription $interfaceDescription
+            if ($null -ne $wlanAdapter) {
+                [void]$selected.Add($wlanAdapter)
             }
         }
 

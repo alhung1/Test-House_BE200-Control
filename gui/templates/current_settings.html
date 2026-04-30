@@ -1,16 +1,49 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge %}
 
 {% block title %}Current Settings - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Current settings</h1>
-  <p class="app-page-lead">Matrix of <strong>accepted</strong> properties per target. Column headers show each host suffix and <span class="font-monospace">driver version</span> (high-contrast) from discovery.</p>
-</header>
+{{ page_header("Current Settings", "Fleet comparison workspace for <strong>accepted</strong> properties. Use filters to focus on mixed values, then jump straight into Property Editor for the next change.", "Read Only", "secondary") }}
+
+{% if discovery_freshness %}
+  <div class="alert alert-{{ 'success' if discovery_freshness.state == 'ok' else ('warning' if discovery_freshness.state == 'warning' else 'danger') }}">
+    <strong>Discovery freshness:</strong> {{ discovery_freshness.banner }}
+    {% if discovery_freshness.path %}
+      <div class="small font-mono mt-1">{{ discovery_freshness.path }}</div>
+    {% endif %}
+  </div>
+{% endif %}
 
 <div class="row g-4 mb-4 align-items-end">
-  <div class="col-auto">
-    <form method="post" class="d-flex align-items-end gap-2 flex-wrap">
+  <div class="col-lg-8">
+    <div class="card card-be200 zone-action">
+      <div class="card-header">Fleet diff filters</div>
+      <div class="card-body">
+        <form method="get" class="d-flex align-items-end gap-2 flex-wrap" data-guarded-submit="true">
+          <div>
+            <label class="form-label form-label-sm mb-0">Search</label>
+            <input class="form-control form-control-sm" type="text" name="search" value="{{ matrix_filters.search }}" placeholder="Property, keyword, or value" style="width: 220px;">
+          </div>
+          <div class="form-check mb-1">
+            <input class="form-check-input" type="checkbox" name="mismatched" value="1" id="mismatched-only" {% if matrix_filters.mismatched %}checked{% endif %}>
+            <label class="form-check-label small" for="mismatched-only">Only mixed / mismatched</label>
+          </div>
+          <div>
+            <label class="form-label form-label-sm mb-0">Sort</label>
+            <select class="form-select form-select-sm" name="sort">
+              <option value="label" {% if matrix_filters.sort == 'label' %}selected{% endif %}>Property name</option>
+              <option value="variance" {% if matrix_filters.sort == 'variance' %}selected{% endif %}>Most variant first</option>
+            </select>
+          </div>
+          <button class="btn btn-sm btn-primary" type="submit">Apply</button>
+          <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('current_settings') }}">Reset</a>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <form method="post" class="d-flex align-items-end gap-2 flex-wrap" data-guarded-submit="true">
       <input type="hidden" name="action" value="refresh_discovery">
       <div>
         <label class="form-label form-label-sm mb-0">Username</label>
@@ -20,30 +53,34 @@
         <label class="form-label form-label-sm mb-0">Password</label>
         <input class="form-control form-control-sm" type="password" name="password" required style="width:140px">
       </div>
-      <button class="btn btn-sm btn-outline-primary" type="submit">Refresh Discovery</button>
+      <button class="btn btn-sm btn-outline-primary" type="submit" data-running-label="Refreshing...">Refresh Discovery</button>
     </form>
-  </div>
-  <div class="col">
-    <div class="small text-muted mt-2 mt-md-0">
-      <strong>Source:</strong> {{ discovery_path or "No discovery data" }}
+    <div class="small text-muted mt-2">
+      <strong>Source:</strong> <span class="font-mono">{{ discovery_path or "No discovery data" }}</span>
     </div>
   </div>
 </div>
 
 {% if matrix %}
 <div class="card card-be200">
-  <div class="card-header">
-    BE200 current settings (accepted scope)
-    <span class="badge text-bg-success ms-2">{{ matrix|length }} properties</span>
-    <span class="badge text-bg-secondary ms-1">{{ allowed_targets|length }} targets</span>
+  <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div>
+      BE200 fleet diff
+      <span class="badge text-bg-success ms-2">{{ matrix|length }} shown</span>
+      <span class="badge text-bg-secondary ms-1">{{ total_matrix_count }} total</span>
+    </div>
+    {% if matrix_filters.mismatched %}
+      {{ tone_badge("warning", "Mixed only") }}
+    {% endif %}
   </div>
   <div class="card-body p-0">
     <div class="matrix-table-wrap">
       <table class="table table-bordered table-sm mb-0 matrix-table" style="font-size: 0.82rem;">
         <thead>
           <tr>
-            <th style="min-width:180px">Property</th>
-            <th style="min-width:70px">Status</th>
+            <th style="min-width:220px">Property</th>
+            <th style="min-width:110px">Status</th>
+            <th style="min-width:120px">Action</th>
             {% for target in allowed_targets %}
               <th class="text-center matrix-col-target">
                 .{{ target.split(".")[-1] }}
@@ -62,13 +99,17 @@
               <td>
                 <strong>{{ prop.label }}</strong>
                 <div class="text-muted" style="font-size:0.72rem;"><code>{{ prop.registry_keyword }}</code></div>
+                <div class="small text-muted">{{ prop.variance_count }} unique value(s)</div>
               </td>
               <td class="text-center">
                 {% if prop.uniform %}
-                  <span class="badge text-bg-success">Uniform</span>
+                  <span class="badge text-bg-success badge-be200">Uniform</span>
                 {% else %}
-                  <span class="badge text-bg-warning">Mixed</span>
+                  <span class="badge text-bg-warning badge-be200">Mixed</span>
                 {% endif %}
+              </td>
+              <td class="text-center">
+                <a class="btn btn-sm btn-outline-primary" href="{{ url_for('editor') }}?{{ build_editor_prefill_query(prop.registry_keyword ~ '||' ~ prop.label, allowed_targets) }}">Open in editor</a>
               </td>
               {% for target in allowed_targets %}
                 {% set val = prop.target_values.get(target, "") %}

@@ -74,6 +74,10 @@ Public entry scripts at the toolkit root:
 - `validate-be200-config.ps1`
 - `apply-be200-config.ps1`
 - `invoke-be200-action.ps1`
+- `invoke-be200-wifi.ps1`
+- `orchestrate-restart-rdp.ps1`
+- `orchestrate-open-ncpa.ps1`
+- `launch-be200-gui.ps1`
 - `export-be200-before-after-report.ps1`
 
 Shared logic:
@@ -85,6 +89,15 @@ Documentation:
 - `README.md`
 - `VALIDATION_GUIDE.md`
 - `DEPLOYMENT_NOTES.md`
+- `gui\README.md`
+
+Optional local GUI wrapper:
+
+- `gui\app.py`
+- `gui\services.py`
+- `gui\templates\`
+- `gui\config.json`
+- `gui\start-gui.ps1`
 
 ## What Runs Where
 
@@ -97,11 +110,21 @@ Run on the controller machine:
 - `validate-be200-config.ps1`
 - `apply-be200-config.ps1`
 - `invoke-be200-action.ps1`
+- `invoke-be200-wifi.ps1`
+- `orchestrate-restart-rdp.ps1`
+- `orchestrate-open-ncpa.ps1`
+- `launch-be200-gui.ps1`
 - `export-be200-before-after-report.ps1`
 
 Run once locally on each remote PC after RDP sign-in as Administrator:
 
 - `setup-remote-remoting.ps1`
+
+Optional local GUI run path:
+
+- start from `launch-be200-gui.ps1` at the toolkit root, or from `gui\start-gui.ps1`
+- the GUI is a local wrapper around the same PowerShell toolkit scripts
+- detailed GUI usage and page-level notes live in `gui\README.md`
 
 ## Recommended Execution Order
 
@@ -374,6 +397,79 @@ Optional HTML:
 ```powershell
 .\invoke-be200-action.ps1 -Action Restart -Credential $cred
 ```
+
+## Additional Controller Workflows
+
+### Wi-Fi connect / verify / status
+
+Connect:
+
+```powershell
+.\invoke-be200-wifi.ps1 -Action Connect -TargetIP 192.168.22.221 -SSID <ssid> -Username admin -Password password
+```
+
+Verify:
+
+```powershell
+.\invoke-be200-wifi.ps1 -Action Verify -TargetIP 192.168.22.221 -SSID <ssid> -Username admin -Password password
+```
+
+Status:
+
+```powershell
+.\invoke-be200-wifi.ps1 -Action Status -TargetIP ALL -Username admin -Password password
+```
+
+Behavior:
+
+- targets only the exact allowlisted BE200 adapter descriptions
+- does not touch Ethernet adapters or layer-3 configuration
+- exports CSV results and transcript logs
+
+### Restart + RDP orchestration
+
+```powershell
+.\orchestrate-restart-rdp.ps1 -TargetIP 192.168.22.221 -Username admin -Password password -CsvPath .\output\csv\restart.csv -TranscriptPath .\output\transcripts\restart.log
+```
+
+Behavior:
+
+- issues an OS restart through WinRM
+- waits for ping recovery
+- optionally checks TCP 3389
+- optionally launches `mstsc` from the controller in sequence
+
+### Open NCPA orchestration
+
+```powershell
+.\orchestrate-open-ncpa.ps1 -TargetIP 192.168.22.221 -Username admin -Password password -CsvPath .\output\csv\open-ncpa.csv -TranscriptPath .\output\transcripts\open-ncpa.log
+```
+
+Behavior:
+
+- uses WinRM to register a one-shot scheduled task on the target
+- attempts to open `ncpa.cpl` on the target's interactive desktop
+- can optionally launch `mstsc` from the controller
+- does not change IP, gateway, DNS, routes, metrics, proxy, or Ethernet settings
+
+## Optional Local GUI
+
+The repository also contains a local Flask GUI under `gui\`.
+
+Design intent:
+
+- the GUI does not replace the PowerShell toolkit
+- the GUI orchestrates the same validated scripts and writes local job history
+- the GUI is optional; CLI remains the primary reference workflow in this README
+
+Operator-visible behavior:
+
+- job status can be `success`, `partial`, or `failed`
+- job detail shows a status reason when the subprocess succeeded but one or more target rows did not
+- GUI history is stored locally under `gui\data\`
+- the Flask session secret should come from `BE200_GUI_SECRET_KEY` when supplied, otherwise the GUI generates or reuses a local secret file under `gui\data\`
+
+For installation, startup, routes, and detailed page behavior, use `gui\README.md`.
 
 Targeting examples:
 

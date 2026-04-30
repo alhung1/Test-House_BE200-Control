@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, status_badge, tone_badge, artifact_list %}
 
 {% block title %}Job Detail - BE200 Control Console{% endblock %}
 
@@ -6,73 +7,88 @@
 {% if not view %}
   <div class="alert alert-warning">Job detail is unavailable.</div>
 {% else %}
-  <header class="app-page-header">
-    <h1 class="app-page-title">Job detail</h1>
-    <p class="app-page-lead"><strong>{{ view.job.title }}</strong> — {{ view.job.job_type }} — status <span class="text-body">{{ view.job.status }}</span></p>
-  </header>
+  {{ page_header("Job Detail", "<strong>" ~ view.job.title ~ "</strong> - " ~ view.job.job_type ~ " run with promoted status reasoning and row review filters.", "Execution", "secondary") }}
 
   <div class="row g-4">
     <div class="col-lg-4">
       <div class="card card-be200 zone-readonly">
-        <div class="card-header">Job metadata</div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>Job metadata</span>
+          {{ status_badge(view.job.status, view.result_overview) }}
+        </div>
         <div class="card-body">
+          {% if view.job.status_reason %}
+            <div class="alert alert-{{ status_tone(view.job.status) }} mb-3">
+              <strong>Status reason:</strong> {{ view.job.status_reason }}
+            </div>
+          {% endif %}
           <dl class="row mb-0">
             <dt class="col-sm-4">Title</dt>
             <dd class="col-sm-8">{{ view.job.title }}</dd>
             <dt class="col-sm-4">Type</dt>
             <dd class="col-sm-8">{{ view.job.job_type }}</dd>
-            <dt class="col-sm-4">Status</dt>
-            <dd class="col-sm-8">{{ view.job.status }}</dd>
             <dt class="col-sm-4">Started</dt>
             <dd class="col-sm-8">{{ view.job.started_at }}</dd>
             <dt class="col-sm-4">Finished</dt>
             <dd class="col-sm-8">{{ view.job.finished_at }}</dd>
             <dt class="col-sm-4">Exit Code</dt>
             <dd class="col-sm-8">{{ view.job.returncode }}</dd>
+            <dt class="col-sm-4">Job ID</dt>
+            <dd class="col-sm-8 font-mono">{{ view.job.id }}</dd>
           </dl>
         </div>
       </div>
 
       <div class="card card-be200 zone-readonly mt-4">
-        <div class="card-header">Artifacts</div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>Artifacts</span>
+          <button class="btn btn-sm btn-outline-secondary" type="button" data-copy-target="artifact-list-block">Copy paths</button>
+        </div>
         <div class="card-body">
-          <ul class="small mb-0 artifact-list">
-            {% for path in artifact_paths %}
-              <li><a href="file:///{{ path|replace('\\', '/') }}">{{ path }}</a></li>
-            {% else %}
-              <li>No artifact paths recorded.</li>
-            {% endfor %}
-          </ul>
+          <div id="artifact-list-block">{{ artifact_list(artifact_paths) }}</div>
         </div>
       </div>
     </div>
 
     <div class="col-lg-8">
       <div class="card card-be200 mb-4">
-        <div class="card-header">Summary</div>
+        <div class="card-header">Outcome overview</div>
         <div class="card-body">
+          <div class="result-chip-row mb-3">
+            {{ tone_badge("success", row_counts.success ~ " success row(s)") }}
+            {{ tone_badge("warning", row_counts.warning ~ " warning row(s)") }}
+            {{ tone_badge("danger", row_counts.danger ~ " failure row(s)") }}
+          </div>
           <pre class="mb-0 summary-pre">{{ view.summary_block }}</pre>
         </div>
       </div>
 
       {% if view.rows %}
         <div class="card card-be200 mb-4">
-          <div class="card-header">Result rows</div>
+          <div class="card-header d-flex flex-wrap align-items-center justify-content-between gap-2">
+            <span>Result rows</span>
+            <div class="d-flex flex-wrap gap-2">
+              <a class="btn btn-sm {% if row_filter == 'all' %}btn-primary{% else %}btn-outline-secondary{% endif %}" href="{{ url_for('job_detail', job_id=view.job.id, rows='all') }}">All</a>
+              <a class="btn btn-sm {% if row_filter == 'failures' %}btn-danger{% else %}btn-outline-danger{% endif %}" href="{{ url_for('job_detail', job_id=view.job.id, rows='failures') }}">Failures</a>
+              <a class="btn btn-sm {% if row_filter == 'warnings' %}btn-warning{% else %}btn-outline-warning{% endif %}" href="{{ url_for('job_detail', job_id=view.job.id, rows='warnings') }}">Warnings</a>
+              <a class="btn btn-sm {% if row_filter == 'success' %}btn-success{% else %}btn-outline-success{% endif %}" href="{{ url_for('job_detail', job_id=view.job.id, rows='success') }}">Success</a>
+            </div>
+          </div>
           <div class="card-body p-0">
-            <div class="table-responsive">
-              <table class="table table-striped table-sm mb-0 table-be200">
+            <div class="table-responsive table-responsive-sticky">
+              <table class="table table-striped table-sm mb-0 table-be200 table-sticky">
                 <thead>
                   <tr>
-                    {% for key in view.rows[0].keys() %}
+                    {% for key in view.rows[0].keys() if not key.startswith('__') %}
                       <th>{{ key }}</th>
                     {% endfor %}
                   </tr>
                 </thead>
                 <tbody>
                   {% for row in view.rows %}
-                    <tr>
-                      {% for key, value in row.items() %}
-                        <td class="small">{{ value }}</td>
+                    <tr class="row-{{ row.__row_state }}">
+                      {% for key, value in row.items() if not key.startswith('__') %}
+                        <td class="small {% if key in ['TargetIP', 'EffectiveTargetIP', 'RegistryKeyword'] %}font-mono{% endif %}">{{ value }}</td>
                       {% endfor %}
                     </tr>
                   {% endfor %}
@@ -87,19 +103,22 @@
       <div class="card card-be200 zone-action mb-4">
         <div class="card-header">Manual RDP launch</div>
         <div class="card-body">
-          <p class="small mb-2">Opens <code>mstsc</code> for each host with <strong>PingReachable = Yes</strong>, in CSV order, with the configured delay between windows.</p>
-          <form method="post" action="{{ url_for('restart_rdp_launch', job_id=view.job.id) }}">
-            <button type="submit" class="btn btn-primary">Launch RDP (sequential)</button>
+          <p class="small mb-2">Open <code>mstsc</code> for hosts with <strong>PingReachable = Yes</strong>, in CSV order, with the configured delay between windows.</p>
+          <form method="post" action="{{ url_for('restart_rdp_launch', job_id=view.job.id) }}" data-guarded-submit="true">
+            <button type="submit" class="btn btn-primary" data-running-label="Launching...">Launch RDP (sequential)</button>
           </form>
         </div>
       </div>
       {% endif %}
 
       <div class="card card-be200">
-        <div class="card-header">Process output</div>
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span>Process output</span>
+          <button class="btn btn-sm btn-outline-secondary" type="button" data-copy-target="command-block">Copy command</button>
+        </div>
         <div class="card-body">
           <h6 class="fw-semibold">Command</h6>
-          <pre class="summary-pre">{{ view.job.command }}</pre>
+          <pre id="command-block" class="summary-pre">{{ view.job.command }}</pre>
           <h6 class="fw-semibold mt-3">Stdout</h6>
           <pre class="job-output">{{ view.job.stdout }}</pre>
           {% if view.job.stderr %}

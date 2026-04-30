@@ -244,6 +244,69 @@ For each expansion step, confirm:
 - logs and exports remain clear and complete
 - failures remain isolated per machine
 
+## Phase 6A: Optional GUI Validation
+
+Complete this phase only if the local GUI under `gui\` is intended to be part of the accepted operator workflow on the controller.
+
+### 6A.1 GUI startup and local safety
+
+Launch the GUI locally:
+
+```powershell
+.\launch-be200-gui.ps1
+```
+
+Confirm:
+
+- the GUI binds only to the expected local host and port
+- the GUI shows only the exact allowlisted targets
+- no arbitrary target IP entry is possible through the GUI
+- the GUI starts without changing any target state by itself
+
+### 6A.2 GUI discovery, validation, and apply path
+
+Using the GUI:
+
+- run remoting test
+- refresh discovery
+- generate a config through the property editor
+- run validation
+- only then run a real apply for a low-risk property on a single target
+
+Confirm:
+
+- the GUI still routes through the same toolkit scripts as the CLI workflow
+- validation blocks real apply when rows are invalid or skipped
+- job detail shows command, stdout, stderr, and artifact paths
+- job status is clear to the operator:
+  - `success` when all relevant result rows succeeded
+  - `partial` when only some result rows succeeded
+  - `failed` when the process failed or no result rows succeeded
+
+### 6A.3 GUI resilience checks
+
+Confirm:
+
+- a long-running GUI-triggered job that exceeds its timeout is recorded as a failed job rather than surfacing only as an unhandled web error
+- GUI history survives restart and remains readable
+- if `gui\data\history.json` becomes corrupt, the GUI recovers safely and continues with a fresh history index
+- the Flask session secret is not hard-coded as a shared fixed value in committed config; prefer `BE200_GUI_SECRET_KEY`, otherwise confirm a local generated secret file is used
+
+### 6A.4 Optional GUI-specific workflows
+
+If the GUI pages are intended for operator use, also validate the accepted GUI-only wrappers:
+
+- `Wi-Fi Connect`
+- `Wi-Fi Status`
+- `Restart + RDP`
+- `Open NCPA`
+
+Confirm:
+
+- each page stays within the same allowlisted target scope
+- each workflow exports clear per-target results
+- failures are shown per target and do not silently appear as full success
+
 ## Phase 7: Deployment Readiness Decision
 
 Only after manual validation succeeds should the toolkit be copied to `192.168.22.8`.
@@ -260,5 +323,6 @@ Decision checklist:
 - `RestartBE200` mode validated
 - Operational actions validated
 - Limited batch validation complete
+- GUI validation complete if GUI is part of the accepted operator path
 
 If any of those checks are incomplete or unsatisfactory, do not deploy to `192.168.22.8` yet.

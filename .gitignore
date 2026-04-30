@@ -4,3 +4,9 @@
 .venv/
 venv/
 .cursor/
+output/
+gui/data/history.json
+gui/data/history.json.corrupt-*
+gui/data/jobs/*.json
+gui/work/configs/*.csv
+gui/data/flask-secret.key

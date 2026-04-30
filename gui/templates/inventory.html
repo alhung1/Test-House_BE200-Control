@@ -1,20 +1,48 @@
 {% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge %}
 
 {% block title %}Inventory - BE200 Control Console{% endblock %}
 
 {% block content %}
-<header class="app-page-header">
-  <h1 class="app-page-title">Inventory</h1>
-  <p class="app-page-lead">Discovery, remoting, fleet table with <strong>driver versions</strong>, and the <strong>accepted property catalog</strong>. Operational actions require explicit confirmation below.</p>
-</header>
+{{ page_header("Inventory", "Discovery, remoting, fleet table with <strong>driver versions</strong>, and the <strong>accepted property catalog</strong>. This page is both read-only inventory and the entry point for state-changing BE200 operations.", "Read Only + State Control", "primary") }}
+
+{% if discovery_freshness %}
+  <div class="alert alert-{{ 'success' if discovery_freshness.state == 'ok' else ('warning' if discovery_freshness.state == 'warning' else 'danger') }}">
+    <strong>Discovery freshness:</strong> {{ discovery_freshness.banner }}
+    {% if discovery_freshness.path %}
+      <div class="small font-mono mt-1">{{ discovery_freshness.path }}</div>
+    {% endif %}
+  </div>
+{% endif %}
 
 <div class="row g-4">
   <div class="col-lg-3">
     <div class="card card-be200 zone-action">
       <div class="card-header">Toolkit actions</div>
       <div class="card-body">
-        <form method="post" class="mb-3">
+        <form method="post" class="mb-3" data-guarded-submit="true">
           <input type="hidden" name="action" value="refresh_discovery">
+          <div class="summary-card mb-3">
+            <h6>Execution summary</h6>
+            <dl class="summary-list">
+              <div>
+                <dt>Operation</dt>
+                <dd>Refresh discovery snapshot</dd>
+              </div>
+              <div>
+                <dt>Script</dt>
+                <dd><code>discover-be200-advanced-properties.ps1</code></dd>
+              </div>
+              <div>
+                <dt>Artifacts</dt>
+                <dd>Discovery CSV, JSON, transcript, template, matrix</dd>
+              </div>
+              <div>
+                <dt>Target scope</dt>
+                <dd>All allowlisted targets</dd>
+              </div>
+            </dl>
+          </div>
           <div class="mb-2">
             <label class="form-label">Username</label>
             <input class="form-control" type="text" name="username" value="{{ default_username }}">
@@ -23,11 +51,28 @@
             <label class="form-label">Password</label>
             <input class="form-control" type="password" name="password" required>
           </div>
-          <button class="btn btn-primary w-100" type="submit">Run Discovery Refresh</button>
+          <button class="btn btn-primary w-100" type="submit" data-running-label="Refreshing...">Run Discovery Refresh</button>
         </form>
 
-        <form method="post">
+        <form method="post" data-guarded-submit="true">
           <input type="hidden" name="action" value="run_remoting">
+          <div class="summary-card mb-3">
+            <h6>Execution summary</h6>
+            <dl class="summary-list">
+              <div>
+                <dt>Operation</dt>
+                <dd>WinRM + BE200 presence check</dd>
+              </div>
+              <div>
+                <dt>Script</dt>
+                <dd><code>test-remoting.ps1</code></dd>
+              </div>
+              <div>
+                <dt>Success rule</dt>
+                <dd>Reachable and BE200 adapter found</dd>
+              </div>
+            </dl>
+          </div>
           <div class="mb-2">
             <label class="form-label">Username</label>
             <input class="form-control" type="text" name="username" value="{{ default_username }}">
@@ -36,16 +81,19 @@
             <label class="form-label">Password</label>
             <input class="form-control" type="password" name="password" required>
           </div>
-          <button class="btn btn-outline-primary w-100" type="submit">Run Remoting Test</button>
+          <button class="btn btn-outline-primary w-100" type="submit" data-running-label="Testing...">Run Remoting Test</button>
         </form>
       </div>
     </div>
 
     <div class="card card-be200 zone-risk mt-4">
-      <div class="card-header">BE200 operational actions</div>
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span>BE200 operational actions</span>
+        {{ tone_badge("danger", "State changing") }}
+      </div>
       <div class="card-body">
-        <p class="small text-muted mb-3">Disable, Enable, and Restart affect live adapters. Read the <strong>live policy</strong> callout and check the confirmation box before submit.</p>
-        <form method="post" id="operational-form">
+        <p class="small text-muted mb-3">Disable, Enable, and Restart affect live adapters. Read the policy callout, review the execution summary, and check the confirmation box before submit.</p>
+        <form method="post" id="operational-form" data-guarded-submit="true">
           <input type="hidden" name="action" value="run_operational">
           <input type="hidden" name="operation_mirror" id="operation-mirror" value="Status">
           <div class="mb-2">
@@ -59,7 +107,7 @@
           </div>
           <div class="mb-3">
             <label class="form-label">Current target scope</label>
-            <div class="form-text mb-2">Select one or more targets (up to all 8). The GUI enforces per-action limits and disables unsafe combinations.</div>
+            <div class="form-text mb-2">Select one or more targets. The GUI enforces per-action limits and blocks out-of-policy combinations.</div>
             <div class="target-grid">
               {% for target in allowed_targets %}
                 <div class="form-check">
@@ -69,6 +117,28 @@
               {% endfor %}
             </div>
             <div id="action-policy-note" class="callout-scope callout-scope-live mt-2" role="status" aria-live="polite"></div>
+          </div>
+          <div class="summary-card mb-3">
+            <h6>Execution summary</h6>
+            <dl class="summary-list">
+              <div>
+                <dt>Targets</dt>
+                <dd id="inventory-summary-targets">0 selected</dd>
+              </div>
+              <div>
+                <dt>Risk</dt>
+                <dd id="inventory-summary-risk">Read only</dd>
+              </div>
+              <div>
+                <dt>Script</dt>
+                <dd><code>invoke-be200-action.ps1</code></dd>
+              </div>
+              <div>
+                <dt>Artifacts</dt>
+                <dd>Action CSV, transcript</dd>
+              </div>
+            </dl>
+            <div class="summary-note" id="inventory-summary-note">Status is read only. Disable / Enable / Restart require live adapter confirmation.</div>
           </div>
           <div class="mb-2">
             <label class="form-label">Username</label>
@@ -82,11 +152,11 @@
             <div class="form-check mb-0">
               <input class="form-check-input" type="checkbox" value="yes" id="confirm-operational" name="confirm_operational">
               <label class="form-check-label" for="confirm-operational">
-                I confirm Disable, Enable, or Restart only when intended. Required for those operations. The GUI remains restricted to allowlisted BE200 adapters only.
+                I confirm Disable, Enable, or Restart only when intended. The GUI remains restricted to allowlisted BE200 adapters only.
               </label>
             </div>
           </div>
-          <button class="btn btn-outline-danger w-100 mt-3" type="submit">Run selected action</button>
+          <button class="btn btn-outline-danger w-100 mt-3" type="submit" data-running-label="Running...">Run selected action</button>
         </form>
       </div>
     </div>
@@ -94,15 +164,15 @@
     <div class="card card-be200 zone-readonly mt-4">
       <div class="card-header">Current files</div>
       <div class="card-body small">
-        <div><strong>Discovery CSV</strong><br>{{ artifacts.discovery_csv or "None" }}</div>
+        <div><strong>Discovery CSV</strong><br><span class="font-mono">{{ artifacts.discovery_csv or "None" }}</span></div>
         <hr>
-        <div><strong>Discovery JSON</strong><br>{{ artifacts.discovery_json or "None" }}</div>
+        <div><strong>Discovery JSON</strong><br><span class="font-mono">{{ artifacts.discovery_json or "None" }}</span></div>
         <hr>
-        <div><strong>Template CSV</strong><br>{{ artifacts.template_csv or "None" }}</div>
+        <div><strong>Template CSV</strong><br><span class="font-mono">{{ artifacts.template_csv or "None" }}</span></div>
         <hr>
-        <div><strong>Property Matrix CSV</strong><br>{{ artifacts.property_matrix_csv or "None" }}</div>
+        <div><strong>Property Matrix CSV</strong><br><span class="font-mono">{{ artifacts.property_matrix_csv or "None" }}</span></div>
         <hr>
-        <div><strong>Property Matrix JSON</strong><br>{{ artifacts.property_matrix_json or "None" }}</div>
+        <div><strong>Property Matrix JSON</strong><br><span class="font-mono">{{ artifacts.property_matrix_json or "None" }}</span></div>
       </div>
     </div>
   </div>
@@ -111,8 +181,8 @@
     <div class="card card-be200 mb-4">
       <div class="card-header">Target fleet</div>
       <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-sm mb-0 table-be200">
+        <div class="table-responsive table-responsive-sticky">
+          <table class="table table-sm mb-0 table-be200 table-sticky">
             <thead>
               <tr>
                 <th>Target</th>
@@ -124,7 +194,7 @@
             <tbody>
               {% for target in inventory.targets %}
                 <tr>
-                  <td class="font-monospace">{{ target.target_ip }}</td>
+                  <td class="font-mono">{{ target.target_ip }}</td>
                   <td>{{ target.computer_name }}</td>
                   <td class="small">{{ target.interface_description or "Not discovered" }}</td>
                   <td class="driver-cell">{{ target.driver_version or "Unknown" }}{% if target.driver_date %}<span class="driver-date">{{ target.driver_date }}</span>{% endif %}</td>
@@ -142,8 +212,8 @@
         <span class="badge text-bg-success ms-2">{{ property_catalog|length }} live-tested</span>
       </div>
       <div class="card-body p-0">
-        <div class="table-responsive">
-          <table class="table table-striped table-sm mb-0 table-be200">
+        <div class="table-responsive table-responsive-sticky">
+          <table class="table table-striped table-sm mb-0 table-be200 table-sticky">
             <thead>
               <tr>
                 <th>Property</th>
@@ -159,7 +229,7 @@
                 <tr>
                   <td>{{ item.label }}</td>
                   <td><code>{{ item.registry_keyword }}</code></td>
-                  <td>{{ item.risk }}</td>
+                  <td>{{ tone_badge('warning' if item.risk in ['medium', 'high'] else 'ok', item.risk) }}</td>
                   <td>{{ item.coverage }}</td>
                   <td class="small">{{ item.current_values|join(", ") }}</td>
                   <td class="small">{{ item.possible_display_values|join(", ") }}</td>
@@ -183,6 +253,9 @@
     const operationalForm = document.getElementById("operational-form");
     const targetBoxes = Array.from(document.querySelectorAll('input[name="action_targets"]'));
     const note = document.getElementById("action-policy-note");
+    const summaryTargets = document.getElementById("inventory-summary-targets");
+    const summaryRisk = document.getElementById("inventory-summary-risk");
+    const summaryNote = document.getElementById("inventory-summary-note");
 
     function selectedTargets() {
       return targetBoxes.filter((item) => item.checked).map((item) => item.value);
@@ -225,6 +298,9 @@
       const acceptedTargets = selectedPolicy.accepted_targets.length ? selectedPolicy.accepted_targets.join(", ") : "all allowlisted targets";
       const blockedTargets = selectedPolicy.blocked_targets.length ? ` Blocked targets: ${selectedPolicy.blocked_targets.join(", ")}.` : "";
       note.textContent = `${operationSelect.value}: ${selectedPolicy.rationale} Accepted targets: ${acceptedTargets}. Max targets per run: ${selectedPolicy.max_targets}.${blockedTargets}`;
+      summaryTargets.textContent = `${targets.length} selected`;
+      summaryRisk.textContent = operationSelect.value === "Status" ? "Read only" : "Live adapter state change";
+      summaryNote.textContent = `${operationSelect.value} uses invoke-be200-action.ps1 and writes a CSV + transcript for review.`;
     }
 
     operationalForm.addEventListener("submit", function (e) {
@@ -238,7 +314,6 @@
       if (!isAllowed(operationSelect.value, targets)) {
         e.preventDefault();
         alert("The selected operation is not accepted for the chosen target(s). Change your selection.");
-        return;
       }
     });
 

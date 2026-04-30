@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% from "_macros.html" import page_header, tone_badge %}
+
+{% block title %}Open NCPA - BE200 Control Console{% endblock %}
+
+{% block content %}
+{{ page_header("Open Network Connections (ncpa.cpl)", "<strong>Sequential</strong> workflow for <code>192.168.22.221</code>-<code>228</code> only. This page does <strong>not</strong> change IP, DNS, routes, or adapter settings, but it does attempt an interactive desktop action on the target.", "System Level", "danger") }}
+
+<div class="alert alert-warning">
+  <strong>Session caveat:</strong> The supplied account should match a user already logged on at the target. If no interactive session exists, the task may succeed remotely without a visible Network Connections window on the desktop.
+</div>
+
+<div class="card card-be200 zone-system mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Launch sequentially</span>
+    {{ tone_badge("danger", "Interactive session required") }}
+  </div>
+  <div class="card-body">
+    <form method="post" id="open-ncpa-form" data-guarded-submit="true">
+      <input type="hidden" name="action" value="run">
+      <div class="summary-card mb-3">
+        <h6>Execution summary</h6>
+        <dl class="summary-list">
+          <div>
+            <dt>Targets</dt>
+            <dd id="ncpa-summary-targets">{{ selected_targets|length }} selected</dd>
+          </div>
+          <div>
+            <dt>Script</dt>
+            <dd><code>orchestrate-open-ncpa.ps1</code></dd>
+          </div>
+          <div>
+            <dt>Delay</dt>
+            <dd id="ncpa-summary-delay">{{ delay_seconds }} second(s)</dd>
+          </div>
+          <div>
+            <dt>RDP assist</dt>
+            <dd id="ncpa-summary-rdp">{{ "Open mstsc" if open_mstsc else "No mstsc" }}</dd>
+          </div>
+        </dl>
+        <div class="summary-note">Success does not mean the operator visibly saw the window. Review job detail for remote invoke, NCPA launch, and mstsc columns.</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Targets (processed in list order)</label>
+        <div class="mb-1">
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="select-all-btn">Select all</button>
+          <button type="button" class="btn btn-sm btn-outline-secondary" id="clear-all-btn">Clear all</button>
+        </div>
+        <div class="target-grid">
+          {% for target in allowed_targets %}
+            <div class="form-check">
+              <input class="form-check-input tgt" type="checkbox" name="targets" value="{{ target }}" id="ncpa-t-{{ loop.index }}" {% if target in selected_targets %}checked{% endif %}>
+              <label class="form-check-label" for="ncpa-t-{{ loop.index }}">{{ target }}</label>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-md-4">
+          <label class="form-label">Delay between targets (seconds)</label>
+          <input class="form-control" type="number" name="delay_seconds" id="delay-seconds" value="{{ delay_seconds }}" min="0" max="120">
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" name="open_mstsc" value="yes" id="chk-mstsc" {% if open_mstsc %}checked{% endif %}>
+        <label class="form-check-label" for="chk-mstsc">
+          After each target, open <strong>RDP</strong> (<code>mstsc /v:&lt;ip&gt;</code>) on this PC so you can inspect the remote desktop
+        </label>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Username</label>
+        <input class="form-control" type="text" name="username" value="{{ default_username }}">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input class="form-control" type="password" name="password" required autocomplete="off">
+      </div>
+      <button class="btn btn-primary mt-2" type="submit" data-running-label="Launching...">Launch sequentially</button>
+    </form>
+  </div>
+</div>
+
+<p class="small text-muted">CLI dry-run: <code>orchestrate-open-ncpa.ps1 -DryRun ...</code>. Operator notes: <code>gui/README.md</code>.</p>
+
+<script>
+(() => {
+  const boxes = () => Array.from(document.querySelectorAll('.tgt'));
+  const targetSummary = document.getElementById('ncpa-summary-targets');
+  const delaySummary = document.getElementById('ncpa-summary-delay');
+  const rdpSummary = document.getElementById('ncpa-summary-rdp');
+  const delayInput = document.getElementById('delay-seconds');
+  const mstscCheck = document.getElementById('chk-mstsc');
+  document.getElementById('select-all-btn').addEventListener('click', () => { boxes().forEach(c => c.checked = true); refreshSummary(); });
+  document.getElementById('clear-all-btn').addEventListener('click', () => { boxes().forEach(c => c.checked = false); refreshSummary(); });
+  boxes().forEach((box) => box.addEventListener('change', refreshSummary));
+  delayInput.addEventListener('input', refreshSummary);
+  mstscCheck.addEventListener('change', refreshSummary);
+
+  function refreshSummary() {
+    targetSummary.textContent = `${boxes().filter(c => c.checked).length} selected`;
+    delaySummary.textContent = `${delayInput.value || 0} second(s)`;
+    rdpSummary.textContent = mstscCheck.checked ? 'Open mstsc' : 'No mstsc';
+  }
+
+  document.getElementById('open-ncpa-form').addEventListener('submit', (e) => {
+    if (!boxes().some(c => c.checked)) { e.preventDefault(); alert('Select at least one target.'); }
+  });
+  refreshSummary();
+})();
+</script>
+{% endblock %}

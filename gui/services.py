@@ -4,15 +4,43 @@ import csv
 import json
 import os
 import re
+import secrets
 import socket
 import subprocess
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta
+from json import JSONDecodeError
 from pathlib import Path
 from typing import Any
 
 
 TIMESTAMP_RE = re.compile(r"(\d{8}-\d{6}(?:-\d{6})?)")
+SUCCESS_STATES = {"success", "simulated"}
+
+
+def atomic_write_text(path: str | Path, content: str, encoding: str = "utf-8") -> None:
+    target_path = Path(path)
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = target_path.with_name(f"{target_path.name}.tmp-{os.getpid()}-{now_timestamp()}")
+    try:
+        temp_path.write_text(content, encoding=encoding)
+        os.replace(temp_path, target_path)
+    finally:
+        if temp_path.exists():
+            temp_path.unlink(missing_ok=True)
+
+
+def write_json_atomic(path: str | Path, payload: Any) -> None:
+    atomic_write_text(path, json.dumps(payload, indent=2) + "\n")
+
+
+def recover_corrupt_json_file(path: Path) -> None:
+    corrupt_path = path.with_suffix(path.suffix + f".corrupt-{now_timestamp()}")
+    try:
+        os.replace(path, corrupt_path)
+    except OSError:
+        pass
+    write_json_atomic(path, [])
 
 
 def load_app_config(gui_root: Path) -> dict[str, Any]:
@@ -189,8 +217,20 @@ def latest_artifacts(config: dict[str, Any]) -> dict[str, str | None]:
 
 def load_history_index(config: dict[str, Any]) -> list[dict[str, Any]]:
     history_index = Path(config["history_index"])
-    with history_index.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+    if not history_index.exists():
+        return []
+    try:
+        with history_index.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except JSONDecodeError:
+        recover_corrupt_json_file(history_index)
+        return []
+    except OSError:
+        return []
+
+    if isinstance(data, list):
+        return data
+    return []
 
 
 def save_job(config: dict[str, Any], job: dict[str, Any]) -> None:
@@ -198,8 +238,7 @@ def save_job(config: dict[str, Any], job: dict[str, Any]) -> None:
     jobs_root.mkdir(parents=True, exist_ok=True)
 
     detail_path = jobs_root / f"{job['id']}.json"
-    with detail_path.open("w", encoding="utf-8") as handle:
-        json.dump(job, handle, indent=2)
+    write_json_atomic(detail_path, job)
 
     history = load_history_index(config)
     history = [entry for entry in history if entry["id"] != job["id"]]
@@ -210,21 +249,25 @@ def save_job(config: dict[str, Any], job: dict[str, Any]) -> None:
             "job_type": job["job_type"],
             "title": job["title"],
             "status": job["status"],
+            "status_reason": job.get("status_reason"),
             "started_at": job["started_at"],
             "finished_at": job.get("finished_at"),
             "summary": job.get("summary", {}),
         },
     )
-    with Path(config["history_index"]).open("w", encoding="utf-8") as handle:
-        json.dump(history, handle, indent=2)
+    write_json_atomic(config["history_index"], history)
 
 
 def get_job(config: dict[str, Any], job_id: str) -> dict[str, Any] | None:
     path = Path(config["jobs_root"]) / f"{job_id}.json"
     if not path.exists():
         return None
-    with path.open("r", encoding="utf-8") as handle:
-        return json.load(handle)
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            data = json.load(handle)
+    except (JSONDecodeError, OSError):
+        return None
+    return data if isinstance(data, dict) else None
 
 
 def get_history(config: dict[str, Any], limit: int | None = None) -> list[dict[str, Any]]:
@@ -268,6 +311,109 @@ def gui_subprocess_env() -> dict[str, str]:
     env["BE200_NONINTERACTIVE"] = "1"
     env["BE200_GUI"] = "1"
     return env
+
+
+def load_flask_secret(config: dict[str, Any]) -> str:
+    env_secret = os.environ.get("BE200_GUI_SECRET_KEY", "").strip()
+    if env_secret:
+        return env_secret
+
+    secret_path = Path(config["data_root"]) / "flask-secret.key"
+    if secret_path.exists():
+        secret = secret_path.read_text(encoding="utf-8").strip()
+        if secret:
+            return secret
+
+    configured_secret = str(config.get("app", {}).get("secret_key", "")).strip()
+    if configured_secret:
+        return configured_secret
+
+    generated_secret = secrets.token_urlsafe(48)
+    atomic_write_text(secret_path, generated_secret + "\n")
+    return generated_secret
+
+
+def boolish(value: Any, truthy: tuple[str, ...] = ("true", "yes", "1", "simulated")) -> bool:
+    return str(value or "").strip().lower() in truthy
+
+
+def summarize_row_outcome(rows: list[dict[str, Any]], success_count: int, label: str) -> dict[str, Any]:
+    total = len(rows)
+    if total == 0:
+        return {
+            "status": "failed",
+            "reason": "No result rows were produced.",
+            "overview": {"rows": 0, label: 0},
+        }
+
+    if success_count == total:
+        status = "success"
+        reason = f"All {total} row(s) completed successfully."
+    elif success_count == 0:
+        status = "failed"
+        reason = f"No row met the success criteria ({label})."
+    else:
+        status = "partial"
+        reason = f"{success_count} of {total} row(s) met the success criteria ({label})."
+
+    return {
+        "status": status,
+        "reason": reason,
+        "overview": {"rows": total, label: success_count},
+    }
+
+
+def derive_job_status_from_artifacts(
+    job_type: str,
+    returncode: int,
+    artifacts: dict[str, str | None],
+) -> tuple[str, str | None, dict[str, Any]]:
+    if returncode != 0:
+        return "failed", f"Process exited with code {returncode}.", {}
+
+    csv_path = artifacts.get("csv") or artifacts.get("result_csv")
+    rows = load_csv(csv_path) if csv_path else []
+
+    if job_type == "apply":
+        success_count = sum(
+            1
+            for row in rows
+            if boolish(row.get("ApplySucceeded")) and boolish(row.get("VerificationSucceeded"))
+        )
+        result = summarize_row_outcome(rows, success_count, "verified_rows")
+        return result["status"], result["reason"], result["overview"]
+
+    if job_type == "action":
+        success_count = sum(1 for row in rows if boolish(row.get("ActionSucceeded")))
+        result = summarize_row_outcome(rows, success_count, "successful_rows")
+        return result["status"], result["reason"], result["overview"]
+
+    if job_type == "wifi":
+        success_count = sum(1 for row in rows if boolish(row.get("Success"), truthy=("true", "yes", "1")))
+        result = summarize_row_outcome(rows, success_count, "successful_rows")
+        return result["status"], result["reason"], result["overview"]
+
+    if job_type == "restart_rdp":
+        success_count = sum(1 for row in rows if str(row.get("FinalStatus", "")).strip().lower() in SUCCESS_STATES)
+        result = summarize_row_outcome(rows, success_count, "successful_rows")
+        return result["status"], result["reason"], result["overview"]
+
+    if job_type == "open_ncpa":
+        success_count = sum(1 for row in rows if boolish(row.get("Success")))
+        result = summarize_row_outcome(rows, success_count, "successful_rows")
+        return result["status"], result["reason"], result["overview"]
+
+    if job_type == "remoting" and rows:
+        success_count = sum(
+            1
+            for row in rows
+            if boolish(row.get("Reachable"), truthy=("true", "yes", "1"))
+            and boolish(row.get("BE200AdapterFound"), truthy=("true", "yes", "1"))
+        )
+        result = summarize_row_outcome(rows, success_count, "reachable_be200_rows")
+        return result["status"], result["reason"], result["overview"]
+
+    return "success", None, {}
 
 
 
@@ -373,6 +519,69 @@ def launch_mstsc_sequence(ips: list[str], delay_seconds: float = 3.0) -> None:
         if delay_seconds > 0:
             time.sleep(delay_seconds)
 
+
+def summarize_open_ncpa_rows(rows: list[dict[str, str]]) -> str:
+    if not rows:
+        return "(no rows)"
+    success = sum(1 for r in rows if str(r.get("Success", "")).lower() == "yes")
+    ncpa_yes = sum(1 for r in rows if str(r.get("NcpaSuccess", "")).lower() == "yes")
+    mstsc_yes = sum(1 for r in rows if str(r.get("MstscLaunched", "")).lower() == "yes")
+    attempted = sum(1 for r in rows if str(r.get("RemoteSessionAttempted", "")).lower() in ("yes", "simulated"))
+    lines = [
+        f"Targets in report: {len(rows)}",
+        f"WinRM / remote invoke attempted (Yes): {attempted}",
+        f"NCPA launch success (Yes): {ncpa_yes}",
+        f"Overall row success (Yes): {success}",
+        f"mstsc launched (Yes): {mstsc_yes}",
+    ]
+    return "\n".join(lines)
+
+
+def run_open_ncpa_job(
+    config: dict[str, Any],
+    targets: list[str],
+    username: str,
+    password: str,
+    *,
+    delay_seconds: int,
+    open_mstsc: bool,
+) -> dict[str, Any]:
+    csv_path = output_path(config, "csv", "gui-open-ncpa-results", "csv")
+    transcript_path = output_path(config, "transcripts", "gui-orchestrate-open-ncpa", "log")
+    arguments = [
+        "-TargetIP",
+        ",".join(targets),
+        "-Username",
+        username,
+        "-Password",
+        password,
+        "-CsvPath",
+        csv_path,
+        "-TranscriptPath",
+        transcript_path,
+        "-DelaySecondsBetweenTargets",
+        str(delay_seconds),
+    ]
+    if open_mstsc:
+        arguments.append("-OpenMstsc")
+    timeout = int(config["defaults"].get("open_ncpa_timeout_seconds", 600))
+    summary = {
+        "targets": targets,
+        "delay_seconds_between_targets": delay_seconds,
+        "open_mstsc": open_mstsc,
+    }
+    return run_script_job(
+        config,
+        "open_ncpa",
+        "Open Network Connections (ncpa.cpl) on fleet targets",
+        "orchestrate-open-ncpa.ps1",
+        arguments,
+        {"csv": csv_path, "transcript": transcript_path},
+        summary,
+        timeout_seconds=timeout,
+    )
+
+
 def run_script_job(
     config: dict[str, Any],
     job_type: str,
@@ -391,17 +600,6 @@ def run_script_job(
     started_at = datetime.now().isoformat(timespec="seconds")
     timeout = int(timeout_seconds) if timeout_seconds is not None else int(config["defaults"]["run_timeout_seconds"])
     env = gui_subprocess_env()
-
-    result = subprocess.run(
-        command,
-        capture_output=True,
-        text=True,
-        cwd=str(toolkit_root),
-        timeout=timeout,
-        encoding="utf-8",
-        errors="replace",
-        env=env,
-    )
     launch_log = json.dumps(
         {
             "argv": display_command,
@@ -411,22 +609,57 @@ def run_script_job(
             },
         }
     )
-    stdout = f"GUI launch argv: {launch_log}\n\n{result.stdout}"
 
-    job = {
-        "id": job_id,
-        "job_type": job_type,
-        "title": title,
-        "status": "success" if result.returncode == 0 else "failed",
-        "started_at": started_at,
-        "finished_at": datetime.now().isoformat(timespec="seconds"),
-        "returncode": result.returncode,
-        "command": display_command,
-        "stdout": stdout,
-        "stderr": result.stderr,
-        "artifacts": artifacts,
-        "summary": summary or {},
-    }
+    try:
+        result = subprocess.run(
+            command,
+            capture_output=True,
+            text=True,
+            cwd=str(toolkit_root),
+            timeout=timeout,
+            encoding="utf-8",
+            errors="replace",
+            env=env,
+        )
+        stdout = f"GUI launch argv: {launch_log}\n\n{result.stdout}"
+        status, status_reason, overview = derive_job_status_from_artifacts(job_type, result.returncode, artifacts)
+        summary_payload = dict(summary or {})
+        if overview:
+            summary_payload["result_overview"] = overview
+        job = {
+            "id": job_id,
+            "job_type": job_type,
+            "title": title,
+            "status": status,
+            "status_reason": status_reason,
+            "started_at": started_at,
+            "finished_at": datetime.now().isoformat(timespec="seconds"),
+            "returncode": result.returncode,
+            "command": display_command,
+            "stdout": stdout,
+            "stderr": result.stderr,
+            "artifacts": artifacts,
+            "summary": summary_payload,
+        }
+    except subprocess.TimeoutExpired as exc:
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        job = {
+            "id": job_id,
+            "job_type": job_type,
+            "title": title,
+            "status": "failed",
+            "status_reason": f"Timed out after {timeout} seconds.",
+            "started_at": started_at,
+            "finished_at": datetime.now().isoformat(timespec="seconds"),
+            "returncode": None,
+            "timed_out": True,
+            "command": display_command,
+            "stdout": f"GUI launch argv: {launch_log}\n\n{stdout}",
+            "stderr": stderr,
+            "artifacts": artifacts,
+            "summary": dict(summary or {}),
+        }
     save_job(config, job)
     return job
 

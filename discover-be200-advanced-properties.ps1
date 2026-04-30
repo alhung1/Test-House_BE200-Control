@@ -112,6 +112,53 @@ try {
         function Select-PreferredBE200Adapters {
             param([string[]]$AllowedInterfaceDescriptions)
 
+            function Resolve-BE200AdapterFromWlanInterface {
+                param(
+                    [object[]]$Candidates,
+                    [string]$InterfaceDescription
+                )
+
+                try {
+                    $raw = & netsh wlan show interfaces 2>&1
+                }
+                catch {
+                    return [pscustomobject]@{ Adapter = $null; Note = $null }
+                }
+
+                $text = ($raw | Out-String)
+                if (-not $text -or $text.Trim().Length -eq 0) {
+                    return [pscustomobject]@{ Adapter = $null; Note = $null }
+                }
+
+                $blocks = $text -split '(?=\s+Name\s+:)'
+                foreach ($block in $blocks) {
+                    $info = @{}
+                    foreach ($line in ($block -split "`n")) {
+                        if ($line -match '^\s+(.+?)\s+:\s+(.+)$') {
+                            $info[$Matches[1].Trim()] = $Matches[2].Trim()
+                        }
+                    }
+
+                    if (-not $info.ContainsKey('Name')) {
+                        continue
+                    }
+
+                    if ($info.ContainsKey('Description') -and $info['Description'] -ne $InterfaceDescription) {
+                        continue
+                    }
+
+                    $namedMatches = @($Candidates | Where-Object { $_.Name -eq $info['Name'] -and $_.InterfaceDescription -eq $InterfaceDescription })
+                    if ($namedMatches.Count -eq 1) {
+                        return [pscustomobject]@{
+                            Adapter = $namedMatches[0]
+                            Note    = ("Multiple adapters matched allowlisted InterfaceDescription '{0}'. Resolved via WLAN interface '{1}' for read-only discovery." -f $InterfaceDescription, $info['Name'])
+                        }
+                    }
+                }
+
+                return [pscustomobject]@{ Adapter = $null; Note = $null }
+            }
+
             $selected = New-Object System.Collections.Generic.List[object]
             $issues = New-Object System.Collections.Generic.List[string]
             $allAdapters = @(Get-NetAdapter -ErrorAction SilentlyContinue)
@@ -140,9 +187,16 @@ try {
                     }
 
                     if ($preferredMatches.Count -gt 1) {
-                        $sorted = @($preferredMatches | Sort-Object ifIndex)
-                        [void]$selected.Add($sorted[0])
-                        [void]$issues.Add(("Multiple adapters matched allowlisted InterfaceDescription '{0}' with Status '{1}'. Selected lowest ifIndex ({2}) for read-only discovery." -f $interfaceDescription, $preferredStatus, $sorted[0].ifIndex))
+                        $wlanSelection = Resolve-BE200AdapterFromWlanInterface -Candidates $preferredMatches -InterfaceDescription $interfaceDescription
+                        if ($null -ne $wlanSelection.Adapter) {
+                            [void]$selected.Add($wlanSelection.Adapter)
+                            [void]$issues.Add($wlanSelection.Note)
+                        }
+                        else {
+                            $sorted = @($preferredMatches | Sort-Object ifIndex)
+                            [void]$selected.Add($sorted[0])
+                            [void]$issues.Add(("Multiple adapters matched allowlisted InterfaceDescription '{0}' with Status '{1}'. Selected lowest ifIndex ({2}) for read-only discovery." -f $interfaceDescription, $preferredStatus, $sorted[0].ifIndex))
+                        }
                         $resolved = $true
                         break
                     }
@@ -154,6 +208,13 @@ try {
 
                 if ($matching.Count -eq 1) {
                     [void]$selected.Add($matching[0])
+                    continue
+                }
+
+                $wlanSelection = Resolve-BE200AdapterFromWlanInterface -Candidates $matching -InterfaceDescription $interfaceDescription
+                if ($null -ne $wlanSelection.Adapter) {
+                    [void]$selected.Add($wlanSelection.Adapter)
+                    [void]$issues.Add($wlanSelection.Note)
                     continue
                 }
 

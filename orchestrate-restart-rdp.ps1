@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
   OS restart selected fleet hosts, wait for ping (and optional RDP port), optionally launch mstsc sequentially.
 #>
@@ -65,9 +65,10 @@ try {
             $row.Message = 'Restart failed; skipped wait/RDP.'
             [void]$rows.Add([pscustomobject]$row); continue
         }
-        $row | Add-Member -NotePropertyName '_IssuedAt' -NotePropertyValue $issuedAt -Force
-        $row | Add-Member -NotePropertyName '_PingDeadline' -NotePropertyValue ($issuedAt.AddSeconds($PingTimeoutSeconds)) -Force
-        [void]$rows.Add([pscustomobject]$row)
+        $rowObj = [pscustomobject]$row
+        $rowObj | Add-Member -NotePropertyName '_IssuedAt' -NotePropertyValue $issuedAt -Force
+        $rowObj | Add-Member -NotePropertyName '_PingDeadline' -NotePropertyValue ($issuedAt.AddSeconds($PingTimeoutSeconds)) -Force
+        [void]$rows.Add($rowObj)
         Start-Sleep -Seconds 2
     }
     if (-not $DryRun) {
@@ -87,7 +88,7 @@ try {
                     $r.Message = "No ping within ${PingTimeoutSeconds}s."
                     continue
                 }
-                if (Test-Connection -ComputerName $r.TargetIP -Count 1 -Quiet -TimeoutSeconds 3) {
+                if (Test-Connection -ComputerName $r.TargetIP -Count 1 -Quiet -ErrorAction SilentlyContinue) {
                     $sec = [int](($now - $r._IssuedAt).TotalSeconds)
                     if ($sec -lt 0) { $sec = 0 }
                     $r.PingReachable = 'Yes'; $r.RecoverySeconds = "$sec"

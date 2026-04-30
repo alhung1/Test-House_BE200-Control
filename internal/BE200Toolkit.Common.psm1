@@ -69,6 +69,63 @@ function Test-BE200InterfaceDescriptionAllowed {
     return (Get-BE200AllowedInterfaceDescriptions) -contains $InterfaceDescription
 }
 
+function Resolve-BE200AdapterFromWlanInterface {
+    [CmdletBinding()]
+    param(
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [object[]]$Candidates = @(),
+
+        [Parameter(Mandatory = $true)]
+        [string]$InterfaceDescription
+    )
+
+    try {
+        $raw = & netsh wlan show interfaces 2>&1
+    }
+    catch {
+        return $null
+    }
+
+    $text = ($raw | Out-String)
+    if (-not $text -or $text.Trim().Length -eq 0) {
+        return $null
+    }
+
+    $blocks = $text -split '(?=\s+Name\s+:)'
+    foreach ($block in $blocks) {
+        $info = @{}
+        foreach ($line in ($block -split "`n")) {
+            if ($line -match '^\s+(.+?)\s+:\s+(.+)$') {
+                $info[$Matches[1].Trim()] = $Matches[2].Trim()
+            }
+        }
+
+        if (-not $info.ContainsKey('Name')) {
+            continue
+        }
+
+        if ($info.ContainsKey('Description') -and $info['Description'] -ne $InterfaceDescription) {
+            continue
+        }
+
+        $namedMatches = @(
+            $Candidates |
+                Where-Object {
+                    $_ -and
+                    $_.Name -eq $info['Name'] -and
+                    $_.InterfaceDescription -eq $InterfaceDescription
+                }
+        )
+
+        if ($namedMatches.Count -eq 1) {
+            return $namedMatches[0]
+        }
+    }
+
+    return $null
+}
+
 function Select-BE200PreferredAdapters {
     [CmdletBinding()]
     param(
@@ -107,7 +164,13 @@ function Select-BE200PreferredAdapters {
             }
 
             if ($preferredMatches.Count -gt 1) {
-                [void]$issues.Add(("Multiple adapters matched allowlisted InterfaceDescription '{0}' with Status '{1}'. Skipping to avoid ambiguity." -f $interfaceDescription, $preferredStatus))
+                $wlanAdapter = Resolve-BE200AdapterFromWlanInterface -Candidates $preferredMatches -InterfaceDescription $interfaceDescription
+                if ($null -ne $wlanAdapter) {
+                    [void]$selected.Add($wlanAdapter)
+                }
+                else {
+                    [void]$issues.Add(("Multiple adapters matched allowlisted InterfaceDescription '{0}' with Status '{1}'. Skipping to avoid ambiguity." -f $interfaceDescription, $preferredStatus))
+                }
                 $resolved = $true
                 break
             }
@@ -119,6 +182,12 @@ function Select-BE200PreferredAdapters {
 
         if ($matching.Count -eq 1) {
             [void]$selected.Add($matching[0])
+            continue
+        }
+
+        $wlanAdapter = Resolve-BE200AdapterFromWlanInterface -Candidates $matching -InterfaceDescription $interfaceDescription
+        if ($null -ne $wlanAdapter) {
+            [void]$selected.Add($wlanAdapter)
             continue
         }
 

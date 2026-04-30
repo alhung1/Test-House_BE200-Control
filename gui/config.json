@@ -22,7 +22,10 @@
     "run_timeout_seconds": 900,
     "restart_rdp_timeout_seconds": 7200,
     "restart_rdp_ping_timeout_minutes": 10,
-    "restart_rdp_mstsc_delay_seconds": 3
+    "restart_rdp_mstsc_delay_seconds": 3,
+    "open_ncpa_timeout_seconds": 600,
+    "open_ncpa_default_delay_seconds": 3,
+    "open_ncpa_open_mstsc_default": true
   },
   "property_policy_overrides": {
     "RoamingPreferredBandType": {
@@ -292,6 +295,6 @@
     "host": "127.0.0.1",
     "port": 5000,
     "debug": false,
-    "secret_key": "be200-local-gui"
+    "secret_key": ""
   }
 }
