@@ -19,6 +19,8 @@ Accepted GUI/toolkit use:
 - GUI operational actions: `Status`, `Restart`, `Disable`, and `Enable`
 - Wi-Fi Connect: connect BE200 adapters to a specified SSID (open or WPA2-Personal)
 - Wi-Fi Status: view current Wi-Fi state, SSID, radio type, signal, and authentication across all targets
+- Restart + RDP: OS restart on selected fleet hosts, ping recovery, optional TCP 3389 check, optional sequential `mstsc` from the controller (`/system-restart-rdp`)
+- Open NCPA: sequential WinRM-driven launch of Network Connections (`ncpa.cpl`) on each target's interactive desktop when possible (`/open-ncpa`)
 - Property editor selector shows only the 24 live-tested accepted properties; deferred and validation-only properties are not listed
 - BE200 driver version and driver date are shown per target in the inventory summary
 - One-click GUI launch via `C:\Test House BE200 control\launch-be200-gui.ps1`
@@ -184,6 +186,54 @@ Enterprise authentication (802.1X, EAP, RADIUS) is not supported in this version
 - Wi-Fi passwords are passed over encrypted WinRM and stored only in a temporary profile XML that is deleted immediately. They are redacted in all job records and logs.
 - The Wi-Fi Connect page does not delete or manage existing Wi-Fi profiles; it only adds and connects.
 
+## System workflows (live-verified)
+
+These workflows are separate from advanced-property apply and from Wi-Fi Connect/Status. They are live-tested (staged: single target, two targets, and all-eight fleet runs where one host was powered off). They do not change IP, gateway, DNS, routes, metrics, proxy, or Ethernet settings.
+
+### Restart + RDP (`/system-restart-rdp`)
+
+**Accepted scope:** Same fleet as the rest of the GUI: `192.168.22.221` through `192.168.22.228` only. The controller `192.168.22.8` is never a target. Orchestration only (no L3 or Ethernet changes).
+
+**Meaning of success (per target in the job CSV):**
+
+- `RestartRequested` = Yes for every selected row.
+- For hosts where WinRM restart succeeds: `RestartIssued` = Yes; the host reboots; after the grace period, ping polling marks `PingReachable` = Yes within the configured timeout; `FinalStatus` = Success.
+- Optional **TCP 3389** check (when enabled): `RdpPortOpen` = Yes or No depending on whether the listener answered at check time (not a logon test).
+- Optional **auto-open RDP** (when enabled): `RdpLaunched` = Yes when `mstsc` was started from the controller for that row after ping recovery; order follows the selected target list.
+- Unreachable or non-remoting hosts: `RestartIssued` = No, `FinalStatus` = Failed, and `Message` explains (expected for powered-off machines).
+
+**Key caveats:**
+
+- `RdpPortOpen` can be No briefly after ping returns while the RDP service is still starting; auto-`mstsc` is driven by ping recovery, not by the port check.
+- `mstsc` runs on the controller desktop; it does not guarantee successful remote logon.
+- The script issues restarts for all selected targets, then applies a grace period, then polls ping; a host that times out on WinRM delays the whole run before polling begins.
+
+**Target and session limitations:** WinRM from the controller to each target must work (same as other GUI remote jobs). Very long multi-host recoveries may require raising `restart_rdp_timeout_seconds` in `gui\config.json`.
+
+**Operator usage:** Open **Restart + RDP** in the nav. Select targets, set ping timeout (minutes) and seconds between RDP launches, optionally enable TCP 3389 test and auto-open RDP, enter WinRM credentials, confirm the OS restart, and submit. Review the job detail table, CSV artifact, and History. Ping-recovered hosts can trigger **Launch RDP (sequential)** again from job detail. Underlying script: `orchestrate-restart-rdp.ps1` at the toolkit root.
+
+### Open NCPA (`/open-ncpa`)
+
+**Accepted scope:** Same `192.168.22.221`–`228`; never the controller. UI launch on targets only; no L3 changes.
+
+**Meaning of success (per target in the job CSV):**
+
+- `RemoteSessionAttempted` and `NcpaLaunchAttempted` = Yes when WinRM was used for that host.
+- `NcpaSuccess` = Yes when the one-shot scheduled task completed without error (COM `Schedule.Service` registration and run).
+- `Success` = Yes aligns with a successful remote NCPA launch path for that row.
+- Optional **open mstsc** (checkbox): `MstscLaunched` = Yes when the controller started `mstsc /v:<ip>` after that target.
+- WinRM or task registration failures: `NcpaSuccess` / `Success` = No and `Message` contains the reason.
+
+**Key caveats:**
+
+- Implementation uses COM `Schedule.Service` with logon type **InteractiveTokenOrPassword** and action `rundll32.exe shell32.dll,Control_RunDLL ncpa.cpl` so the applet targets the logged-on user's session when one exists.
+- A remote WinRM session cannot enumerate window titles on other sessions; treat **visible Network Connections on the target** as the final acceptance check when you need to be sure.
+- If no user matching the supplied account has an interactive session (console or RDP) on the target, the task may still report success without a visible window.
+
+**Target and session limitations:** Same WinRM and firewall expectations as other GUI remoting. Use credentials that are valid on the target and typically match the interactive user (e.g. lab `admin`).
+
+**Operator usage:** Open **Open NCPA**. Select targets in list order (processed sequentially), set delay between targets, enter username and password, optionally leave **open mstsc** checked (default is in `gui\config.json`), click **Launch sequentially**. Review columns: `TargetIP`, `RemoteSessionAttempted`, `NcpaLaunchAttempted`, `NcpaSuccess`, `MstscLaunched`, `Success`, `Message`. Additional operator notes: [gui/README.md](gui/README.md). Underlying script: `orchestrate-open-ncpa.ps1` at the toolkit root.
+
 ## Concise GUI Run / Use Instructions
 From `192.168.22.8`:
 
@@ -200,9 +250,11 @@ From `192.168.22.8`:
 11. For `Disable` and `Enable`, always follow a multi-target `Disable` with a matching `Enable` on the same targets and verify all per-target results before proceeding.
 12. To connect BE200 adapters to a Wi-Fi network, open `Wi-Fi Connect`, select targets, enter the SSID (and password if WPA2), then click `Connect`. Use `Verify` to confirm the connection.
 13. To view the current Wi-Fi state across all targets, open `Wi-Fi Status`, enter WinRM credentials, and click `Check Status`.
+14. For fleet OS restart, ping recovery, and optional sequential RDP from the controller, open **Restart + RDP** (`/system-restart-rdp`), confirm the scope and restart, run the job, then review the CSV, job detail, and History.
+15. To open Network Connections on target desktops in order, open **Open NCPA** (`/open-ncpa`), keep targets in the desired sequence, set delay if needed, run **Launch sequentially**, and confirm on each target where a user is logged on interactively.
 
 ## Existing Workflow Integrity
-The Wi-Fi Connect / Verify / Status feature is a separate workflow from the advanced-property apply path. All existing accepted workflows remain fully intact and unmodified:
+The Wi-Fi Connect / Verify / Status feature and the system workflows **Restart + RDP** and **Open NCPA** are separate from the advanced-property apply path. Those system workflows are live-verified and do not change accepted BE200 property or Wi-Fi boundaries. All existing accepted workflows remain fully intact and unmodified:
 - Discovery, inventory, and current-settings viewing
 - Multi-property validation, apply, and rollback
 - Operational actions (Status, Restart, Disable, Enable)
