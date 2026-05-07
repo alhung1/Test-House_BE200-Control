@@ -267,6 +267,27 @@ class GuiServicesTests(unittest.TestCase):
         self.assertIn("proxy.name = submitter.name", template)
         self.assertIn("proxy.value = submitter.value", template)
 
+    def test_write_rdp_launch_file_disables_printer_redirection(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            with mock.patch.object(services.tempfile, "gettempdir", return_value=temp_dir):
+                rdp_path = Path(services.write_rdp_launch_file("192.168.22.221"))
+
+            content = rdp_path.read_text(encoding="ascii")
+            self.assertIn("full address:s:192.168.22.221", content)
+            self.assertIn("redirectprinters:i:0", content)
+            self.assertIn("redirectcomports:i:0", content)
+            self.assertIn("redirectsmartcards:i:0", content)
+            self.assertIn("drivestoredirect:s:", content)
+
+    def test_powershell_rdp_launch_uses_safe_helper(self) -> None:
+        restart_script = (REPO_ROOT / "orchestrate-restart-rdp.ps1").read_text(encoding="utf-8")
+        open_ncpa_script = (REPO_ROOT / "orchestrate-open-ncpa.ps1").read_text(encoding="utf-8")
+        common_module = (REPO_ROOT / "internal" / "BE200Toolkit.Common.psm1").read_text(encoding="utf-8")
+
+        self.assertIn("Start-BE200SafeMstsc", restart_script)
+        self.assertIn("Start-BE200SafeMstsc", open_ncpa_script)
+        self.assertIn("redirectprinters:i:0", common_module)
+
     def test_run_script_job_persists_failed_timeout_record(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)

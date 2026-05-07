@@ -607,6 +607,54 @@ function Get-BE200MatchingAdapters {
     return @($selection.SelectedAdapters)
 }
 
+function New-BE200RdpLaunchFile {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$TargetIP
+    )
+
+    $tempRoot = Join-Path $env:TEMP 'BE200Rdp'
+    if (-not (Test-Path -LiteralPath $tempRoot)) {
+        [void](New-Item -ItemType Directory -Path $tempRoot -Force)
+    }
+
+    $safeTarget = ($TargetIP -replace '[^0-9A-Za-z._-]', '_')
+    $path = Join-Path $tempRoot ('be200-{0}-{1}.rdp' -f $safeTarget, (Get-Date -Format 'yyyyMMdd-HHmmss-fff'))
+    $content = @(
+        "full address:s:$TargetIP"
+        'prompt for credentials:i:1'
+        'redirectprinters:i:0'
+        'redirectcomports:i:0'
+        'redirectsmartcards:i:0'
+        'redirectclipboard:i:1'
+        'drivestoredirect:s:'
+        'devicestoredirect:s:'
+        'redirectposdevices:i:0'
+        'redirectwebauthn:i:0'
+        'audiocapturemode:i:0'
+    )
+    Set-Content -Path $path -Value $content -Encoding ASCII
+    return $path
+}
+
+function Start-BE200SafeMstsc {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$TargetIP
+    )
+
+    $mstscExe = Join-Path $env:SystemRoot 'System32\mstsc.exe'
+    if (-not (Test-Path -LiteralPath $mstscExe)) {
+        throw "mstsc.exe not found: $mstscExe"
+    }
+
+    $rdpPath = New-BE200RdpLaunchFile -TargetIP $TargetIP
+    Start-Process -FilePath $mstscExe -ArgumentList @($rdpPath) -WindowStyle Normal -ErrorAction Stop | Out-Null
+    return $rdpPath
+}
+
 function Invoke-BE200RemoteCommand {
     [CmdletBinding()]
     param(
@@ -665,6 +713,7 @@ Export-ModuleMember -Function @(
     'Invoke-BE200RemoteCommand'
     'New-BE200OutputFilePath'
     'New-BE200OutputRoot'
+    'New-BE200RdpLaunchFile'
     'Resolve-BE200Credential'
     'Resolve-BE200PropertySelector'
     'Resolve-BE200ScopeTargets'
@@ -676,5 +725,6 @@ Export-ModuleMember -Function @(
     'Test-BE200AdapterNameAllowed'
     'Test-BE200InterfaceDescriptionAllowed'
     'Test-BE200Administrator'
+    'Start-BE200SafeMstsc'
     'Write-BE200Section'
 )

@@ -123,14 +123,18 @@ try {
                 if (-not $r.Message) { $r.Message = 'Ping recovered.' }
             } else { $r.FinalStatus = 'Partial' }
         }
-        $mstsc = Join-Path $env:SystemRoot 'System32\mstsc.exe'
         if ($AutoOpenRdp) {
             foreach ($t in $ordered) {
                 $r = $rows | Where-Object { $_.TargetIP -eq $t } | Select-Object -First 1
                 if (-not $r -or $r.PingReachable -ne 'Yes') { continue }
-                if (-not (Test-Path -LiteralPath $mstsc)) { continue }
-                Start-Process -FilePath $mstsc -ArgumentList @('/v', $r.TargetIP) -WindowStyle Normal
-                $r.RdpLaunched = 'Yes'
+                try {
+                    [void](Start-BE200SafeMstsc -TargetIP $r.TargetIP)
+                    $r.RdpLaunched = 'Yes'
+                }
+                catch {
+                    $r.RdpLaunched = 'No'
+                    $r.Message = (($r.Message + ' mstsc: ' + $_.Exception.Message).Trim())
+                }
                 Start-Sleep -Seconds $RdpDelaySeconds
             }
         } else {

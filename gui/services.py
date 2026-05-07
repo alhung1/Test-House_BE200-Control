@@ -7,6 +7,7 @@ import re
 import secrets
 import socket
 import subprocess
+import tempfile
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta
 from json import JSONDecodeError
@@ -313,6 +314,31 @@ def gui_subprocess_env() -> dict[str, str]:
     return env
 
 
+def write_rdp_launch_file(target_ip: str) -> str:
+    temp_root = Path(tempfile.gettempdir()) / "BE200Rdp"
+    temp_root.mkdir(parents=True, exist_ok=True)
+    safe_target = re.sub(r"[^0-9A-Za-z._-]", "_", target_ip)
+    path = temp_root / f"be200-{safe_target}-{now_timestamp()}.rdp"
+    content = "\n".join(
+        [
+            f"full address:s:{target_ip}",
+            "prompt for credentials:i:1",
+            "redirectprinters:i:0",
+            "redirectcomports:i:0",
+            "redirectsmartcards:i:0",
+            "redirectclipboard:i:1",
+            "drivestoredirect:s:",
+            "devicestoredirect:s:",
+            "redirectposdevices:i:0",
+            "redirectwebauthn:i:0",
+            "audiocapturemode:i:0",
+            "",
+        ]
+    )
+    path.write_text(content, encoding="ascii")
+    return str(path)
+
+
 def load_flask_secret(config: dict[str, Any]) -> str:
     env_secret = os.environ.get("BE200_GUI_SECRET_KEY", "").strip()
     if env_secret:
@@ -515,7 +541,8 @@ def launch_mstsc_sequence(ips: list[str], delay_seconds: float = 3.0) -> None:
     if not mstsc.is_file():
         raise FileNotFoundError(str(mstsc))
     for ip in ips:
-        subprocess.Popen([str(mstsc), f"/v:{ip}"], cwd=system_root, env=gui_subprocess_env())
+        rdp_file = write_rdp_launch_file(ip)
+        subprocess.Popen([str(mstsc), rdp_file], cwd=system_root, env=gui_subprocess_env())
         if delay_seconds > 0:
             time.sleep(delay_seconds)
 
