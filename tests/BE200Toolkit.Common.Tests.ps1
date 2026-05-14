@@ -106,4 +106,21 @@ Describe 'BE200 toolkit shared safety helpers' {
         $selector.IdentifierType | Should Be 'RegistryKeyword'
         $selector.IdentifierValue | Should Be '*SomeKeyword'
     }
+
+    It 'creates an RDP launch file with fixed 1920x1200 defaults and safe redirection settings' {
+        $path = New-BE200RdpLaunchFile -TargetIP '192.168.22.221'
+        try {
+            Test-Path -LiteralPath $path | Should Be $true
+            $content = Get-Content -LiteralPath $path
+            ($content -join "`n") | Should Match 'desktopwidth:i:1920'
+            ($content -join "`n") | Should Match 'desktopheight:i:1200'
+            ($content -join "`n") | Should Match 'redirectprinters:i:0'
+            ($content -join "`n") | Should Match 'session bpp:i:32'
+        }
+        finally {
+            if (Test-Path -LiteralPath $path) {
+                Remove-Item -LiteralPath $path -Force
+            }
+        }
+    }
 }

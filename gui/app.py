@@ -644,7 +644,9 @@ def restart_rdp_launch(job_id: str) -> str:
         return redirect(url_for("job_detail", job_id=job_id))
     try:
         delay = float(cfg["defaults"].get("restart_rdp_mstsc_delay_seconds", 3))
-        launch_mstsc_sequence(ordered, delay_seconds=delay)
+        width = int(cfg["defaults"].get("rdp_desktop_width", 1920))
+        height = int(cfg["defaults"].get("rdp_desktop_height", 1200))
+        launch_mstsc_sequence(ordered, delay_seconds=delay, desktop_width=width, desktop_height=height)
         flash(f"Launched {len(ordered)} RDP session(s) sequentially.", "info")
     except Exception as exc:
         flash(f"RDP launch failed: {exc}", "danger")

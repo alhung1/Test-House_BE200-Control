@@ -611,7 +611,13 @@ function New-BE200RdpLaunchFile {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [string]$TargetIP
+        [string]$TargetIP,
+
+        [Parameter()]
+        [int]$DesktopWidth = 1920,
+
+        [Parameter()]
+        [int]$DesktopHeight = 1200
     )
 
     $tempRoot = Join-Path $env:TEMP 'BE200Rdp'
@@ -622,7 +628,11 @@ function New-BE200RdpLaunchFile {
     $safeTarget = ($TargetIP -replace '[^0-9A-Za-z._-]', '_')
     $path = Join-Path $tempRoot ('be200-{0}-{1}.rdp' -f $safeTarget, (Get-Date -Format 'yyyyMMdd-HHmmss-fff'))
     $content = @(
+        'screen mode id:i:1'
         "full address:s:$TargetIP"
+        "desktopwidth:i:$DesktopWidth"
+        "desktopheight:i:$DesktopHeight"
+        'session bpp:i:32'
         'prompt for credentials:i:1'
         'redirectprinters:i:0'
         'redirectcomports:i:0'
@@ -642,7 +652,13 @@ function Start-BE200SafeMstsc {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
-        [string]$TargetIP
+        [string]$TargetIP,
+
+        [Parameter()]
+        [int]$DesktopWidth = 1920,
+
+        [Parameter()]
+        [int]$DesktopHeight = 1200
     )
 
     $mstscExe = Join-Path $env:SystemRoot 'System32\mstsc.exe'
@@ -650,7 +666,7 @@ function Start-BE200SafeMstsc {
         throw "mstsc.exe not found: $mstscExe"
     }
 
-    $rdpPath = New-BE200RdpLaunchFile -TargetIP $TargetIP
+    $rdpPath = New-BE200RdpLaunchFile -TargetIP $TargetIP -DesktopWidth $DesktopWidth -DesktopHeight $DesktopHeight
     Start-Process -FilePath $mstscExe -ArgumentList @($rdpPath) -WindowStyle Normal -ErrorAction Stop | Out-Null
     return $rdpPath
 }

@@ -314,14 +314,20 @@ def gui_subprocess_env() -> dict[str, str]:
     return env
 
 
-def write_rdp_launch_file(target_ip: str) -> str:
+def write_rdp_launch_file(target_ip: str, desktop_width: int = 1920, desktop_height: int = 1200) -> str:
     temp_root = Path(tempfile.gettempdir()) / "BE200Rdp"
     temp_root.mkdir(parents=True, exist_ok=True)
     safe_target = re.sub(r"[^0-9A-Za-z._-]", "_", target_ip)
     path = temp_root / f"be200-{safe_target}-{now_timestamp()}.rdp"
+    desktop_width = max(640, int(desktop_width))
+    desktop_height = max(480, int(desktop_height))
     content = "\n".join(
         [
+            "screen mode id:i:1",
             f"full address:s:{target_ip}",
+            f"desktopwidth:i:{desktop_width}",
+            f"desktopheight:i:{desktop_height}",
+            "session bpp:i:32",
             "prompt for credentials:i:1",
             "redirectprinters:i:0",
             "redirectcomports:i:0",
@@ -533,7 +539,12 @@ def run_restart_rdp_job(
     )
 
 
-def launch_mstsc_sequence(ips: list[str], delay_seconds: float = 3.0) -> None:
+def launch_mstsc_sequence(
+    ips: list[str],
+    delay_seconds: float = 3.0,
+    desktop_width: int = 1920,
+    desktop_height: int = 1200,
+) -> None:
     import time
 
     system_root = os.environ.get("SystemRoot", r"C:\Windows")
@@ -541,7 +552,7 @@ def launch_mstsc_sequence(ips: list[str], delay_seconds: float = 3.0) -> None:
     if not mstsc.is_file():
         raise FileNotFoundError(str(mstsc))
     for ip in ips:
-        rdp_file = write_rdp_launch_file(ip)
+        rdp_file = write_rdp_launch_file(ip, desktop_width=desktop_width, desktop_height=desktop_height)
         subprocess.Popen([str(mstsc), rdp_file], cwd=system_root, env=gui_subprocess_env())
         if delay_seconds > 0:
             time.sleep(delay_seconds)

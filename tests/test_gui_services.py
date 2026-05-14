@@ -45,6 +45,8 @@ class GuiServicesTests(unittest.TestCase):
                 "history_limit": 20,
                 "restart_rdp_ping_timeout_minutes": 10,
                 "restart_rdp_mstsc_delay_seconds": 3,
+                "rdp_desktop_width": 1920,
+                "rdp_desktop_height": 1200,
                 "open_ncpa_default_delay_seconds": 3,
                 "open_ncpa_open_mstsc_default": True,
             },
@@ -274,6 +276,9 @@ class GuiServicesTests(unittest.TestCase):
 
             content = rdp_path.read_text(encoding="ascii")
             self.assertIn("full address:s:192.168.22.221", content)
+            self.assertIn("desktopwidth:i:1920", content)
+            self.assertIn("desktopheight:i:1200", content)
+            self.assertIn("session bpp:i:32", content)
             self.assertIn("redirectprinters:i:0", content)
             self.assertIn("redirectcomports:i:0", content)
             self.assertIn("redirectsmartcards:i:0", content)
@@ -286,6 +291,8 @@ class GuiServicesTests(unittest.TestCase):
 
         self.assertIn("Start-BE200SafeMstsc", restart_script)
         self.assertIn("Start-BE200SafeMstsc", open_ncpa_script)
+        self.assertIn("desktopwidth:i:$DesktopWidth", common_module)
+        self.assertIn("desktopheight:i:$DesktopHeight", common_module)
         self.assertIn("redirectprinters:i:0", common_module)
 
     def test_run_script_job_persists_failed_timeout_record(self) -> None:
